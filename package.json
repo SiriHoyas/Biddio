@@ -1,0 +1,11 @@
+{
+  "name": "biddio",
+  "version": "0.0.0",
+  "description": "Semester project 2 - Auction house",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Siri Høyås",
+  "license": "ISC"
+}
