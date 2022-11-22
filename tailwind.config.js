@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     borderRadius: {
       none: "0",
-      sm: "0.28rem",
+      sm: "0.28 rem",
       DEFAULT: "0.25rem",
       md: "0.375rem",
       lg: "0.5rem",
