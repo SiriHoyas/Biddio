@@ -1,36 +1,33 @@
 import { fetchContent } from "./components/fetchContent.mjs";
+import { setLocalStorage } from "./components/setLocalStorgage.mjs";
 
 async function login(e) {
   e.preventDefault();
-  console.log("object");
 
-  const emailInput = document.querySelector("#login-email").value;
-  const passwordInput = document.querySelector("#login-password").value;
+  const loginCredentials = {
+    email: document.querySelector("#login-email").value,
+    password: document.querySelector("#login-password").value,
+  };
 
-  console.log(passwordInput, emailInput);
+  const options = {
+    method: "POST",
+    body: JSON.stringify(loginCredentials),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
 
   try {
-    const loginCredentials = {
-      email: emailInput,
-      password: passwordInput,
-    };
-
-    const options = {
-      method: "POST",
-      body: JSON.stringify(loginCredentials),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    };
-
     const result = await fetchContent("/auth/login", options);
 
-    console.log(result);
-    const { accessToken } = await result.json();
+    const { accessToken, name, credits, avatar } = await result.json();
 
     if (result.ok) {
       window.location.href = "../../index.html";
-      localStorage.setItem("accessToken", accessToken);
+      setLocalStorage("accessToken", accessToken);
+      setLocalStorage("userName", name);
+      setLocalStorage("userCredits", credits);
+      setLocalStorage("userAvatar", avatar);
     }
   } catch (error) {
     console.log("error");
