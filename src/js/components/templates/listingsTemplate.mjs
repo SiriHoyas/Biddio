@@ -3,7 +3,8 @@ export function listingsHTML(
   listingTitle,
   listingSeller,
   timeLeft,
-  currentBid
+  currentBid,
+  listingID
 ) {
   const html = `
   <div class="listing-card">
@@ -20,7 +21,7 @@ export function listingsHTML(
         <p>Current bid</p>
         <p class="current-bid">${currentBid}</p>
     </div>
-    <button>View Listing</button>
+    <a href="./../single-listing.html?id=${listingID}">View Listing</a>
   </div>
   `;
   return html;
