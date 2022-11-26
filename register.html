@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biddio</title>
-    <script src="./src/js/menuToggle.js" defer></script>
+    <!-- <script src="./src/js/menuToggle.js" defer></script> -->
     <script src="/src/js/themeColor.js" defer></script>
+    <script src="./src/js/registerUser.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body h-screen bg-bgLight dark:bg-bgDark">
@@ -57,9 +58,9 @@
           class="font-mainFont text-secondaryPurple text-sm dark:text-offWhite"
           >Log in here</a
         >
-        <form class="loginForm mt-8 flex flex-col w-full">
+        <form class="registerForm mt-8 flex flex-col w-full">
           <label
-            for="login-email"
+            for="register-username"
             class="font-bodyFont text-secondaryPurple text-xs mb-1 dark:text-offWhite"
             >Username</label
           >
@@ -67,7 +68,7 @@
             type="text"
             name="register-username"
             id="register-username"
-            placeholder="example@noroff.no"
+            placeholder="example@stud.noroff.no"
             class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
           />
           <label
@@ -80,6 +81,7 @@
             name="register-email"
             id="register-email"
             placeholder="example@noroff.no"
+            value="email@stud.noroff.no"
             class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
           />
           <label
