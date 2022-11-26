@@ -1,6 +1,6 @@
 import { fetchContent } from "./components/fetchContent.mjs";
 import { getLocalStorage } from "./components/getLocalstorage.mjs";
-import { listingsHTML } from "./components/templates/listings.mjs";
+import { listingsHTML } from "./components/templates/listingsTemplate.mjs";
 
 async function populateListings() {
   const { accessToken } = getLocalStorage();
@@ -20,17 +20,18 @@ async function populateListings() {
   const json = await response.json();
   console.log(json);
 
-  document.querySelector(".listings-container").innerHTML = json.map(
-    (listing) => {
+  document.querySelector(".listings-container").innerHTML = json
+    .map((listing) => {
       return listingsHTML(
         listing.media,
         listing.title,
         listing.seller.name,
         listing.endsAt,
-        listing.bids
+        listing.bids,
+        listing.id
       );
-    }
-  );
+    })
+    .join("");
 }
 
 populateListings();
