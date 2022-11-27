@@ -7,8 +7,9 @@
     <title>Biddio</title>
     <script src="./src/js/menuToggle.js" defer></script>
     <script src="./src/js/themeColor.js" defer></script>
-    <script src="./src/js/components/time.mjs" type="module"></script>
-    <script src="./src/js/navSetUserInfo.mjs" type="module"></script>
+    <!-- <script src="./src/js/components/time.mjs" type="module"></script> -->
+    <!-- <script src="./src/js/navSetUserInfo.mjs" type="module"></script> -->
+    <script src="./src/js/search.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body dark:bg-bgDark">
@@ -129,12 +130,13 @@
         <form class="search-bar w-full">
           <input
             type="text"
-            name="seatch"
-            id="search"
+            name="search-bar"
+            id="search-bar"
             placeholder="Search for auctions"
             class="search-input w-full bg-bgLight dark:bg-cardsBgDark border border-borderDark shadow-md rounded-sm text-offWhite font-mainFont px-2 py-1 mt-8"
           />
         </form>
+        <div class="search-results"></div>
       </section>
       <section class="latest-auctions-container"></section>
     </main>

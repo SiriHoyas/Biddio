@@ -1,5 +1,4 @@
 import { fetchContent } from "./components/fetchContent.mjs";
-import { setLocalStorage } from "./components/setLocalStorgage.mjs";
 
 async function login(e) {
   e.preventDefault();
@@ -24,10 +23,10 @@ async function login(e) {
 
     if (result.ok) {
       window.location.href = "../../index.html";
-      setLocalStorage("accessToken", accessToken);
-      setLocalStorage("userName", name);
-      setLocalStorage("userCredits", credits);
-      setLocalStorage("userAvatar", avatar);
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("userName", name);
+      localStorage.setItem("userCredits", credits);
+      localStorage.setItem("userAvatar", avatar);
     }
   } catch (error) {
     console.log("error");
