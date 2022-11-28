@@ -7,6 +7,7 @@
     <title>Biddio</title>
     <script src="./src/js/menuToggle.js" defer></script>
     <script src="/src/js/themeColor.js" defer></script>
+    <script src="./src/js/profile.js" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body dark:bg-bgDark">
@@ -87,5 +88,45 @@
         </div>
       </section>
     </nav>
+    <main class="w-11/12 m-auto md:w-3/5">
+      <section
+        class="profile-info-container mt-32 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
+      ></section>
+
+      <section
+        class="add-listing mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+      >
+        <a
+          href="./new-listing.html"
+          class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
+          >New Listing</a
+        >
+      </section>
+      <section
+        class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
+      >
+        <button
+          class="my-listings-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-offWhite"
+        >
+          My Listings
+        </button>
+        <button
+          class="my-bids-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs text-inactiveTextLight mb-6 dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-inactiveTextDark"
+        >
+          My bids
+        </button>
+
+        <div
+          class="my-listings flex flex-col items-center md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3"
+        ></div>
+      </section>
+      <section
+        class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+      >
+        <button class="logout-btn bg-primaryPurple rounded-sm px-2 py-1 w-full">
+          Log out
+        </button>
+      </section>
+    </main>
   </body>
 </html>
