@@ -16,7 +16,10 @@ export async function getListings() {
   //OFFSET, useflags = false
   //if offset.length er mindre enn huundre, break and eat foods
 
-  const response = await fetchContent(`/listings`, options);
+  const response = await fetchContent(
+    `/listings?_seller=true&_bids=true`,
+    options
+  );
   const json = await response.json();
   return json;
 }

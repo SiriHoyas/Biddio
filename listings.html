@@ -7,6 +7,7 @@
     <title>Biddio</title>
     <script src="./src/js/menuToggle.js" defer></script>
     <script src="./src/js/themeColor.js" defer></script>
+    <script src="./src/js/navSetUserInfo.mjs" type="module"></script>
     <script src="./src/js/listings.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
@@ -64,14 +65,10 @@
           <div class="user-info ml-2">
             <p
               class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"
-            >
-              Ola Nordmann
-            </p>
+            ></p>
             <p
               class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"
-            >
-              465 Credits
-            </p>
+            ></p>
           </div>
         </div>
         <div class="login-register hidden">
@@ -92,7 +89,9 @@
       <section class="heading"></section>
       <section class="search"></section>
       <section class="sort"></section>
-      <section class="listings-container"></section>
+      <section
+        class="listings-container w-4/5 m-auto mt-32 md:grid md:grid-cols-3 md:gap-8 lg:w-1/2"
+      ></section>
     </main>
   </body>
 </html>

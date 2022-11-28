@@ -1,7 +1,7 @@
 /* eslint-disable */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.html", "./*.js"],
+  content: ["./**/*.html", "./src/**/*.js", "./src/**/*.mjs"],
   darkMode: "true",
   theme: {
     borderRadius: {
