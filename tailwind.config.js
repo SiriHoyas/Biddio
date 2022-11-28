@@ -1,7 +1,12 @@
 /* eslint-disable */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.html", "./src/**/*.js", "./src/**/*.mjs"],
+  content: [
+    "./**/*.html",
+    "./src/**/*.js",
+    "./src/**/*.mjs",
+    "./src/js/**/*.mjs",
+  ],
   darkMode: "true",
   theme: {
     borderRadius: {
@@ -38,6 +43,7 @@ module.exports = {
         secondaryPurple: "#453293",
         transparentLight: "rgba(255, 255, 255, 0.30)",
         transparentDark: "rgba(255, 255, 255, 0.20)",
+        modalBg: "rgba(0, 0, 0, 0.70)",
       },
       fontFamily: {
         mainFont: ["K2D", "sans-serif"],
