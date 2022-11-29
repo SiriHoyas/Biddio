@@ -1,4 +1,4 @@
-import { getListings } from "./components/getlistings.mjs";
+import { getListings } from "../components/getlistings.mjs";
 
 const searchInput = document.querySelector("#search-bar");
 

@@ -1,5 +1,5 @@
-import { emailValidation } from "./components/emailValidation.mjs";
-import { fetchContent } from "./components/fetchContent.mjs";
+import { emailValidation } from "../../components/emailValidation.mjs";
+import { fetchContent } from "../../components/fetchContent.mjs";
 
 async function registerUser(e) {
   e.preventDefault();

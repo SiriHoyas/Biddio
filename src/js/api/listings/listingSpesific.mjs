@@ -1,6 +1,6 @@
-import { fetchContent } from "./components/fetchContent.mjs";
-import { getLocalStorage } from "./components/getLocalstorage.mjs";
-import { singleListingHTML } from "./components/templates/singleListingTemplate.mjs";
+import { fetchContent } from "../../components/fetchContent.mjs";
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { singleListingHTML } from "../../components/templates/singleListingTemplate.mjs";
 
 async function fetchListingInfo() {
   const queryString = document.location.search;

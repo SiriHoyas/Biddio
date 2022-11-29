@@ -1,6 +1,6 @@
-import { fetchContent } from "./components/fetchContent.mjs";
-import { getLocalStorage } from "./components/getLocalstorage.mjs";
-import { listingsHTML } from "./components/templates/listingsTemplate.js";
+import { fetchContent } from "../../components/fetchContent.mjs";
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
 const profileInfoContainer = document.querySelector(".profile-info-container");
 const myListingsContainer = document.querySelector(".my-listings");

@@ -1,7 +1,7 @@
-import { urlArray } from "./components/addListingImg.mjs";
-import { fetchContent } from "./components/fetchContent.mjs";
-import { getLocalStorage } from "./components/getLocalstorage.mjs";
-import { setEndTime } from "./components/setEndTime.mjs";
+import { urlArray } from "../../components/addListingImg.mjs";
+import { fetchContent } from "../../components/fetchContent.mjs";
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { setEndTime } from "../../components/setEndTime.mjs";
 
 async function addListing(e) {
   e.preventDefault();

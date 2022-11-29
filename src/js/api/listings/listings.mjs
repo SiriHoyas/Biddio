@@ -1,6 +1,6 @@
-import { getLastItem } from "./components/getLastItem.mjs";
-import { getListings } from "./components/getlistings.mjs";
-import { listingsHTML } from "./components/templates/listingsTemplate.js";
+import { getLastItem } from "../../components/getLastItem.mjs";
+import { getListings } from "../../components/getlistings.mjs";
+import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
 async function displayListings() {
   const listings = await getListings();
