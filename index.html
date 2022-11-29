@@ -9,11 +9,15 @@
     <script src="./src/js/themeColor.js" defer></script>
     <script src="./src/js/navSetUserInfo.mjs" type="module"></script>
     <script src="./src/js/search.mjs" type="module"></script>
+    <script
+      src="./src/js/api/listings/latestListings.js"
+      type="module"
+    ></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body dark:bg-bgDark">
     <nav
-      class="bg-bgLight dark:bg-bgDark absolute z-10 top-0 w-screen lg:flex lg:items-center"
+      class="bg-bgLight absolute z-10 top-0 w-screen lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
     >
       <section
         class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3"
@@ -98,9 +102,9 @@
           class="-z-10 absolute md:hidden"
         />
         <img
-          src="./src/img/indexGraphicWeb.svg"
+          src="./src/img/indexGraphicWeb.png"
           aria-hidden="true"
-          class="hidden -z-10 object-cover absolute md:block h-80"
+          class="hidden -z-10 object-cover absolute -mt-24 w-3/4 md:block"
           alt="gradient graphic"
         />
         <div
@@ -132,12 +136,19 @@
             name="search-bar"
             id="search-bar"
             placeholder="Search for auctions"
-            class="search-input w-full bg-bgLight dark:bg-cardsBgDark border border-borderDark shadow-md rounded-sm text-offWhite font-mainFont px-2 py-1 mt-8"
+            class="search-input w-full bg-bgLight dark:bg-cardsBgDark border border-borderDark shadow-md rounded-sm text-black font-mainFont px-2 py-1 mt-8 dark:text-offWhite"
           />
         </form>
         <div class="search-results"></div>
       </section>
-      <section class="latest-auctions-container"></section>
+      <section class="latest-listings w-4/5 md:w-2/3 m-auto mt-32 mb-32">
+        <p class="w-full text-center font-mainFont text-xl mb-20 lg:text-2xl">
+          Latest Listings
+        </p>
+        <div
+          class="latest-listings-container w-full md:grid md:grid-cols-3 gap-4"
+        ></div>
+      </section>
     </main>
   </body>
 </html>
