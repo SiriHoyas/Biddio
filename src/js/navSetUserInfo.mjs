@@ -1,6 +1,9 @@
 import { getLocalStorage } from "./components/getLocalstorage.mjs";
 
-const { userName, userCredits, userAvatar } = getLocalStorage();
+const userInfoContainer = document.querySelector(".user");
+const loginBtnContainer = document.querySelector(".login-register");
+
+const { accessToken, userName, userCredits, userAvatar } = getLocalStorage();
 
 function displayUserInfo() {
   document.querySelector(".user-name").innerHTML = userName;
@@ -25,3 +28,20 @@ function displayUserCredits() {
 
 displayUserInfo();
 displayUserCredits();
+
+const profileBtn = document.querySelector(".menu-item-profile");
+
+function showUserInfo() {
+  if (accessToken) {
+    loginBtnContainer.classList.add("hidden");
+    loginBtnContainer.classList.remove("flex");
+    userInfoContainer.classList.remove("hidden");
+    profileBtn.classList.remove("hidden");
+  } else {
+    loginBtnContainer.classList.remove("hidden");
+    loginBtnContainer.classList.add("flex");
+    userInfoContainer.classList.add("hidden");
+  }
+}
+
+showUserInfo();
