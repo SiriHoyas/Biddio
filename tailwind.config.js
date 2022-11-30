@@ -7,7 +7,7 @@ module.exports = {
     "./src/**/*.mjs",
     "./src/js/**/*.mjs",
   ],
-  darkMode: "false",
+  darkMode: "class",
   theme: {
     borderRadius: {
       none: "0",
