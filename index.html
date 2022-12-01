@@ -164,7 +164,7 @@
       </section>
     </nav>
     <main class="mt-32">
-      <section class="heading w-4/5 flex flex-col items-center m-auto lg:w-2/3">
+      <section class="heading w-4/5 flex flex-col items-center m-auto lg:w-2/5">
         <img
           src="./src/img/indexGraphicDarkMobile.svg"
           aria-hidden="true"
@@ -181,37 +181,41 @@
           class="flex flex-col justify-center m-auto text-center lg:flex-row lg:justify-between lg:text-left lg:w-full"
         >
           <div class="heading-text">
-            <h2
-              class="font-mainFont text-black dark:text-offWhite text-2xl mt-12 lg:text-3xl"
-            >
-              Welcome to biddio!
-            </h2>
-            <p
-              class="font-mainFont text-inactiveTextLight dark:text-inactiveText lg:w-4/5"
-            >
-              Bid on auctions, sell your items. Always get the best price!
-            </p>
+            <div>
+              <h2
+                class="font-mainFont text-black dark:text-offWhite text-2xl mt-12 lg:text-3xl"
+              >
+                Welcome to biddio!
+              </h2>
+              <p
+                class="font-mainFont text-inactiveTextLight dark:text-inactiveText lg:w-4/5"
+              >
+                Bid on auctions, sell your items. Always get the best price!
+              </p>
+            </div>
+            <div class="heading-img">
+              <img
+                src="/src/img/boxOfStuff.svg"
+                alt="box where things are popping out"
+                class="hidden h-32 w-32 lg:block"
+              />
+            </div>
           </div>
-          <div class="heading-img">
-            <img
-              src="/src/img/boxOfStuff.svg"
-              alt="box where things are popping out"
-              class="hidden h-32 w-32 lg:block"
+          <form class="search-bar w-full">
+            <input
+              type="text"
+              name="search-bar"
+              id="search-bar"
+              placeholder="Search for auctions"
+              class="search-input w-full bg-bgLight dark:bg-cardsBgDark border border-borderDark shadow-md rounded-sm text-black font-mainFont px-2 py-1 mt-8 dark:text-offWhite"
             />
-          </div>
+          </form>
+          <div class="search-results"></div>
         </div>
-        <form class="search-bar w-full">
-          <input
-            type="text"
-            name="search-bar"
-            id="search-bar"
-            placeholder="Search for auctions"
-            class="search-input w-full bg-bgLight dark:bg-cardsBgDark border border-borderDark shadow-md rounded-sm text-black font-mainFont px-2 py-1 mt-8 dark:text-offWhite"
-          />
-        </form>
-        <div class="search-results"></div>
       </section>
-      <section class="latest-listings w-4/5 md:w-2/3 m-auto mt-32 mb-32">
+      <section
+        class="latest-listings w-4/5 m-auto mt-32 mb-3 md:w-2/3 lg:w-2/5"
+      >
         <p class="w-full text-center font-mainFont text-xl mb-20 lg:text-2xl">
           Latest Listings
         </p>

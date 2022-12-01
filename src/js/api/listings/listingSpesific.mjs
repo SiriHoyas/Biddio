@@ -26,20 +26,14 @@ async function fetchListingInfo() {
 }
 
 async function populateListing() {
-  const { media, title, description, seller, endsAt, bids } =
-    await fetchListingInfo();
+  const { title, description, seller, endsAt, bids } = await fetchListingInfo();
   const { avatar, name } = seller;
 
   getLastItem(bids, 0);
 
-  const imageCarousel = document.querySelector(".image-container");
   const listingInfo = document.querySelector(".listing-info");
   const sellerInfo = document.querySelector(".seller-info");
   const countdown = document.querySelector(".countdown");
-
-  imageCarousel.innerHTML = `
-    <img src="${media}" alt="listing image for ${title}" class="h-full"/>
-  `;
 
   listingInfo.innerHTML = `
     <h1 class="text-2xl font-mainFont dark:text-offWhite">${title}</h1>
@@ -56,3 +50,36 @@ async function populateListing() {
 }
 
 populateListing();
+
+let counter = 0;
+
+async function placeImage(media, title) {
+  const imageCarousel = document.querySelector(".image-container");
+  imageCarousel.innerHTML = "";
+  for (let i = 0; i < media.length; i++) {
+    if (i === counter)
+      imageCarousel.innerHTML += `
+  <img src="${media[i]}" alt="listing image for ${title[i]}" class="h-full listing-img"/>`;
+  }
+}
+
+const { media, title } = await fetchListingInfo();
+placeImage(media, title);
+
+// Image carousel
+
+const nextBtn = document.querySelector(".next-img");
+const prevBtn = document.querySelector(".prev-img");
+
+nextBtn.addEventListener("click", () => {
+  counter++;
+
+  console.log(counter);
+  placeImage(media, title);
+});
+
+prevBtn.addEventListener("click", () => {
+  counter--;
+  console.log(counter);
+  placeImage(media, title);
+});
