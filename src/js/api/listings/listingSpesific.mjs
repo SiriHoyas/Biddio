@@ -30,6 +30,10 @@ async function populateListing() {
   const { avatar, name } = seller;
 
   getLastItem(bids, 0);
+  bids.map((bid) => {
+    console.log(bid);
+    return populateBiddingHistoty(bid);
+  });
 
   const listingInfo = document.querySelector(".listing-info");
   const sellerInfo = document.querySelector(".seller-info");
@@ -50,6 +54,14 @@ async function populateListing() {
 }
 
 populateListing();
+
+async function populateBiddingHistoty(bid) {
+  document.querySelector(".bidding-history").innerHTML += `
+  <div class="bid flex justify-between p-1 rounded-sm odd:bg-inactiveTextDark even:bg-inactiveTextLight ">
+  <p>${bid.bidderName}<p>
+  <p class="text-xs">${bid.created}</p>
+  <p>${bid.amount}<p>`;
+}
 
 let counter = 0;
 
