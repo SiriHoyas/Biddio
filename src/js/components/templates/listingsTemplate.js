@@ -2,7 +2,12 @@ export function listingsHTML(
   listingImg,
   listingTitle,
   listingSeller,
-  timeLeft,
+  date,
+  month,
+  year,
+  hours,
+  minutes,
+  seconds,
   currentBid,
   listingID
 ) {
@@ -15,8 +20,18 @@ export function listingsHTML(
             <p class="font-mainFont text-xl dark:text-offWhite">${listingTitle}</p>
             <p class="font-mainfont text-inactiveTextLight text-sm dark:text-inactiveTextDark">Sold by ${listingSeller}</p>
             <div class="time-left flex justify-between">
-              <p class="font-mainFont dark:text-offWhite">Time left</p>
-              <p font-mainFont dark:text-offWhite>${timeLeft}</p>
+              <p class="font-mainFont dark:text-offWhite">Ends</p>
+              <div>
+                <div class="end-date">
+                  ${date}.
+                  ${month}.
+                  ${year}
+                </div>
+                <div class="end-time">
+                  ${hours}:
+                  ${minutes}:
+                  ${seconds}
+              </div>
             </div>
           </div>
           <div class="bid-info flex items-center justify-between">
