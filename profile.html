@@ -108,126 +108,147 @@
       </section>
     </nav>
     <main class="w-11/12 m-auto md:w-2/5">
-      <section
-        class="profile-info-container flex items-center justify-between mt-32 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
-      >
-        <div class="profile-info"></div>
-        <div class="mode-toggle flex items-center">
-          <p class="edit-avatar-btn mr-4 underline dark:text-inactiveTextDark">
-            edit
-          </p>
-          <svg
-            class="light-mode w-6 h-6 fill-offWhite"
-            viewBox="0 0 302.4 302.4"
-            style="enable-background: new 0 0 302.4 302.4"
-          >
-            <path
-              d="M204.8,97.6C191.2,84,172,75.2,151.2,75.2s-40,8.4-53.6,22.4c-13.6,13.6-22.4,32.8-22.4,53.6s8.8,40,22.4,53.6
+      <div class="profile-info-main">
+        <section
+          class="profile-info-container flex items-center justify-between mt-32 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
+        >
+          <div class="profile-info"></div>
+          <div class="mode-toggle flex items-center">
+            <p
+              class="edit-avatar-btn mr-4 underline dark:text-inactiveTextDark"
+            >
+              edit
+            </p>
+            <svg
+              class="light-mode w-6 h-6 fill-offWhite"
+              viewBox="0 0 302.4 302.4"
+              style="enable-background: new 0 0 302.4 302.4"
+            >
+              <path
+                d="M204.8,97.6C191.2,84,172,75.2,151.2,75.2s-40,8.4-53.6,22.4c-13.6,13.6-22.4,32.8-22.4,53.6s8.8,40,22.4,53.6
 				c13.6,13.6,32.8,22.4,53.6,22.4s40-8.4,53.6-22.4c13.6-13.6,22.4-32.8,22.4-53.6S218.8,111.2,204.8,97.6z"
-            />
-            <path
-              d="M151.2,51.6c5.6,0,10.4-4.8,10.4-10.4V10.4c0-5.6-4.8-10.4-10.4-10.4c-5.6,0-10.4,4.8-10.4,10.4v30.8
+              />
+              <path
+                d="M151.2,51.6c5.6,0,10.4-4.8,10.4-10.4V10.4c0-5.6-4.8-10.4-10.4-10.4c-5.6,0-10.4,4.8-10.4,10.4v30.8
 				C140.8,46.8,145.6,51.6,151.2,51.6z"
-            />
-            <path
-              d="M236.4,80.8l22-22c4-4,4-10.4,0-14.4s-10.4-4-14.4,0l-22,22c-4,4-4,10.4,0,14.4C225.6,84.8,232,84.8,236.4,80.8z"
-            />
-            <path
-              d="M292,140.8h-30.8c-5.6,0-10.4,4.8-10.4,10.4c0,5.6,4.8,10.4,10.4,10.4H292c5.6,0,10.4-4.8,10.4-10.4
+              />
+              <path
+                d="M236.4,80.8l22-22c4-4,4-10.4,0-14.4s-10.4-4-14.4,0l-22,22c-4,4-4,10.4,0,14.4C225.6,84.8,232,84.8,236.4,80.8z"
+              />
+              <path
+                d="M292,140.8h-30.8c-5.6,0-10.4,4.8-10.4,10.4c0,5.6,4.8,10.4,10.4,10.4H292c5.6,0,10.4-4.8,10.4-10.4
 				C302.4,145.6,297.6,140.8,292,140.8z"
-            />
-            <path
-              d="M236,221.6c-4-4-10.4-4-14.4,0s-4,10.4,0,14.4l22,22c4,4,10.4,4,14.4,0s4-10.4,0-14.4L236,221.6z"
-            />
-            <path
-              d="M151.2,250.8c-5.6,0-10.4,4.8-10.4,10.4V292c0,5.6,4.8,10.4,10.4,10.4c5.6,0,10.4-4.8,10.4-10.4v-30.8
+              />
+              <path
+                d="M236,221.6c-4-4-10.4-4-14.4,0s-4,10.4,0,14.4l22,22c4,4,10.4,4,14.4,0s4-10.4,0-14.4L236,221.6z"
+              />
+              <path
+                d="M151.2,250.8c-5.6,0-10.4,4.8-10.4,10.4V292c0,5.6,4.8,10.4,10.4,10.4c5.6,0,10.4-4.8,10.4-10.4v-30.8
 				C161.6,255.6,156.8,250.8,151.2,250.8z"
-            />
-            <path
-              d="M66,221.6l-22,22c-4,4-4,10.4,0,14.4s10.4,4,14.4,0l22-22c4-4,4-10.4,0-14.4C76.8,217.6,70.4,217.6,66,221.6z"
-            />
-            <path
-              d="M51.6,151.2c0-5.6-4.8-10.4-10.4-10.4H10.4c-5.6,0-10.4,4.8-10.4,10.4s4.8,10.4,10.4,10.4h30.8
+              />
+              <path
+                d="M66,221.6l-22,22c-4,4-4,10.4,0,14.4s10.4,4,14.4,0l22-22c4-4,4-10.4,0-14.4C76.8,217.6,70.4,217.6,66,221.6z"
+              />
+              <path
+                d="M51.6,151.2c0-5.6-4.8-10.4-10.4-10.4H10.4c-5.6,0-10.4,4.8-10.4,10.4s4.8,10.4,10.4,10.4h30.8
 				C46.8,161.6,51.6,156.8,51.6,151.2z"
-            />
-            <path
-              d="M66,80.8c4,4,10.4,4,14.4,0s4-10.4,0-14.4l-22-22c-4-4-10.4-4-14.4,0s-4,10.4,0,14.4L66,80.8z"
-            />
-          </svg>
+              />
+              <path
+                d="M66,80.8c4,4,10.4,4,14.4,0s4-10.4,0-14.4l-22-22c-4-4-10.4-4-14.4,0s-4,10.4,0,14.4L66,80.8z"
+              />
+            </svg>
 
-          <svg
-            class="dark-mode w-6 h-6 fill-inactiveTextLight"
-            viewBox="0 0 312.812 312.812"
-            style="enable-background: new 0 0 312.812 312.812"
-          >
-            <path
-              d="M305.2,178.159c-3.2-0.8-6.4,0-9.2,2c-10.4,8.8-22.4,16-35.6,20.8c-12.4,4.8-26,7.2-40.4,7.2c-32.4,0-62-13.2-83.2-34.4
+            <svg
+              class="dark-mode w-6 h-6 fill-inactiveTextLight"
+              viewBox="0 0 312.812 312.812"
+              style="enable-background: new 0 0 312.812 312.812"
+            >
+              <path
+                d="M305.2,178.159c-3.2-0.8-6.4,0-9.2,2c-10.4,8.8-22.4,16-35.6,20.8c-12.4,4.8-26,7.2-40.4,7.2c-32.4,0-62-13.2-83.2-34.4
 			c-21.2-21.2-34.4-50.8-34.4-83.2c0-13.6,2.4-26.8,6.4-38.8c4.4-12.8,10.8-24.4,19.2-34.4c3.6-4.4,2.8-10.8-1.6-14.4
 			c-2.8-2-6-2.8-9.2-2c-34,9.2-63.6,29.6-84.8,56.8c-20.4,26.8-32.4,60-32.4,96c0,43.6,17.6,83.2,46.4,112s68,46.4,112,46.4
 			c36.8,0,70.8-12.8,98-34c27.6-21.6,47.6-52.4,56-87.6C314,184.959,310.8,179.359,305.2,178.159z"
+              />
+            </svg>
+          </div>
+        </section>
+
+        <section
+          class="edit-avatar hidden mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex-col justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+        >
+          <p>Edit profile avatar</p>
+          <form class="edit-avatar-form flex flex-col">
+            <label for="avatar-url">Avatar URL</label>
+            <input
+              type="text"
+              name="avatar-url"
+              id="avatar-url"
+              autocomplete="off"
+              class="p-1 text-black"
             />
-          </svg>
-        </div>
-      </section>
+            <button
+              type="submit"
+              class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
+            >
+              Save
+            </button>
+          </form>
+        </section>
 
-      <section
-        class="edit-avatar hidden mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex flex-col justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
-      >
-        <p>Edit profile avatar</p>
-        <form class="edit-avatar-form flex flex-col">
-          <label for="avatar-url">Avatar URL</label>
-          <input
-            type="text"
-            name="avatar-url"
-            id="avatar-url"
-            autocomplete="off"
-            class="p-1 text-black"
-          />
-          <button
-            type="submit"
+        <section
+          class="add-listing mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+        >
+          <a
+            href="./new-listing.html"
             class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
+            >New Listing</a
           >
-            Save
+        </section>
+        <section
+          class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
+        >
+          <button
+            class="my-listings-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-offWhite"
+          >
+            My Listings
           </button>
-        </form>
-      </section>
+          <button
+            class="my-bids-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs text-inactiveTextLight mb-6 dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-inactiveTextDark"
+          >
+            My bids
+          </button>
 
-      <section
-        class="add-listing mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+          <div
+            class="my-listings flex flex-col items-center md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3"
+          ></div>
+        </section>
+        <section
+          class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+        >
+          <button
+            class="log-out-btn bg-primaryPurple rounded-sm px-2 py-1 w-full"
+          >
+            Log out
+          </button>
+        </section>
+      </div>
+      <div
+        class="no-user-container hidden mt-32 font-mainFont bg-cardsBgLight p-2 rounded-sm flex-col items-center dark:bg-cardsBgDark dark:text-offWhite"
       >
-        <a
-          href="./new-listing.html"
-          class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
-          >New Listing</a
-        >
-      </section>
-      <section
-        class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
-      >
-        <button
-          class="my-listings-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-offWhite"
-        >
-          My Listings
-        </button>
-        <button
-          class="my-bids-btn bg-cardsBgLight border rounded-sm px-2 py-1 text-xs text-inactiveTextLight mb-6 dark:bg-cardsBgDark dark:border-inactiveTextDark dark:text-inactiveTextDark"
-        >
-          My bids
-        </button>
-
-        <div
-          class="my-listings flex flex-col items-center md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3"
-        ></div>
-      </section>
-      <section
-        class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
-      >
-        <button
-          class="log-out-btn bg-primaryPurple rounded-sm px-2 py-1 w-full"
-        >
-          Log out
-        </button>
-      </section>
+        <p class="mb-6">You are not logged in!</p>
+        <div class="mb-4">
+          <a
+            href="./login.html"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            >Log in</a
+          >
+          <a
+            href="./register.html"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+            >Register</a
+          >
+        </div>
+      </div>
     </main>
   </body>
 </html>

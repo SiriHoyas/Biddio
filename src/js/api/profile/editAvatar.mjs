@@ -2,7 +2,9 @@ import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { fetchContent } from "../fetch/fetchContent.mjs";
 
 document.querySelector(".edit-avatar-btn").addEventListener("click", () => {
-  document.querySelector(".edit-avatar").classList.remove("hidden");
+  const editContainer = document.querySelector(".edit-avatar");
+  editContainer.classList.remove("hidden");
+  editContainer.classList.add("flex");
 });
 
 const editForm = document.querySelector(".edit-avatar-form");

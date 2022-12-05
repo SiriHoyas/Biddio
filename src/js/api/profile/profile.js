@@ -1,6 +1,8 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
+import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
+import { convertEndtime } from "../../time/convertEndtime.mjs";
 
 const profileInfoContainer = document.querySelector(".profile-info");
 const myListingsContainer = document.querySelector(".my-listings");
@@ -25,27 +27,52 @@ const profileOptions = {
 };
 
 async function getUserListings() {
-  myListingsContainer.innerHTML = "";
   const response = await fetchContent(
-    `/profiles/${userName}/listings?_seller=true`,
+    `/profiles/${userName}/listings?_seller=true&_bids=true`,
     profileOptions
   );
   const json = await response.json();
-  console.log(json);
+  myListingsContainer.innerHTML = "";
 
   json.map((listing) => {
-    return (myListingsContainer.innerHTML += listingsHTML(
-      listing.media,
-      listing.title,
-      listing.seller.name,
-      listing.endsAt,
-      listing.bids,
-      listing.id
-    ));
+    const bid = getLastItem(listing.bids, "No Bids");
+    const { date, month, year, hours, minutes, seconds } = convertEndtime(
+      listing.endsAt
+    );
+
+    if (bid.amount) {
+      return (document.querySelector(".my-listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
+          date,
+          month,
+          year,
+          hours,
+          minutes,
+          seconds,
+          bid.amount,
+          listing.id
+        ));
+    } else {
+      return (document.querySelector(".my-listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
+          date,
+          month,
+          year,
+          hours,
+          minutes,
+          seconds,
+          bid,
+          listing.id
+        ));
+    }
   });
 }
-
-getUserListings();
 
 async function getUserBids() {
   myListingsContainer.innerHTML = "";
@@ -73,5 +100,16 @@ async function getUserBids() {
   }
 }
 
-myBidsBtn.addEventListener("click", getUserBids);
 myListingsBtn.addEventListener("click", getUserListings);
+myBidsBtn.addEventListener("click", getUserBids);
+getUserListings();
+
+// Display section if user goes to profile page without being logged in
+
+if (!accessToken) {
+  const profileInfoMain = document.querySelector(".profile-info-main");
+  profileInfoMain.classList.add("hidden");
+  const userFeedback = document.querySelector(".no-user-container");
+  userFeedback.classList.add("flex");
+  userFeedback.classList.remove("hidden");
+}
