@@ -8,6 +8,7 @@ async function getLastestListings() {
 
   for (let i = 0; i < 3; i++) {
     const bid = await getLastItem(listings[i].bids, "No Bids");
+    console.log(listings[i].id);
 
     if (bid.amount) {
       container.innerHTML += listingsHTML(

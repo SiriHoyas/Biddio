@@ -1,8 +1,8 @@
-import { fetchContent } from "../../components/fetchContent.mjs";
-import { getLastItem } from "../../components/getLastItem.mjs";
+import { fetchContent } from "../../api/fetch/fetchContent.mjs";
+import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 
-const { accessToken } = getLocalStorage;
+const { accessToken, userName } = getLocalStorage();
 
 async function fetchListingInfo() {
   const queryString = document.location.search;
@@ -28,6 +28,12 @@ async function fetchListingInfo() {
 async function populateListing() {
   const { title, description, seller, endsAt, bids } = await fetchListingInfo();
   const { avatar, name } = seller;
+
+  if (name === userName) {
+    const editBtnContainer = document.querySelector(".edit-btn-container");
+    editBtnContainer.classList.remove("hidden");
+    editBtnContainer.classList.add("flex");
+  }
 
   getLastItem(bids, 0);
   bids.map((bid) => {
