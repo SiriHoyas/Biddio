@@ -4,20 +4,21 @@ import { getListings } from "../../api/fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
 async function displayListings() {
-  const listings = await getListings(`&offset=0`);
+  const listings = await getListings(`&offset=0&limit=27`);
+  console.log(listings);
 
-  for (let i = 0; i < listings.length; i++) {
-    const bid = getLastItem(listings[i].bids, "No Bids");
+  listings.map((listing) => {
+    const bid = getLastItem(listing.bids, "No Bids");
     const { date, month, year, hours, minutes, seconds } = convertEndtime(
-      listings[i].endsAt
+      listing.endsAt
     );
 
-    if (i <= 26) {
-      if (bid.amount) {
-        document.querySelector(".listings-container").innerHTML += listingsHTML(
-          listings[i].media,
-          listings[i].title,
-          listings[i].seller.name,
+    if (bid.amount) {
+      return (document.querySelector(".listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
           date,
           month,
           year,
@@ -25,13 +26,14 @@ async function displayListings() {
           minutes,
           seconds,
           bid.amount,
-          listings[i].id
-        );
-      } else {
-        document.querySelector(".listings-container").innerHTML += listingsHTML(
-          listings[i].media,
-          listings[i].title,
-          listings[i].seller.name,
+          listing.id
+        ));
+    } else {
+      return (document.querySelector(".listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
           date,
           month,
           year,
@@ -39,11 +41,10 @@ async function displayListings() {
           minutes,
           seconds,
           bid,
-          listings[i].id
-        );
-      }
+          listing.id
+        ));
     }
-  }
+  });
 }
 
 displayListings();
@@ -53,19 +54,19 @@ let offset = 10;
 async function showMore() {
   offset = offset + 10;
 
-  const listings = await getListings(`&offset=${offset}`);
-  for (let i = 0; i < listings.length; i++) {
-    const bid = getLastItem(listings[i].bids, "No Bids");
+  const listings = await getListings(`&offset=${offset}&limit=27`);
+  listings.map((listing) => {
+    const bid = getLastItem(listing.bids, "No Bids");
     const { date, month, year, hours, minutes, seconds } = convertEndtime(
-      listings[i].endsAt
+      listing.endsAt
     );
 
-    if (i <= 26) {
-      if (bid.amount) {
-        document.querySelector(".listings-container").innerHTML += listingsHTML(
-          listings[i].media,
-          listings[i].title,
-          listings[i].seller.name,
+    if (bid.amount) {
+      return (document.querySelector(".listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
           date,
           month,
           year,
@@ -73,13 +74,14 @@ async function showMore() {
           minutes,
           seconds,
           bid.amount,
-          listings[i].id
-        );
-      } else {
-        document.querySelector(".listings-container").innerHTML += listingsHTML(
-          listings[i].media,
-          listings[i].title,
-          listings[i].seller.name,
+          listing.id
+        ));
+    } else {
+      return (document.querySelector(".listings-container").innerHTML +=
+        listingsHTML(
+          listing.media,
+          listing.title,
+          listing.seller.name,
           date,
           month,
           year,
@@ -87,11 +89,10 @@ async function showMore() {
           minutes,
           seconds,
           bid,
-          listings[i].id
-        );
-      }
+          listing.id
+        ));
     }
-  }
+  });
 }
 
 window.addEventListener("scroll", () => {
