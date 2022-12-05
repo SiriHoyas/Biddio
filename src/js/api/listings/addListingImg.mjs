@@ -54,4 +54,8 @@ function deleteImage(imageId) {
 addBtn.addEventListener("click", () => {
   addToArray();
   renderImages();
+
+  document.querySelector(
+    ".num-photos-added"
+  ).innerHTML = `${urlArray.length} photos added`;
 });

@@ -1,6 +1,6 @@
-import { convertEndtime } from "../../components/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
-import { getListings } from "../../components/getlistings.mjs";
+import { getListings } from "../../api/fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
 async function displayListings() {

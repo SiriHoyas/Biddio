@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biddio</title>
-    <script src="./src/js/menuToggle.js" defer></script>
-    <script src="./src/js/listingImageModal.mjs" defer></script>
-    <script src="/src/js/themeColor.js" defer></script>
-    <script src="./src/js/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/UI/menuToggle.js" defer></script>
+    <script src="./src/js/UI/listingImageModal.mjs" type="module"></script>
+    <script src="/src/js/UI/themeColor.js" defer></script>
+    <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
     <script src="./src/js/api/listings/addListing.js" type="module"></script>
-    <script src="./src/js/components/addListingImg.mjs" defer></script>
+    <script
+      src="./src/js/api/listings/addListingImg.mjs"
+      type="module"
+    ></script>
+    <!-- <script src="./src/js/time/setEndTime.mjs" defer></script> -->
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body bg-bgLight dark:bg-bgDark">
@@ -194,7 +198,9 @@
           ></div>
         </div>
       </div>
-      <h2 class="text-black text-lg font-mainFont mt-20 dark:text-offWhite">
+      <h2
+        class="new-listing-heading text-black text-lg font-mainFont mt-20 dark:text-offWhite"
+      >
         New Listing
       </h2>
       <form
@@ -231,10 +237,8 @@
             Add photos
           </button>
           <p
-            class="num-photos-added text-xs font-mainFont text-inactiveTextLight underline mt-1"
-          >
-            8 photos added
-          </p>
+            class="num-photos-added text-xs font-mainFont text-inactiveTextLight mt-1"
+          ></p>
         </div>
         <p class="font-mainFont text-sm mt-10 dark:text-offWhite">
           Auction duration
@@ -244,39 +248,43 @@
         >
           <button
             type="button"
+            data-duration="10"
             class="bg-secondaryPurple text-xs font-mainFont text-offWhite p-1 rounded-sm"
           >
             10 days
           </button>
           <button
             type="button"
+            data-duration="20"
             class="bg-secondaryPurple text-xs font-mainFont text-offWhite p-1 rounded-sm"
           >
             20 days
           </button>
           <button
             type="button"
+            data-duration="30"
             class="bg-secondaryPurple text-xs font-mainFont text-offWhite p-1 rounded-sm"
           >
             30 days
           </button>
           <button
             type="button"
+            data-duration="40"
             class="bg-secondaryPurple text-xs font-mainFont text-offWhite p-1 rounded-sm"
           >
             40 days
           </button>
           <button
             type="button"
+            data-duration="50"
             class="bg-secondaryPurple text-xs font-mainFont text-offWhite p-1 rounded-sm"
           >
             50 days
           </button>
         </div>
         <a
-          class="text-xs font-mainFont text-inactiveTextLight underline mt-1 mb-10"
-          >Advanced options</a
-        >
+          class="view-endtime text-xs font-mainFont text-inactiveTextLight underline mt-1 mb-10"
+        ></a>
         <input
           type="submit"
           name="new-listing-submit"
@@ -284,6 +292,26 @@
           class="bg-secondaryPurple text-sm text-offWhite font-mainFont p-1 rounded-sm"
         />
       </form>
+
+      <section
+        class="post-success mt-32 p-4 rounded-sm bg-cardsBgLight dark:bg-cardsBgDark hidden"
+      >
+        <h2 class="font-mainFont text-xl dark:text-offWhite">
+          Your listing was posted!
+        </h2>
+        <div class="button-container flex flex-col m-auto w-1/2">
+          <button
+            class="new-listing bg-primaryPurple text-sm text-offWhite font-mainFont p-1 rounded-sm mb-6 mt-6"
+          >
+            Add new listing
+          </button>
+          <button
+            class="view-listings bg-secondaryPurple text-sm text-offWhite font-mainFont p-1 rounded-sm"
+          >
+            See listings
+          </button>
+        </div>
+      </section>
     </main>
   </body>
 </html>

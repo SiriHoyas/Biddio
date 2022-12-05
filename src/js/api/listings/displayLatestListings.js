@@ -1,6 +1,6 @@
-import { getListings } from "../../components/getlistings.mjs";
+import { getListings } from "../fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
-import { getLastItem } from "../../components/getLastItem.mjs";
+import { getLastItem } from "../../components/getLatestBid.mjs";
 
 async function getLastestListings() {
   const listings = await getListings();
@@ -8,7 +8,7 @@ async function getLastestListings() {
 
   for (let i = 0; i < 3; i++) {
     const bid = await getLastItem(listings[i].bids, "No Bids");
-    console.log(bid);
+
     if (bid.amount) {
       container.innerHTML += listingsHTML(
         listings[i].media,

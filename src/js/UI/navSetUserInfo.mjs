@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./components/getLocalstorage.mjs";
+import { getLocalStorage } from "../components/getLocalstorage.mjs";
 
 const userInfoContainer = document.querySelector(".user");
 const loginBtnContainer = document.querySelector(".login-register");

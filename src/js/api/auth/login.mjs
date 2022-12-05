@@ -1,4 +1,4 @@
-import { fetchContent } from "../../components/fetchContent.mjs";
+import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 
 async function login(e) {
   e.preventDefault();

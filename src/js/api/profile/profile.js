@@ -1,8 +1,8 @@
-import { fetchContent } from "../../components/fetchContent.mjs";
+import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
-const profileInfoContainer = document.querySelector(".profile-info-container");
+const profileInfoContainer = document.querySelector(".profile-info");
 const myListingsContainer = document.querySelector(".my-listings");
 const myListingsBtn = document.querySelector(".my-listings-btn");
 const myBidsBtn = document.querySelector(".my-bids-btn");
@@ -23,6 +23,7 @@ const profileOptions = {
     "Content-type": "application/json; charset=UTF-8",
   },
 };
+
 async function getUserListings() {
   myListingsContainer.innerHTML = "";
   const response = await fetchContent(
@@ -30,6 +31,7 @@ async function getUserListings() {
     profileOptions
   );
   const json = await response.json();
+  console.log(json);
 
   json.map((listing) => {
     return (myListingsContainer.innerHTML += listingsHTML(
