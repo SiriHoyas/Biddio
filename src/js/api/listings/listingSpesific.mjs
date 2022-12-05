@@ -1,6 +1,7 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { countDown } from "../../time/auctionCountdown.mjs";
 
 const { accessToken, userName } = getLocalStorage();
 
@@ -25,8 +26,10 @@ async function fetchListingInfo() {
   return await response.json();
 }
 
+const { media, title, description, seller, endsAt, bids } =
+  await fetchListingInfo();
+
 async function populateListing() {
-  const { title, description, seller, endsAt, bids } = await fetchListingInfo();
   const { avatar, name } = seller;
 
   if (name === userName) {
@@ -43,7 +46,6 @@ async function populateListing() {
 
   const listingInfo = document.querySelector(".listing-info");
   const sellerInfo = document.querySelector(".seller-info");
-  const countdown = document.querySelector(".countdown");
 
   listingInfo.innerHTML = `
     <h1 class="text-2xl font-mainFont dark:text-offWhite">${title}</h1>
@@ -52,10 +54,6 @@ async function populateListing() {
   sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
     <p class="text-lg font-mainFont dark:text-offWhite">${name}</p>
-  `;
-
-  countdown.innerHTML = `
-  <div>${endsAt}</div>
   `;
 }
 
@@ -81,7 +79,6 @@ async function placeImage(media, title) {
   }
 }
 
-const { media, title } = await fetchListingInfo();
 placeImage(media, title);
 
 // Image carousel
@@ -101,3 +98,22 @@ prevBtn.addEventListener("click", () => {
   console.log(counter);
   placeImage(media, title);
 });
+
+// Countdown
+async function displayCountdown() {
+  console.log(countDown(endsAt));
+
+  const { daysLeft, hoursLeft, minutesLeft, secondsLeft } = countDown(endsAt);
+
+  const countdown = document.querySelector(".countdown");
+  countdown.innerHTML = `
+  <div class="flex justify-between">
+    <p>${daysLeft}</p>
+    <p>${hoursLeft}</p>
+    <p>${minutesLeft}</p>
+    <p>${secondsLeft}</p>
+  </div>
+  `;
+}
+
+setInterval(displayCountdown, 1000);
