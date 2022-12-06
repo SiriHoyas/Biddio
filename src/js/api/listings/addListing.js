@@ -3,19 +3,7 @@ import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { setEndTime } from "../../time/setEndTime.mjs";
 
-let endDate;
-const btnParent = document.querySelector(".auction-duration-container");
-
-btnParent.addEventListener("click", (e) => {
-  if (e.target.hasAttribute("data-duration")) {
-    const duration = e.target.dataset.duration;
-    const durationNum = parseInt(duration);
-    endDate = setEndTime(durationNum);
-    document.querySelector(".view-endtime").innerHTML = endDate;
-  }
-});
-
-async function addListing(e, endDate) {
+async function addListing(e) {
   try {
     e.preventDefault();
     const { accessToken } = getLocalStorage();
@@ -24,12 +12,17 @@ async function addListing(e, endDate) {
       "#listing-description"
     ).value;
 
-    console.log(endDate);
+    if (!titleInput.length) {
+      document.querySelector(".title-error").classList.remove("hidden");
+    }
+
+    const endsAt = sessionStorage.getItem("endTime");
+
     const newPostBody = {
       title: titleInput,
       description: descriptionInput,
       media: urlArray,
-      endsAt: endDate,
+      endsAt: endsAt,
     };
 
     const options = {
@@ -47,9 +40,12 @@ async function addListing(e, endDate) {
       document.querySelector(".new-listing-form").classList.add("hidden");
       document.querySelector(".new-listing-heading").classList.add("hidden");
       document.querySelector(".post-success").classList.remove("hidden");
+      document.querySelector(".post-success").classList.add("flex");
     }
   } catch (error) {
-    console.log(error);
+    document.querySelector(".new-listing-container").classList.add("hidden");
+    document.querySelector(".error-message").classList.remove("hidden");
+    console.log("This is error");
   }
 }
 
@@ -57,4 +53,28 @@ const form = document.querySelector(".new-listing-form");
 
 form.addEventListener("submit", (e) => {
   addListing(e);
+});
+
+// Set endtime
+let endDate;
+const btnParent = document.querySelector(".auction-duration-container");
+
+btnParent.addEventListener("click", (e) => {
+  if (e.target.hasAttribute("data-duration")) {
+    const duration = e.target.dataset.duration;
+    const durationNum = parseInt(duration);
+    endDate = setEndTime(durationNum);
+    sessionStorage.setItem("endTime", endDate);
+    const formattedEndDate = new Date(endDate).toLocaleString("en-GB", {
+      timeZone: "UTC",
+    });
+
+    document.querySelector(".view-endtime").innerHTML = `${formattedEndDate}`;
+  }
+});
+
+// Refresh on error
+
+document.querySelector(".refresh-btn").addEventListener("click", () => {
+  window.location.reload();
 });
