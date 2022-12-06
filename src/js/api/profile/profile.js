@@ -34,43 +34,25 @@ async function getUserListings() {
   const json = await response.json();
   myListingsContainer.innerHTML = "";
 
-  json.map((listing) => {
+  json.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
     const { date, month, year, hours, minutes, seconds } = convertEndtime(
       listing.endsAt
     );
 
-    if (bid.amount) {
-      return (document.querySelector(".my-listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid.amount,
-          listing.id
-        ));
-    } else {
-      return (document.querySelector(".my-listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid,
-          listing.id
-        ));
-    }
+    document.querySelector(".my-listings-container").innerHTML += listingsHTML(
+      listing.media,
+      listing.title,
+      listing.seller.name,
+      date,
+      month,
+      year,
+      hours,
+      minutes,
+      seconds,
+      bid.amount ? bid.amount : bid,
+      listing.id
+    );
   });
 }
 
@@ -82,15 +64,15 @@ async function getUserBids() {
   );
   const json = await response.json();
   if (json.length >= 1) {
-    json.map((listing) => {
-      return (myListingsContainer.innerHTML += listingsHTML(
+    json.forEach((listing) => {
+      myListingsContainer.innerHTML += listingsHTML(
         listing.media,
         listing.title,
         listing.seller.name,
         listing.endsAt,
         listing.bids,
         listing.id
-      ));
+      );
     });
   } else {
     myListingsContainer.innerHTML = `
