@@ -1,5 +1,11 @@
 import { emailValidation } from "../../components/emailValidation.mjs";
-import { fetchContent } from "../../components/fetchContent.mjs";
+import { fetchContent } from "../../api/fetch/fetchContent.mjs";
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+
+const { accessToken } = getLocalStorage();
+if (accessToken) {
+  window.location.href = "./index.html";
+}
 
 async function registerUser(e) {
   e.preventDefault();

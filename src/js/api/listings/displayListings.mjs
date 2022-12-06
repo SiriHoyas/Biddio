@@ -3,95 +3,55 @@ import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getListings } from "../../api/fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 
+const listingsContainer = document.querySelector(".listings-container");
+
 async function displayListings() {
   const listings = await getListings(`&offset=0&limit=27`);
   console.log(listings);
 
-  listings.map((listing) => {
+  listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
-    const { date, month, year, hours, minutes, seconds } = convertEndtime(
-      listing.endsAt
+    const { date, time } = convertEndtime(listing.endsAt);
+    listingsContainer.innerHTML += listingsHTML(
+      listing.media,
+      listing.title,
+      listing.seller.name,
+      date,
+      time,
+      bid.amount ? bid.amount : bid,
+      listing.id
     );
-
-    if (bid.amount) {
-      return (document.querySelector(".listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid.amount,
-          listing.id
-        ));
-    } else {
-      return (document.querySelector(".listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid,
-          listing.id
-        ));
-    }
   });
 }
 
 displayListings();
 
-let offset = 10;
+let offset = 0;
 
 async function showMore() {
-  offset = offset + 10;
+  offset = offset + 27;
 
   const listings = await getListings(`&offset=${offset}&limit=27`);
-  listings.map((listing) => {
+  console.log(listings);
+  listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
     const { date, month, year, hours, minutes, seconds } = convertEndtime(
       listing.endsAt
     );
 
-    if (bid.amount) {
-      return (document.querySelector(".listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid.amount,
-          listing.id
-        ));
-    } else {
-      return (document.querySelector(".listings-container").innerHTML +=
-        listingsHTML(
-          listing.media,
-          listing.title,
-          listing.seller.name,
-          date,
-          month,
-          year,
-          hours,
-          minutes,
-          seconds,
-          bid,
-          listing.id
-        ));
-    }
+    listingsContainer.innerHTML += listingsHTML(
+      listing.media,
+      listing.title,
+      listing.seller.name,
+      date,
+      month,
+      year,
+      hours,
+      minutes,
+      seconds,
+      bid.amount ? bid.amount : bid,
+      listing.id
+    );
   });
 }
 

@@ -1,4 +1,10 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+
+const { accessToken } = getLocalStorage();
+if (accessToken) {
+  window.location.href = "./index.html";
+}
 
 async function login(e) {
   e.preventDefault();
