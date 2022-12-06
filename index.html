@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biddio</title>
     <script src="./src/js/UI/menuToggle.js" defer></script>
-    <!-- <script src="./src/js/UI/themeColor.js" defer></script> -->
+    <script src="./src/js/UI/themeColors.js" type="module"></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
     <script
       src="./src/js/api/listings/searchListings.mjs"
@@ -21,7 +21,7 @@
   </head>
   <body class="index-body dark:bg-bgDark">
     <nav
-      class="bg-bgLight absolute z-10 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
+      class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
     >
       <section
         class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3"
@@ -114,8 +114,10 @@
         </div>
       </section>
     </nav>
-    <main class="mt-32">
-      <section class="heading w-4/5 flex flex-col items-center m-auto lg:w-2/3">
+    <main>
+      <section
+        class="heading mt-32 w-4/5 flex flex-col items-center m-auto lg:w-2/3"
+      >
         <img
           src="./src/img/indexGraphicDarkMobile.svg"
           aria-hidden="true"

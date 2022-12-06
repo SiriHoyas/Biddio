@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biddio</title>
-    <!-- <script src="/src/js/themeColor.js" defer></script> -->
+    <script src="./src/js/UI/menuToggle.js" defer></script>
+    <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/UI/themeColors.js" type="module"></script>
     <script src="/src/js/api/auth/login.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body h-screen bg-bgLight dark:bg-bgDark">
-    <nav class="absolute z-10 top-0 w-screen lg:flex lg:items-center">
+    <nav
+      class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
+    >
       <section
         class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3"
       >
-        <a href="/index.html" class="logo-container flex items-center">
+        <a href="./index.html" class="logo-container flex items-center">
           <img
             src="/src/img/biddioLogo.svg"
             alt="biddio logo"
@@ -26,9 +30,86 @@
             biddio
           </h1>
         </a>
+        <div class="menu-button-container lg:hidden">
+          <svg
+            class="menu-btn fill-secondaryPurple h-6 w-6 dark:fill-offWhite"
+            enable-background="new 0 0 464.205 464.205"
+            viewBox="0 0 464.205 464.205"
+          >
+            <g>
+              <g id="grip-solid-horizontal_1_">
+                <path
+                  d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"
+                />
+                <path
+                  d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"
+                />
+                <path
+                  d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+      <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
+        <ul class="menu-items lg:flex lg:justify-center">
+          <li
+            class="menu-item-home text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
+          >
+            <a
+              href="./index.html"
+              class="border-b border-secondaryPurple dark:border-offWhite"
+              >Home</a
+            >
+          </li>
+          <li
+            class="menu-item-auction text-2xl font-mainFont text-secondaryPurple dark:text-offWhite lg:ml-10 lg:mr-10"
+          >
+            <a href="./listings.html">Auctions</a>
+          </li>
+          <li
+            class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
+          >
+            <a href="./profile.html">Profile</a>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center"
+      >
+        <div class="user flex items-center lg:justify-end">
+          <a
+            href="./profile.html"
+            class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"
+          ></a>
+          <div class="user-info ml-2">
+            <p
+              class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"
+            ></p>
+            <p
+              class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"
+            ></p>
+          </div>
+        </div>
+        <div class="login-register hidden justify-start lg:justify-end">
+          <a
+            href="./login.html"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            >Log in</a
+          >
+          <a
+            href="./register.html"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+            >Register</a
+          >
+        </div>
       </section>
     </nav>
     <main class="flex justify-center h-screen">
+      <div
+        class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"
+      ></div>
       <img
         src="/src/img/loginGraphicMobile.png"
         alt=""
