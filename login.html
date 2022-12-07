@@ -138,7 +138,18 @@
         >
           You can register an account <a href="./register.html">here</a>
         </p>
+
         <form class="loginForm mt-8 flex flex-col w-full">
+          <p
+            class="login-error hidden text-red-600 italic mb-1 text-center text-xs"
+          >
+            Your email and/or password is wrong
+          </p>
+          <p
+            class="catch-error hidden text-red-600 italic mb-1 text-center text-xs"
+          >
+            Something went wrong, please try again
+          </p>
           <label
             for="login-email"
             class="font-bodyFont text-secondaryPurple text-xs mb-1 dark:text-offWhite"
@@ -149,11 +160,14 @@
             name="login-email"
             id="login-email"
             placeholder="example@noroff.no"
-            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
+            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont"
           />
+          <p class="valid-email-error hidden text-red-600 italic text-xs mt-1">
+            Please use @stud.noroff.no
+          </p>
           <label
             for="login-password"
-            class="font-bodyFont text-secondaryPurple text-xs mb-1 dark:text-offWhite"
+            class="font-bodyFont text-secondaryPurple text-xs mb-1 mt-4 dark:text-offWhite"
             >Password</label
           >
           <input
