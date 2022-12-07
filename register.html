@@ -138,6 +138,7 @@
           class="font-mainFont text-secondaryPurple text-sm dark:text-offWhite"
           >Log in here</a
         >
+
         <form class="registerForm mt-8 flex flex-col w-full">
           <label
             for="register-username"
@@ -148,7 +149,7 @@
             type="text"
             name="register-username"
             id="register-username"
-            placeholder="example@stud.noroff.no"
+            placeholder="Type your username"
             class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
           />
           <label
@@ -161,12 +162,14 @@
             name="register-email"
             id="register-email"
             placeholder="example@noroff.no"
-            value="email@stud.noroff.no"
-            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
+            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont"
           />
+          <p class="valid-email-error hidden text-red-600 italic text-xs">
+            Please use @stud.noroff.no
+          </p>
           <label
             for="register-password"
-            class="font-bodyFont text-secondaryPurple text-xs mb-1 dark:text-offWhite"
+            class="font-bodyFont text-secondaryPurple text-xs mb-1 mt-4 dark:text-offWhite"
             >Password</label
           >
           <input
@@ -174,14 +177,17 @@
             name="register-password"
             id="register-password"
             placeholder="Type your password"
-            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
+            class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont"
           />
+          <p
+            class="error-message hidden mt-3 text-center text-red-600 italic text-xs"
+          ></p>
           <input
             type="submit"
             name="register-in-btn"
             id="log-in-btn"
             value="Register"
-            class="bg-secondaryPurple text-offWhite text-sm font-mainFont px-2 py-1 rounded-sm self-center"
+            class="bg-secondaryPurple text-offWhite text-sm font-mainFont px-2 py-1 mt-4 rounded-sm self-center"
           />
         </form>
       </div>

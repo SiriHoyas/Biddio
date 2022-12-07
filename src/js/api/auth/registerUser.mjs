@@ -30,13 +30,24 @@ async function registerUser(e) {
     },
   };
   try {
+    const emailError = document.querySelector(".valid-email-error");
     if (isCorrectEmail) {
       const response = await fetchContent("/auth/register", options);
+      const json = await response.json();
+
+      const errorMessage = json.errors[0].message;
+
       if (response.ok) {
         console.log("YAY");
+      } else {
+        const errorMsgContainer = document.querySelector(".error-message");
+        errorMsgContainer.classList.remove("hidden");
+        errorMsgContainer.innerHTML = errorMessage;
+        emailError.classList.add("hidden");
       }
+    } else {
+      emailError.classList.remove("hidden");
     }
-    console.log("nor working");
   } catch (error) {
     console.log(error);
   }
