@@ -13,7 +13,7 @@ export function listingsHTML(
             <img src="${listingImg}" alt="Image of ${listingTitle}" onerror="this.src = './src/img/listings-placeholder.png';" class="listing-img rounded-sm w-full h-72 object-cover" />
           </div>
           <div class="listing-info">
-            <p class="font-mainFont text-xl truncate  h-10 dark:text-offWhite">${listingTitle}</p>
+            <p class="font-mainFont text-xl truncate h-10 dark:text-offWhite">${listingTitle}</p>
             <p class="font-mainfont text-inactiveTextLight text-xs -mt-3 dark:text-inactiveTextDark">Sold by ${listingSeller}</p>
             
               <p class="font-mainFont mt-3 dark:text-offWhite">Ends:</p>

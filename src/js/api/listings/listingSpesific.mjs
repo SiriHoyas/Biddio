@@ -67,27 +67,40 @@ async function populateBiddingHistory(bid) {
 }
 
 let counter = 0;
-
-async function placeImage(media, title) {
-  const imageCarousel = document.querySelector(".image-container");
-  imageCarousel.innerHTML = "";
-  for (let i = 0; i < media.length; i++) {
-    if (i === counter)
-      imageCarousel.innerHTML += `
-  <img src="${media[i]}" alt="listing image for ${title[i]}" class="h-full listing-img"/>`;
-  }
-}
-
-// placeImage(media, title);
-
-// Image carousel
+console.log(media);
 
 const nextBtn = document.querySelector(".next-img");
 const prevBtn = document.querySelector(".prev-img");
+console.log(media.length);
+
+if (media.length <= 1) {
+  nextBtn.classList.add("hidden");
+  prevBtn.classList.add("hidden");
+}
+
+async function placeImage(media, title) {
+  const imageCarousel = document.querySelector(".image-container");
+
+  imageCarousel.innerHTML = "";
+  for (let i = 0; i < media.length; i++) {
+    if (i === counter) {
+      console.log(i);
+      imageCarousel.innerHTML += `
+      <img src="${media[i]}" alt="listing image for ${title[i]}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full listing-img"/>`;
+    }
+  }
+}
+
+placeImage(media, title);
+
+// Image carousel
 
 nextBtn.addEventListener("click", () => {
   counter++;
 
+  if (counter > media.length) {
+    nextBtn.classList.add("hidden");
+  }
   console.log(counter);
   placeImage(media, title);
 });
@@ -100,8 +113,6 @@ prevBtn.addEventListener("click", () => {
 
 // Countdown
 async function displayCountdown() {
-  console.log(countDown(endsAt));
-
   const { daysLeft, hoursLeft, minutesLeft, secondsLeft } = countDown(endsAt);
 
   const countdown = document.querySelector(".countdown");

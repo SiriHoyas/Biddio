@@ -1,16 +1,13 @@
-import { fetchContent } from "../../api/fetch/fetchContent.mjs";
-import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
-import { listingsHTML } from "../../components/templates/listingsTemplate.js";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { getUserBids } from "./getUserBids.mjs";
+import { getUserListings } from "./getUserListings.mjs";
 
 const profileInfoContainer = document.querySelector(".profile-info");
 const myListingsContainer = document.querySelector(".my-listings");
 const myListingsBtn = document.querySelector(".my-listings-btn");
 const myBidsBtn = document.querySelector(".my-bids-btn");
 
-const { accessToken, userName, userCredits, userAvatar } = getLocalStorage();
-console.log(userName, userAvatar, userCredits);
+const { accessToken, userName, userAvatar } = getLocalStorage();
 
 profileInfoContainer.innerHTML = `
     <div class="profile-info flex items-center">
@@ -26,65 +23,18 @@ const profileOptions = {
   },
 };
 
-async function getUserListings() {
-  const response = await fetchContent(
-    `/profiles/${userName}/listings?_seller=true&_bids=true`,
-    profileOptions
-  );
-  const json = await response.json();
-  myListingsContainer.innerHTML = "";
+getUserListings(userName, profileOptions, myListingsContainer);
 
-  json.forEach((listing) => {
-    const bid = getLastItem(listing.bids, "No Bids");
-    const { date, month, year, hours, minutes, seconds } = convertEndtime(
-      listing.endsAt
-    );
-
-    document.querySelector(".my-listings-container").innerHTML += listingsHTML(
-      listing.media,
-      listing.title,
-      listing.seller.name,
-      date,
-      month,
-      year,
-      hours,
-      minutes,
-      seconds,
-      bid.amount ? bid.amount : bid,
-      listing.id
-    );
-  });
-}
-
-async function getUserBids() {
-  myListingsContainer.innerHTML = "";
-  const response = await fetchContent(
-    `/profiles/${userName}/bids`,
-    profileOptions
-  );
-  const json = await response.json();
-  if (json.length >= 1) {
-    json.forEach((listing) => {
-      myListingsContainer.innerHTML += listingsHTML(
-        listing.media,
-        listing.title,
-        listing.seller.name,
-        listing.endsAt,
-        listing.bids,
-        listing.id
-      );
-    });
-  } else {
-    myListingsContainer.innerHTML = `
-    <p class="font-mainFont mb-4">You have no active bids!</p>
-    
-    <a href="./listings.html" class="register bg-secondaryPurple font-mainFont text-offWhite text-xs px-2 py-1 mb-4 rounded-sm">Browse listings</a>`;
-  }
-}
-
-myListingsBtn.addEventListener("click", getUserListings);
-myBidsBtn.addEventListener("click", getUserBids);
-getUserListings();
+myListingsBtn.addEventListener("click", () => {
+  getUserListings(userName, profileOptions, myListingsContainer);
+  myListingsBtn.classList.add("underline");
+  myBidsBtn.classList.remove("underline");
+});
+myBidsBtn.addEventListener("click", () => {
+  getUserBids(userName, profileOptions, myListingsContainer);
+  myListingsBtn.classList.remove("underline");
+  myBidsBtn.classList.add("underline");
+});
 
 // Display section if user goes to profile page without being logged in
 
