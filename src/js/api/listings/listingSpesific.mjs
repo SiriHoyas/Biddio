@@ -3,13 +3,12 @@ import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { countDown } from "../../time/auctionCountdown.mjs";
 
-const { accessToken, userName } = getLocalStorage();
+const { accessToken, userName, userCredits } = getLocalStorage();
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+const listingID = params.get("id");
 
 async function fetchListingInfo() {
-  const queryString = document.location.search;
-  const params = new URLSearchParams(queryString);
-  const listingID = params.get("id");
-
   const options = {
     method: "GET",
     headers: {
@@ -79,7 +78,7 @@ async function placeImage(media, title) {
   }
 }
 
-placeImage(media, title);
+// placeImage(media, title);
 
 // Image carousel
 
@@ -117,3 +116,66 @@ async function displayCountdown() {
 }
 
 setInterval(displayCountdown, 1000);
+
+const lastBid = bids.slice(-1);
+
+const bidInput = document.querySelector("#bid");
+
+// Set value of bid input so user can quickly bid one over current bid
+
+if (bids.length === 0) {
+  bidInput.setAttribute("value", 1);
+} else bidInput.setAttribute("value", lastBid[0].amount + 1);
+
+// Increase or decrease amount
+let bidValue = bidInput.getAttribute("value");
+bidValue = parseInt(bidValue);
+console.log(typeof bidValue);
+
+const plusBtn = document.querySelector(".increase");
+const minusBtn = document.querySelector(".decrease");
+
+plusBtn.addEventListener("click", () => {
+  if (bidValue < userCredits) {
+    bidValue++;
+    bidInput.setAttribute("value", bidValue);
+  } else {
+    console.log("du har ikke nok");
+  }
+});
+
+minusBtn.addEventListener("click", () => {
+  bidValue--;
+  bidInput.setAttribute("value", bidValue);
+});
+
+// POST BID
+const bidForm = document.querySelector(".bid-form");
+
+bidForm.addEventListener("submit", (e) => {
+  placeBid(e, bidValue, listingID);
+});
+
+async function placeBid(e, bidValue, listingID) {
+  e.preventDefault();
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify({ amount: bidValue }),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+  try {
+    const response = await fetchContent(`/listings/${listingID}/bids`, options);
+    const json = await response.json();
+    console.log(json);
+
+    if (response.ok) {
+      window.location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

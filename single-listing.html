@@ -8,7 +8,7 @@
     <script src="./src/js/UI/menuToggle.js" defer></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
     <script src="./src/js/UI/themeColors.js" type="module"></script>
-    <!-- <script src="./src/js/bidding.js" type="module"></script> -->
+    <!-- <script src="./src/js/components/bidding.js" type="module"></script> -->
     <script src="./src/js/api/listings/editListing.mjs" type="module"></script>
     <script
       src="./src/js/api/listings/listingSpesific.mjs"
@@ -227,12 +227,40 @@
             class="post-bid bg-cardsBgLight p-2 rounded-sm md:col-start-2 md:col-span-2 md:row-start-3 md:row-span-3 dark:bg-cardsBgDark"
           >
             <div class="bid">
-              <form class="bid-form">
-                <button type="button" class="decrease hidden">-</button>
-                <input type="text" name="" id="bid" />
-                <button type="button" class="increase">+</button>
+              <form class="bid-form flex flex-col items-center">
+                <div class="flex">
+                  <div class="btn-container w-1/4">
+                    <button
+                      type="button"
+                      class="decrease bg-secondaryPurple font-mainFont text-offWhite text-xs p-3 text-center rounded-sm"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div class="bid-amount-container flex justify-center">
+                    <input
+                      type="number"
+                      name="bid"
+                      id="bid"
+                      class="w-1/2 text-center"
+                    />
+                  </div>
+                  <div class="btn-container w-1/4 flex justify-end">
+                    <button
+                      type="button"
+                      class="increase justify-items-end bg-secondaryPurple font-mainFont text-offWhite text-xs p-3 text-center rounded-sm"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
 
-                <button type="submit">BID</button>
+                <button
+                  type="submit"
+                  class="bg-secondaryPurple w-1/3 mt-4 font-mainFont text-offWhite text-xs p-3 text-center rounded-sm"
+                >
+                  BID
+                </button>
               </form>
             </div>
           </div>
