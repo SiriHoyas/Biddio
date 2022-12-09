@@ -11,10 +11,6 @@ export async function getListings(flags) {
       "Content-type": "application/json; charset=UTF-8",
     },
   };
-  //if flags then do this url
-  //if not do other url
-  //OFFSET, useflags = false
-  //if offset.length er mindre enn huundre, break and eat foods
 
   const response = await fetchContent(
     `/listings?_seller=true&_bids=true&sort=created&sortOrder=desc&${flags}`,
@@ -23,13 +19,3 @@ export async function getListings(flags) {
   const json = await response.json();
   return json;
 }
-
-// console.log(await getListings());
-
-// const listi = await getListings();
-
-// const titles = listi.map((listings) => {
-//   return listings.title;
-// });
-
-// console.log(titles);

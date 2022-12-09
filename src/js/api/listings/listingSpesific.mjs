@@ -29,31 +29,43 @@ const { media, title, description, seller, endsAt, bids } =
   await fetchListingInfo();
 
 async function populateListing() {
-  const { avatar, name } = seller;
+  if (accessToken) {
+    const { avatar, name } = seller;
 
-  if (name === userName) {
-    const editBtnContainer = document.querySelector(".edit-btn-container");
-    editBtnContainer.classList.remove("hidden");
-    editBtnContainer.classList.add("flex");
-  }
+    if (name === userName) {
+      const editBtnContainer = document.querySelector(".edit-btn-container");
+      editBtnContainer.classList.remove("hidden");
+      editBtnContainer.classList.add("flex");
+    }
 
-  getLastItem(bids, 0);
-  bids.map((bid) => {
-    console.log(bid);
-    return populateBiddingHistory(bid);
-  });
+    getLastItem(bids, 0);
+    bids.map((bid) => {
+      console.log(bid);
+      return populateBiddingHistory(bid);
+    });
 
-  const listingInfo = document.querySelector(".listing-info");
-  const sellerInfo = document.querySelector(".seller-info");
+    const listingInfo = document.querySelector(".listing-info");
+    const sellerInfo = document.querySelector(".seller-info");
 
-  listingInfo.innerHTML = `
+    listingInfo.innerHTML = `
     <h1 class="text-2xl font-mainFont dark:text-offWhite">${title}</h1>
     <p class="text-sm font-bodyFont dark:text-offWhite">${description}</p>
   `;
-  sellerInfo.innerHTML = `
+    sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
     <p class="text-lg font-mainFont dark:text-offWhite">${name}</p>
   `;
+  } else {
+    document.querySelector(".single-listing-container").classList.add("hidden");
+    const backBtn = document.querySelector(".back");
+    backBtn.classList.remove("hidden");
+    backBtn.addEventListener("click", () => {
+      history.back();
+    });
+    const notLoggedIn = document.querySelector(".not-logged-in");
+    notLoggedIn.classList.add("flex");
+    notLoggedIn.classList.remove("hidden");
+  }
 }
 
 populateListing();
