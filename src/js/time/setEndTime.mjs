@@ -5,7 +5,6 @@ export function setEndTime(days) {
 
   const daysInput = days;
   const endTime = new Date(currentTime + daysInput);
-  console.log(endTime);
 
   return endTime.toISOString();
 }

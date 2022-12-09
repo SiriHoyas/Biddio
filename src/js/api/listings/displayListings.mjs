@@ -6,7 +6,7 @@ import { listingsHTML } from "../../components/templates/listingsTemplate.js";
 const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
-  const listings = await getListings(`&offset=0&limit=27`);
+  const listings = await getListings(`&offset=0&limit=27_active=true`);
   console.log(listings);
 
   listings.forEach((listing) => {
@@ -31,7 +31,7 @@ let offset = 0;
 async function showMore() {
   offset = offset + 27;
 
-  const listings = await getListings(`&offset=${offset}&limit=27`);
+  const listings = await getListings(`&offset=${offset}&limit=27&_active=true`);
   console.log(listings);
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");

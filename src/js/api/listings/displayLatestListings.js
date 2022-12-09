@@ -4,7 +4,7 @@ import { getLastItem } from "../../components/getLatestBid.mjs";
 import { convertEndtime } from "../../time/convertEndtime.mjs";
 
 async function getLastestListings() {
-  const listings = await getListings();
+  const listings = await getListings("_active=true");
   const container = document.querySelector(".latest-listings-container");
 
   for (let i = 0; i < 3; i++) {

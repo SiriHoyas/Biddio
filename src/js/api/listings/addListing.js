@@ -2,6 +2,7 @@ import { urlArray } from "../../api/listings/addListingImg.mjs";
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { setEndTime } from "../../time/setEndTime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.mjs";
 
 async function addListing(e) {
   try {
@@ -65,11 +66,10 @@ btnParent.addEventListener("click", (e) => {
     const durationNum = parseInt(duration);
     endDate = setEndTime(durationNum);
     sessionStorage.setItem("endTime", endDate);
-    const formattedEndDate = new Date(endDate).toLocaleString("en-GB", {
-      timeZone: "UTC",
-    });
+    const { date, time } = convertEndtime(endDate);
+    console.log(date, time);
 
-    document.querySelector(".view-endtime").innerHTML = `${formattedEndDate}`;
+    document.querySelector(".view-endtime").innerHTML = `${date}, ${time}`;
   }
 });
 
