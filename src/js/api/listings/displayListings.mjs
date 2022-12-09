@@ -27,10 +27,13 @@ displayListings();
 
 let offset = 0;
 
-async function showMore() {
+async function showMore(sort) {
   offset = offset + 27;
 
-  const listings = await getListings(`&offset=${offset}&limit=27&_active=true`);
+  const listings = await getListings(
+    `&offset=${offset}&limit=27&_active=true`,
+    sort
+  );
   console.log(listings);
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
@@ -51,6 +54,6 @@ async function showMore() {
 window.addEventListener("scroll", () => {
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
     console.log("BUNN");
-    showMore();
+    showMore("desc");
   }
 });

@@ -1,7 +1,7 @@
 import { fetchContent } from "./fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 
-export async function getListings(flags) {
+export async function getListings(flags, order = "desc") {
   const { accessToken } = getLocalStorage();
 
   const options = {
@@ -13,7 +13,7 @@ export async function getListings(flags) {
   };
 
   const response = await fetchContent(
-    `/listings?_seller=true&_bids=true&sort=created&sortOrder=desc&${flags}`,
+    `/listings?_seller=true&_bids=true&sort=created&sortOrder=${order}&${flags}`,
     options
   );
   const json = await response.json();

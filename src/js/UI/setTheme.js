@@ -3,9 +3,11 @@ checkTheme();
 
 const darkModeIcon = document.querySelector(".dark-mode");
 const lightModeIcon = document.querySelector(".light-mode");
+console.log(localStorage.getItem("theme"));
 
 if (localStorage.getItem("theme") === "dark") {
   lightModeIcon.classList.add("hidden");
+  darkModeIcon.classList.remove("hidden");
 }
 
 function toggleMode() {
