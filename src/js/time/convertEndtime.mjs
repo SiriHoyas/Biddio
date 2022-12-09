@@ -12,6 +12,7 @@ export function convertEndtime(endsAt) {
 
   const date = endTime.toLocaleDateString();
   const time = endTime.toLocaleTimeString();
+  console.log(endTime);
   return { date, time };
 
   // return { date, month, year, hours, minutes, seconds };

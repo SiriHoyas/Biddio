@@ -21,10 +21,20 @@ async function editListing(e) {
   const titleInput = document.querySelector("#edit-title").value;
   const descriptionInput = document.querySelector("#edit-description").value;
 
-  const body = {
+  let body = {
     title: titleInput,
     description: descriptionInput,
   };
+
+  if (titleInput.length < 1) {
+    body = {
+      description: descriptionInput,
+    };
+  } else if (descriptionInput.length < 1) {
+    body = {
+      title: titleInput,
+    };
+  }
 
   const options = {
     method: "PUT",
@@ -54,7 +64,10 @@ async function deleteListing(e) {
   };
 
   const response = await fetchContent(`/listings/${listingID}`, options);
-  console.log(response);
+
+  if (response.ok) {
+    history.back();
+  }
 }
 
 editForm.addEventListener("click", (e) => {

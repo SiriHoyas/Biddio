@@ -1,7 +1,7 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
-import { countDown } from "../../time/auctionCountdown.mjs";
+import { displayCountdown } from "../../time/displayCountdown.mjs";
 
 const { accessToken, userName, userCredits } = getLocalStorage();
 const queryString = document.location.search;
@@ -66,12 +66,12 @@ async function populateBiddingHistory(bid) {
   <p>${bid.amount}<p>`;
 }
 
+// Image carousel
+
 let counter = 0;
-console.log(media);
 
 const nextBtn = document.querySelector(".next-img");
 const prevBtn = document.querySelector(".prev-img");
-console.log(media.length);
 
 if (media.length <= 1) {
   nextBtn.classList.add("hidden");
@@ -93,8 +93,6 @@ async function placeImage(media, title) {
 
 placeImage(media, title);
 
-// Image carousel
-
 nextBtn.addEventListener("click", () => {
   counter++;
 
@@ -112,21 +110,12 @@ prevBtn.addEventListener("click", () => {
 });
 
 // Countdown
-async function displayCountdown() {
-  const { daysLeft, hoursLeft, minutesLeft, secondsLeft } = countDown(endsAt);
 
-  const countdown = document.querySelector(".countdown");
-  countdown.innerHTML = `
-  <div class="flex justify-between">
-    <p>${daysLeft}</p>
-    <p>${hoursLeft}</p>
-    <p>${minutesLeft}</p>
-    <p>${secondsLeft}</p>
-  </div>
-  `;
-}
+setInterval(() => {
+  displayCountdown(endsAt);
+}, 1000);
 
-setInterval(displayCountdown, 1000);
+// Place bid function
 
 const lastBid = bids.slice(-1);
 
@@ -190,3 +179,5 @@ async function placeBid(e, bidValue, listingID) {
     console.log(error);
   }
 }
+
+console.log(endsAt);
