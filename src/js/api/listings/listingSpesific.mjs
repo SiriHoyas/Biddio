@@ -198,10 +198,15 @@ async function placeBid(e, bidValue, listingID) {
   try {
     const response = await fetchContent(`/listings/${listingID}/bids`, options);
     const json = await response.json();
-    console.log(json);
 
     if (response.ok) {
       window.location.reload();
+    } else {
+      const errorMessage = json.errors[0].message;
+      const bidErrorContainer = document.querySelector(".bid-error");
+
+      bidErrorContainer.classList.remove("hidden");
+      bidErrorContainer.innerHTML = errorMessage;
     }
   } catch (error) {
     console.log(error);
