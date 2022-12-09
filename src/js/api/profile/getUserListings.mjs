@@ -17,7 +17,7 @@ export async function getUserListings(userName, profileOptions, container) {
     const { date, time } = convertEndtime(listing.endsAt);
 
     container.innerHTML += listingsHTML(
-      listing.media,
+      listing.media[0],
       listing.title,
       listing.seller.name,
       date,

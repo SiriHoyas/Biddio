@@ -12,7 +12,7 @@ async function getLastestListings() {
     console.log(listings[i].id);
     const { date, time } = convertEndtime(listings[i].endsAt);
     container.innerHTML += listingsHTML(
-      listings[i].media,
+      listings[i].media[0],
       listings[i].title,
       listings[i].seller.name,
       date,

@@ -129,7 +129,23 @@ setInterval(() => {
 
 // Place bid function
 
+if (seller.name === userName) {
+  document.querySelector(".bid-form-container").classList.add("hidden");
+  document.querySelector(".submit-bid-btn").classList.add("hidden");
+}
+
 const lastBid = bids.slice(-1);
+
+const currentBidContainer = document.querySelector(".current-bid-container");
+
+if (bids.length > 0) {
+  const lastBidAmount = lastBid[0].amount;
+  if (lastBidAmount > 1) {
+    currentBidContainer.innerHTML = `${lastBidAmount} Credits`;
+  } else if (lastBidAmount <= 1) {
+    currentBidContainer.innerHTML = `${lastBidAmount} Credit`;
+  }
+}
 
 const bidInput = document.querySelector("#bid");
 

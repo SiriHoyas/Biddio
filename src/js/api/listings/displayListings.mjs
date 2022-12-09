@@ -12,7 +12,7 @@ async function displayListings() {
     const bid = getLastItem(listing.bids, "No Bids");
     const { date, time } = convertEndtime(listing.endsAt);
     listingsContainer.innerHTML += listingsHTML(
-      listing.media,
+      listing.media[0],
       listing.title,
       listing.seller.name,
       date,
