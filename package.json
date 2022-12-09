@@ -1,6 +1,6 @@
 {
   "name": "biddio",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Semester project 2 - Auction house",
   "main": "index.js",
   "scripts": {
