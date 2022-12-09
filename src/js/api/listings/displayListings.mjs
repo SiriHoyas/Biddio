@@ -7,7 +7,6 @@ const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
   const listings = await getListings(`&offset=0&limit=27_active=true`);
-  console.log(listings);
 
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
@@ -35,20 +34,14 @@ async function showMore() {
   console.log(listings);
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
-    const { date, month, year, hours, minutes, seconds } = convertEndtime(
-      listing.endsAt
-    );
+    const { date, time } = convertEndtime(listing.endsAt);
 
     listingsContainer.innerHTML += listingsHTML(
       listing.media,
       listing.title,
       listing.seller.name,
       date,
-      month,
-      year,
-      hours,
-      minutes,
-      seconds,
+      time,
       bid.amount ? bid.amount : bid,
       listing.id
     );
@@ -56,10 +49,8 @@ async function showMore() {
 }
 
 window.addEventListener("scroll", () => {
-  if (
-    window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight
-  ) {
+  if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+    console.log("BUNN");
     showMore();
   }
 });
