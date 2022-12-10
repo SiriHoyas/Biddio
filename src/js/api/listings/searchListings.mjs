@@ -5,20 +5,27 @@ const searchResults = document.querySelector(".search-results");
 
 async function searchListings(e) {
   e.preventDefault();
+  const searchInputValue = searchInput.value.toLowerCase().trim();
+  if (!searchInputValue) {
+    return;
+  }
+
   searchResults.classList.remove("hidden");
 
   const listings = await getListings();
 
-  const searchInputValue = searchInput.value.toLowerCase().trim();
-
   searchResults.innerHTML = "";
-  listings
-    .filter((listing) => {
-      return listing.title.includes(searchInputValue);
-    })
-    .forEach((listing) => {
+  const filteredListings = listings.filter((listing) => {
+    return listing.title.toLowerCase().includes(searchInputValue);
+  });
+
+  if (filteredListings.length > 0) {
+    filteredListings.forEach((listing) => {
       searchResults.innerHTML += `<a href="./../single-listing.html?id=${listing.id}"">${listing.title}</a>`;
     });
+  } else {
+    searchResults.innerHTML = `<p>No results</p>`;
+  }
 }
 
 searchInput.addEventListener("keypress", (e) => {
