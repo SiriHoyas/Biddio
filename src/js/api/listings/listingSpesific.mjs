@@ -27,6 +27,7 @@ async function fetchListingInfo() {
 
 const { media, title, description, seller, endsAt, bids } =
   await fetchListingInfo();
+console.log(endsAt);
 
 async function populateListing() {
   if (accessToken) {

@@ -3,12 +3,6 @@ import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getListings } from "../../api/fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 
-/**
- *Write about infinite scroll
- * pwoewpeowpeofkefpokewpfowkfefopekwpowekpwoefkwpeof
- * wepokwpoekfwpeofkwepfokwefpowkepowf
- * pweokwpeofkew
- */
 const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
@@ -17,6 +11,7 @@ async function displayListings() {
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
     const { date, time } = convertEndtime(listing.endsAt);
+    console.log(listing.endsAt);
     listingsContainer.innerHTML += listingsHTML(
       listing.media[0],
       listing.title,
@@ -40,9 +35,10 @@ async function showMore(sort) {
     `&offset=${offset}&limit=27&_active=true`,
     sort
   );
-  console.log(listings);
+
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
+
     const { date, time } = convertEndtime(listing.endsAt);
 
     listingsContainer.innerHTML += listingsHTML(

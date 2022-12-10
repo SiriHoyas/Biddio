@@ -1,7 +1,3 @@
-/**
- * This file manipulates, and then export the array of media so that it can be passed to addListing POST request.
- *
- */
 export let urlArray = [];
 
 const addBtn = document.querySelector(".add-photos-btn");
@@ -33,6 +29,14 @@ function renderImages() {
 }
 
 // TARGET ELEMENTS
+
+/**
+ * @overview
+ *  The click event listens for clicks on the parent element.
+ * If the element being clicked has the listingImg class (which all images added with add button gets).
+ * The listings are also given an ID, which are the index of the images in the urlArray.
+ * If the image with ID 0 is clicked, it is passed in to the deleteImage() function, that filters and re-render the new array. */
+
 imagePreviewContainer.addEventListener("click", (event) => {
   const target = event.target;
   const parentElement = target.parentNode;
@@ -41,7 +45,6 @@ imagePreviewContainer.addEventListener("click", (event) => {
 
   const image = parentElement;
   const imageId = Number(image.id);
-  console.log(imageId);
 
   deleteImage(imageId);
 });

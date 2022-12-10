@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biddio</title>
     <script src="./src/js/UI/menuToggle.js" defer></script>
-    <script src="./src/js/UI/listingImageModal.mjs" type="module"></script>
+    <script src="./src/js/UI/listingImageModal.js" type="module"></script>
     <script src="/src/js/UI/themeColors.js" type="module"></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
-    <script src="./src/js/api/listings/addListing.js" type="module"></script>
+    <script src="./src/js/api/listings/addListing.mjs" type="module"></script>
     <script
       src="./src/js/api/listings/addListingImg.mjs"
       type="module"
     ></script>
-    <!-- <script src="./src/js/time/setEndTime.mjs" defer></script> -->
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body bg-bgLight dark:bg-bgDark">
@@ -147,6 +146,9 @@
               Done
             </button>
           </div>
+          <p class="font-mainFont my-3 text-xs dark:text-offWhite">
+            Click on image to remove
+          </p>
           <div
             class="image-preview-container grid grid-cols-4 mt-5 gap-4"
           ></div>
