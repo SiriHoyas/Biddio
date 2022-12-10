@@ -1,4 +1,4 @@
-import { checkTheme } from "./themeColors.js";
+import { checkTheme } from "./themeColors.mjs";
 checkTheme();
 
 const darkModeIcon = document.querySelector(".dark-mode");

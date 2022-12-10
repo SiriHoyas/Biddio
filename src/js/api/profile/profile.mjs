@@ -45,4 +45,3 @@ if (!accessToken) {
   userFeedback.classList.add("flex");
   userFeedback.classList.remove("hidden");
 }
-console.log(event.target.value);
