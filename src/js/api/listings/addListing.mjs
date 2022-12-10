@@ -1,5 +1,5 @@
-import { urlArray } from "../../api/listings/addListingImg.mjs";
-import { fetchContent } from "../../api/fetch/fetchContent.mjs";
+import { urlArray } from "./addListingImg.mjs";
+import { fetchContent } from "../fetch/fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { setEndTime } from "../../time/setEndTime.mjs";
 import { convertEndtime } from "../../time/convertEndtime.mjs";
@@ -57,10 +57,18 @@ form.addEventListener("submit", (e) => {
 });
 
 // Set endtime
+
 let endDate;
 const btnParent = document.querySelector(".auction-duration-container");
 
-btnParent.addEventListener("click", (e) => {
+/**
+ * Function to set endtime on new listing.
+ * This listens for click on the parent container.
+ * If the target has the HTML attribute "data-duration", the
+ * function will get the value of the data from HTML and set the duration
+ * to the same time the user clicked, only x amount of days forward
+ */
+function endsAt(e) {
   if (e.target.hasAttribute("data-duration")) {
     const duration = e.target.dataset.duration;
     const durationNum = parseInt(duration);
@@ -71,6 +79,10 @@ btnParent.addEventListener("click", (e) => {
 
     document.querySelector(".view-endtime").innerHTML = `${date}, ${time}`;
   }
+}
+
+btnParent.addEventListener("click", (e) => {
+  endsAt(e);
 });
 
 // Refresh on error

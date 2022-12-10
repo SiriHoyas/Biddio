@@ -1,6 +1,6 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
-import { listingsHTML } from "../../components/templates/listingsTemplate.js";
+import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 import { convertEndtime } from "../../time/convertEndtime.mjs";
 
 export async function getUserListings(userName, profileOptions, container) {

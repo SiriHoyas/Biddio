@@ -1,5 +1,3 @@
-//json docs
-
 export function countDown(auctionEnds) {
   const endTime = Date.parse(auctionEnds);
 

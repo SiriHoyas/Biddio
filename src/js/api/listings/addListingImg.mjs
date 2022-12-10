@@ -1,3 +1,7 @@
+/**
+ * This file manipulates, and then export the array of media so that it can be passed to addListing POST request.
+ *
+ */
 export let urlArray = [];
 
 const addBtn = document.querySelector(".add-photos-btn");
@@ -29,7 +33,6 @@ function renderImages() {
 }
 
 // TARGET ELEMENTS
-
 imagePreviewContainer.addEventListener("click", (event) => {
   const target = event.target;
   const parentElement = target.parentNode;
@@ -44,13 +47,13 @@ imagePreviewContainer.addEventListener("click", (event) => {
 });
 
 // DELETE ELEMENT
-
 function deleteImage(imageId) {
   urlArray = urlArray.filter((src, i) => i !== imageId);
 
   renderImages();
 }
 
+// USER FEEDBACK ON IMAGES ADDED
 addBtn.addEventListener("click", () => {
   addToArray();
   renderImages();

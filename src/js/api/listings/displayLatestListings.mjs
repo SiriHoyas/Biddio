@@ -1,5 +1,5 @@
 import { getListings } from "../fetch/fetchListings.mjs";
-import { listingsHTML } from "../../components/templates/listingsTemplate.js";
+import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { convertEndtime } from "../../time/convertEndtime.mjs";
 

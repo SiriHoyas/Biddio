@@ -1,8 +1,14 @@
 import { convertEndtime } from "../../time/convertEndtime.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getListings } from "../../api/fetch/fetchListings.mjs";
-import { listingsHTML } from "../../components/templates/listingsTemplate.js";
+import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 
+/**
+ *Write about infinite scroll
+ * pwoewpeowpeofkefpokewpfowkfefopekwpowekpwoefkwpeof
+ * wepokwpoekfwpeofkwepfokwefpowkepowf
+ * pweokwpeofkew
+ */
 const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
