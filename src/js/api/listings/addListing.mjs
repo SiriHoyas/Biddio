@@ -4,10 +4,12 @@ import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { setEndTime } from "../../time/setEndTime.mjs";
 import { convertEndtime } from "../../time/convertEndtime.mjs";
 
+const { accessToken } = getLocalStorage();
+
 async function addListing(e) {
   try {
     e.preventDefault();
-    const { accessToken } = getLocalStorage();
+
     const titleInput = document.querySelector("#listing-title").value;
     const descriptionInput = document.querySelector(
       "#listing-description"
@@ -90,3 +92,12 @@ btnParent.addEventListener("click", (e) => {
 document.querySelector(".refresh-btn").addEventListener("click", () => {
   window.location.reload();
 });
+
+// Not logged in
+
+if (!accessToken) {
+  const notLoggedIn = document.querySelector(".not-logged-in");
+  notLoggedIn.classList.add("flex");
+  notLoggedIn.classList.remove("hidden");
+  document.querySelector(".new-listing-container ").classList.add("hidden");
+}

@@ -1,9 +1,10 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { placeBid, watchBidInput } from "../../components/placeBid.mjs";
 import { displayCountdown } from "../../time/displayCountdown.mjs";
 
-const { accessToken, userName, userCredits } = getLocalStorage();
+const { accessToken, userName } = getLocalStorage();
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const listingID = params.get("id");
@@ -27,46 +28,34 @@ async function fetchListingInfo() {
 
 const { media, title, description, seller, endsAt, bids } =
   await fetchListingInfo();
-console.log(endsAt);
 
 async function populateListing() {
-  if (accessToken) {
-    const { avatar, name } = seller;
+  const { avatar, name } = seller;
 
-    if (name === userName) {
-      const editBtnContainer = document.querySelector(".edit-btn-container");
-      editBtnContainer.classList.remove("hidden");
-      editBtnContainer.classList.add("flex");
-    }
+  if (name === userName) {
+    const editBtnContainer = document.querySelector(".edit-btn-container");
+    editBtnContainer.classList.remove("hidden");
+    editBtnContainer.classList.add("flex");
+  }
 
-    getLastItem(bids, 0);
-    bids.map((bid) => {
-      console.log(bid);
-      return populateBiddingHistory(bid);
-    });
+  getLastItem(bids, 0);
+  bids.map((bid) => {
+    console.log(bid);
+    return populateBiddingHistory(bid);
+  });
 
-    const listingInfo = document.querySelector(".listing-info");
-    const sellerInfo = document.querySelector(".seller-info");
+  const listingInfo = document.querySelector(".listing-info");
+  const sellerInfo = document.querySelector(".seller-info");
 
-    listingInfo.innerHTML = `
+  listingInfo.innerHTML = `
     <h1 class="text-2xl font-mainFont dark:text-offWhite">${title}</h1>
     <p class="text-sm font-bodyFont dark:text-offWhite">${description}</p>
   `;
-    sellerInfo.innerHTML = `
+  sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
     <p class="text-lg font-mainFont dark:text-offWhite">${name}</p>
   `;
-  } else {
-    document.querySelector(".single-listing-container").classList.add("hidden");
-    const backBtn = document.querySelector(".back");
-    backBtn.classList.remove("hidden");
-    backBtn.addEventListener("click", () => {
-      history.back();
-    });
-    const notLoggedIn = document.querySelector(".not-logged-in");
-    notLoggedIn.classList.add("flex");
-    notLoggedIn.classList.remove("hidden");
-  }
+  setupBids();
 }
 
 populateListing();
@@ -79,7 +68,40 @@ async function populateBiddingHistory(bid) {
   <p>${bid.amount}<p>`;
 }
 
-// Image carousel
+function setupBids() {
+  if (seller.name === userName) {
+    document.querySelector(".bid-form-container").classList.add("hidden");
+  }
+
+  const bidInput = document.querySelector("#bid-input");
+  let lastBidAmount;
+
+  if (bids.length === 0) {
+    document
+      .querySelector(".bidding-history-container")
+      .classList.add("hidden");
+    bidInput.setAttribute("value", 1);
+  } else {
+    const currentBidContainer = document.querySelector(
+      ".current-bid-container"
+    );
+    const lastBid = bids.slice(-1);
+    lastBidAmount = lastBid[0].amount;
+    if (lastBidAmount === 1) {
+      currentBidContainer.innerHTML = `${lastBidAmount} Credit`;
+    } else {
+      currentBidContainer.innerHTML = `${lastBidAmount} Credits`;
+    }
+    bidInput.setAttribute("value", lastBidAmount + 1);
+  }
+
+  // POST BID
+  watchBidInput(lastBidAmount);
+  const bidForm = document.querySelector("#place-bid-form");
+  bidForm.addEventListener("submit", (e) => placeBid(e, listingID));
+}
+
+// IMG CAROUSEL
 
 let counter = 0;
 
@@ -112,7 +134,6 @@ nextBtn.addEventListener("click", () => {
   if (counter > media.length) {
     nextBtn.classList.add("hidden");
   }
-  console.log(counter);
   placeImage(media, title);
 });
 
@@ -127,93 +148,3 @@ prevBtn.addEventListener("click", () => {
 setInterval(() => {
   displayCountdown(endsAt);
 }, 1000);
-
-// Place bid function
-
-if (seller.name === userName) {
-  document.querySelector(".bid-form-container").classList.add("hidden");
-  document.querySelector(".submit-bid-btn").classList.add("hidden");
-}
-
-const lastBid = bids.slice(-1);
-
-const currentBidContainer = document.querySelector(".current-bid-container");
-
-if (bids.length > 0) {
-  const lastBidAmount = lastBid[0].amount;
-  if (lastBidAmount > 1) {
-    currentBidContainer.innerHTML = `${lastBidAmount} Credits`;
-  } else if (lastBidAmount <= 1) {
-    currentBidContainer.innerHTML = `${lastBidAmount} Credit`;
-  }
-}
-
-const bidInput = document.querySelector("#bid");
-
-// Set value of bid input so user can quickly bid one over current bid
-
-console.log(bids.length);
-if (bids.length === 0) {
-  document.querySelector(".bidding-history-container").classList.add("hidden");
-  bidInput.setAttribute("value", 1);
-} else bidInput.setAttribute("value", lastBid[0].amount + 1);
-
-// Increase or decrease amount
-let bidValue = bidInput.getAttribute("value");
-bidValue = parseInt(bidValue);
-console.log(typeof bidValue);
-
-const plusBtn = document.querySelector(".increase");
-const minusBtn = document.querySelector(".decrease");
-
-plusBtn.addEventListener("click", () => {
-  if (bidValue < userCredits) {
-    bidValue++;
-    bidInput.setAttribute("value", bidValue);
-  } else {
-    console.log("du har ikke nok");
-  }
-});
-
-minusBtn.addEventListener("click", () => {
-  bidValue--;
-  bidInput.setAttribute("value", bidValue);
-});
-
-// POST BID
-const bidForm = document.querySelector(".bid-form");
-
-bidForm.addEventListener("submit", (e) => {
-  placeBid(e, bidValue, listingID);
-});
-
-async function placeBid(e, bidValue, listingID) {
-  e.preventDefault();
-
-  const options = {
-    method: "POST",
-    body: JSON.stringify({ amount: bidValue }),
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  };
-  try {
-    const response = await fetchContent(`/listings/${listingID}/bids`, options);
-    const json = await response.json();
-
-    if (response.ok) {
-      window.location.reload();
-    } else {
-      const errorMessage = json.errors[0].message;
-      const bidErrorContainer = document.querySelector(".bid-error");
-
-      bidErrorContainer.classList.remove("hidden");
-      bidErrorContainer.innerHTML = errorMessage;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-console.log(endsAt);
