@@ -68,6 +68,16 @@ async function populateBiddingHistory(bid) {
   <p>${bid.amount}<p>`;
 }
 
+/**
+ * The function checks if the current logged in user is the owner of the listing, and removes the
+ * bidding feature.
+ *
+ * If the listing has no bids, the input field of bids is set to 1, so the user can quickly place bid of the lowest allowed amount
+ *
+ * If the listing already has bids, the current bid will show over the listing form,
+ * and the input field will have one over the current bid to allow user to quickly bid on item.
+ */
+
 function setupBids() {
   if (seller.name === userName) {
     document.querySelector(".bid-form-container").classList.add("hidden");
