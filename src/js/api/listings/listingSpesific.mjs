@@ -152,7 +152,9 @@ const bidInput = document.querySelector("#bid");
 
 // Set value of bid input so user can quickly bid one over current bid
 
+console.log(bids.length);
 if (bids.length === 0) {
+  document.querySelector(".bidding-history-container").classList.add("hidden");
   bidInput.setAttribute("value", 1);
 } else bidInput.setAttribute("value", lastBid[0].amount + 1);
 
