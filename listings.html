@@ -8,6 +8,7 @@
     <script src="./src/js/UI/menuToggle.js" defer></script>
     <script src="./src/js/UI/themeColors.mjs" type="module"></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/UI/scrollToTop.js" defer></script>
     <script
       src="./src/js/api/listings/displayListings.mjs"
       type="module"
@@ -141,6 +142,19 @@
           </button>
         </div>
       </section>
+      <div
+        class="scroll-top z-40 flex items-center p-2 rounded-sm text-offWhite text-xs font-mainFont fixed right-8 bottom-4 bg-primaryPurple"
+      >
+        <p class="mr-2">Scroll to top</p>
+        <svg class="h-5 w-5 fill-offWhite" viewBox="0 0 32 32">
+          <path
+            d="m16.71 8.29a1 1 0 0 0 -.33-.21 1 1 0 0 0 -.76 0 1 1 0 0 0 -.33.21l-4 4a1 1 0 0 0 1.42 1.42l2.29-2.3v11.59a1 1 0 0 0 2 0v-11.59l2.29 2.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"
+          />
+          <path
+            d="m16 1a15 15 0 1 0 15 15 15 15 0 0 0 -15-15zm0 28a13 13 0 1 1 13-13 13 13 0 0 1 -13 13z"
+          />
+        </svg>
+      </div>
       <section
         class="listings-container p-3 rounded-sm w-4/5 m-auto md:grid md:grid-cols-3 md:gap-8 lg:w-1/2 dark:bg-cardsBgDark"
       ></section>
