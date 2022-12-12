@@ -8,35 +8,17 @@
     <script src="./src/js/UI/menuToggle.js" defer></script>
     <script src="./src/js/UI/themeColors.mjs" type="module"></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
-    <script
-      src="./src/js/api/listings/searchListings.mjs"
-      type="module"
-    ></script>
-    <script
-      src="./src/js/api/listings/displayLatestListings.mjs"
-      type="module"
-    ></script>
+    <script src="./src/js/api/listings/searchListings.mjs" type="module"></script>
+    <script src="./src/js/api/listings/displayLatestListings.mjs" type="module"></script>
     <script src="./src/js/api/profile/fetchCredits.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body dark:bg-bgDark">
-    <nav
-      class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
-    >
-      <section
-        class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3"
-      >
+    <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
+      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
         <a href="./index.html" class="logo-container flex items-center">
-          <img
-            src="/src/img/biddioLogo.svg"
-            alt="biddio logo"
-            class="w-5 h-5 mr-2"
-          />
-          <h1
-            class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl"
-          >
-            biddio
-          </h1>
+          <img src="/src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
+          <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
         </a>
         <div class="menu-button-container lg:hidden">
           <svg
@@ -62,65 +44,40 @@
       </section>
       <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
         <ul class="menu-items lg:flex lg:justify-center">
-          <li
-            class="menu-item-home text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
-          >
-            <a
-              href="./index.html"
-              class="border-b border-secondaryPurple dark:border-offWhite"
-              >Home</a
-            >
+          <li class="menu-item-home text-2xl font-mainFont text-secondaryPurple dark:text-offWhite">
+            <a href="./index.html" class="border-b border-secondaryPurple dark:border-offWhite">Home</a>
           </li>
           <li
             class="menu-item-auction text-2xl font-mainFont text-secondaryPurple dark:text-offWhite lg:ml-10 lg:mr-10"
           >
             <a href="./listings.html">Auctions</a>
           </li>
-          <li
-            class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
-          >
+          <li class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple dark:text-offWhite">
             <a href="./profile.html">Profile</a>
           </li>
         </ul>
       </section>
-      <section
-        class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center"
-      >
+      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
         <div class="user flex items-center lg:justify-end">
-          <a
-            href="./profile.html"
-            class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"
-          ></a>
+          <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
           <div class="user-info ml-2">
-            <p
-              class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"
-            ></p>
-            <p
-              class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"
-            ></p>
+            <p class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+            <p class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"></p>
           </div>
         </div>
         <div class="login-register hidden justify-start lg:justify-end">
-          <a
-            href="./login.html"
-            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+          <a href="./login.html" class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
             >Log in</a
           >
-          <a
-            href="./register.html"
-            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+          <a href="./register.html" class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
             >Register</a
           >
         </div>
       </section>
     </nav>
     <main>
-      <div
-        class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"
-      ></div>
-      <section
-        class="heading mt-32 w-4/5 flex flex-col items-center m-auto lg:w-2/3 xl:w-2/5"
-      >
+      <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
+      <section class="heading mt-32 w-4/5 flex flex-col items-center m-auto lg:w-2/3 2xl:w-2/5">
         <img
           src="./src/img/indexGraphicDarkMobile.svg"
           aria-hidden="true"
@@ -137,14 +94,8 @@
           class="flex flex-col justify-center m-auto text-center lg:flex-row lg:justify-between lg:text-left lg:w-full"
         >
           <div class="heading-text">
-            <h2
-              class="font-mainFont text-black dark:text-offWhite text-2xl mt-12 lg:text-3xl"
-            >
-              Welcome to biddio!
-            </h2>
-            <p
-              class="font-mainFont text-inactiveTextLight dark:text-inactiveText lg:w-4/5"
-            >
+            <h2 class="font-mainFont text-black dark:text-offWhite text-2xl mt-12 lg:text-3xl">Welcome to biddio!</h2>
+            <p class="font-mainFont text-inactiveTextLight dark:text-inactiveText lg:w-4/5">
               Bid on auctions, sell your items. Always get the best price!
             </p>
           </div>
@@ -167,24 +118,14 @@
           />
         </form>
         <div
-          class="search-results hidden w-full bg-bgLight flex flex-col h-20 shadow-lg border-l border-r border-b border-inactiveTextLight overflow-scroll p-1 dark:bg-cardsBgDark dark:text-offWhite"
+          class="search-results hidden w-full bg-bgLight flex flex-col h-20 shadow-lg border-l border-r border-b border-inactiveTextLight overflow-scroll overflow-x-auto p-1 dark:bg-cardsBgDark dark:text-offWhite"
         ></div>
       </section>
-      <section
-        class="latest-listings w-4/5 m-auto mt-32 mb-3 lg:w-2/3 xl:w-2/5"
-      >
-        <p
-          class="w-full text-center font-mainFont text-xl mb-10 lg:text-2xl dark:text-offWhite"
-        >
-          Latest Listings
-        </p>
-        <div
-          class="latest-listings-container w-full md:grid md:grid-cols-3 gap-4"
-        >
+      <section class="latest-listings w-4/5 m-auto mt-32 mb-3 lg:w-2/3 2xl:w-2/5">
+        <p class="w-full text-center font-mainFont text-xl mb-10 lg:text-2xl dark:text-offWhite">Latest Listings</p>
+        <div class="latest-listings-container w-full md:grid md:grid-cols-3 gap-4">
           <div class="loader w-full h-full col-start-2">
-            <div
-              class="flex justify-center items-center space-x-1 text-sm text-black dark:text-offWhite"
-            >
+            <div class="flex justify-center items-center space-x-1 text-sm text-black dark:text-offWhite">
               <svg class="w-10 h-10 animate-spin" viewBox="0 0 32 32">
                 <path
                   clip-rule="evenodd"
