@@ -7,36 +7,33 @@ import { convertEndtime } from "../../time/convertEndtime.mjs";
 const { accessToken } = getLocalStorage();
 
 async function addListing(e) {
+  e.preventDefault();
+
+  const titleInput = document.querySelector("#listing-title").value;
+  const descriptionInput = document.querySelector("#listing-description").value;
+
+  if (!titleInput.length) {
+    document.querySelector(".title-error").classList.remove("hidden");
+  }
+
+  const endsAt = sessionStorage.getItem("endTime");
+
+  const newPostBody = {
+    title: titleInput,
+    description: descriptionInput,
+    media: urlArray,
+    endsAt: endsAt,
+  };
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(newPostBody),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
   try {
-    e.preventDefault();
-
-    const titleInput = document.querySelector("#listing-title").value;
-    const descriptionInput = document.querySelector(
-      "#listing-description"
-    ).value;
-
-    if (!titleInput.length) {
-      document.querySelector(".title-error").classList.remove("hidden");
-    }
-
-    const endsAt = sessionStorage.getItem("endTime");
-
-    const newPostBody = {
-      title: titleInput,
-      description: descriptionInput,
-      media: urlArray,
-      endsAt: endsAt,
-    };
-
-    const options = {
-      method: "POST",
-      body: JSON.stringify(newPostBody),
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    };
-
     const response = await fetchContent("/listings", options);
 
     if (response.ok) {
@@ -48,7 +45,6 @@ async function addListing(e) {
   } catch (error) {
     document.querySelector(".new-listing-container").classList.add("hidden");
     document.querySelector(".error-message").classList.remove("hidden");
-    console.log("This is error");
   }
 }
 

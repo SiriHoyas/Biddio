@@ -24,14 +24,14 @@ export async function getListings(flags = "", order = "desc") {
       "Content-type": "application/json; charset=UTF-8",
     },
   };
-  try {
-    const response = await fetchContent(
-      `/listings?_seller=true&_bids=true&sort=created&sortOrder=${order}&${flags}`,
-      options
-    );
-    const json = await response.json();
+
+  const response = await fetchContent(
+    `/listings?_seller=true&_bids=true&sort=created&sortOrder=${order}&${flags}`,
+    options
+  );
+  const json = await response.json();
+
+  if (response.ok) {
     return json;
-  } catch (error) {
-    console.log(error);
   }
 }

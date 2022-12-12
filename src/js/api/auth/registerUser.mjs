@@ -49,10 +49,8 @@ async function registerUser(e) {
       emailError.classList.remove("hidden");
     }
   } catch (error) {
-    console.log(error);
+    document.querySelector(".catch-error").classList.remove("hidden");
   }
 }
 
-document
-  .querySelector(".registerForm")
-  .addEventListener("submit", registerUser);
+document.querySelector(".registerForm").addEventListener("submit", registerUser);
