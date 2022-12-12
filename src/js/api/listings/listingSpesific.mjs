@@ -8,6 +8,7 @@ const { accessToken, userName } = getLocalStorage();
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const listingID = params.get("id");
+let displayedPhotoIndex = 0;
 
 async function fetchListingInfo() {
   const options = {
@@ -33,7 +34,7 @@ async function populateListing() {
   const { avatar, name } = seller;
 
   if (name === userName) {
-    const editBtnContainer = document.querySelector(".edit-btn-container");
+    const editBtnContainer = document.querySelector(".edit-btn");
     editBtnContainer.classList.remove("hidden");
     editBtnContainer.classList.add("flex");
   }
@@ -55,6 +56,8 @@ async function populateListing() {
     <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
     <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
   `;
+
+  placeImage(media, title);
   setupBids();
 }
 
@@ -62,7 +65,7 @@ populateListing();
 
 async function populateBiddingHistory(bid) {
   document.querySelector(".bidding-history").innerHTML += `
-  <div class="bid flex justify-between items-center px-3 py-1 border-b border-cardsBgLight rounded-sm font-mainFont text-lg even:bg-tableEvenLight odd:bg-tableOddLight  dark:text-offWhite dark:border-cardsBgDark odd:dark:bg-tableOdd even:dark:bg-tableEven ">
+  <div class="bid flex justify-between items-center px-3 py-1 border-b border-cardsBgLight rounded-sm font-mainFont text-lg  dark:text-offWhite dark:border-cardsBgDark odd:bg-tableOdd even:bg-tableEven ">
   <p class="w-1/3 ">${bid.bidderName}<p>
   <p class="text-xs w-1/3 ">${bid.created}</p>
   <p class="w-1/3 flex justify-end">${bid.amount}<p>`;
@@ -113,43 +116,33 @@ function setupBids() {
 
 // IMG CAROUSEL
 
-let counter = 0;
-
 const nextBtn = document.querySelector(".next-img");
 const prevBtn = document.querySelector(".prev-img");
-
-if (media.length <= 1) {
-  nextBtn.classList.add("hidden");
-  prevBtn.classList.add("hidden");
-}
 
 async function placeImage(media, title) {
   const imageCarousel = document.querySelector(".image-container");
 
   imageCarousel.innerHTML = "";
-  for (let i = 0; i < media.length; i++) {
-    if (i === counter) {
-      console.log(i);
-      imageCarousel.innerHTML += `
-      <img src="${media[i]}" alt="listing image for ${title[i]}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>`;
-    }
-  }
+  const image = media[displayedPhotoIndex];
+  imageCarousel.innerHTML += `
+      <img src="${image}" alt="listing image for ${title}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>
+      <p>${displayedPhotoIndex + 1}/ ${media.length}</p>`;
 }
 
-placeImage(media, title);
-
 nextBtn.addEventListener("click", () => {
-  counter++;
+  displayedPhotoIndex++;
 
-  if (counter > media.length) {
-    nextBtn.classList.add("hidden");
+  if (displayedPhotoIndex >= media.length) {
+    displayedPhotoIndex = 0;
   }
   placeImage(media, title);
 });
 
 prevBtn.addEventListener("click", () => {
-  counter--;
-  console.log(counter);
+  displayedPhotoIndex--;
+  if (displayedPhotoIndex < 0) {
+    displayedPhotoIndex = media.length - 1;
+  }
   placeImage(media, title);
 });
 

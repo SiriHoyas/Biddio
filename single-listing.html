@@ -115,7 +115,7 @@
         class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"
       ></div>
       <div
-        class="edit-listing-modal hidden w-screen h-screen absolute z-20 bg-modalBg"
+        class="edit-listing-modal hidden w-screen h-screen absolute z-50 top-0 bg-modalBg"
       >
         <div
           class="w-11/12 flex flex-col justify-center m-auto bg-bgLight p-4 rounded-sm mt-32 md:w-1/2 lg:w-1/2 dark:bg-cardsBgDark"
@@ -216,16 +216,12 @@
             </svg>
           </button>
         </section>
-        <section
-          class="edit-btn-container hidden p-2 justify-center rounded-sm mb-6 bg-cardsBgLight dark:bg-cardsBgDark"
+        <button
+          type="submit"
+          class="edit-btn bg-borderDark font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
         >
-          <button
-            type="submit"
-            class="confirm-btn bg-borderDark font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
-          >
-            Edit listing
-          </button>
-        </section>
+          Edit listing
+        </button>
         <section class="listing grid gap-4 mb-6 md:grid-cols-2 md:grid-rows-5">
           <div
             class="listing-info bg-cardsBgLight p-2 rounded-sm md:row-start-1 md:row-span-5 md:col-start-1 md:col-end-1 md:h-full dark:bg-cardsBgDark"

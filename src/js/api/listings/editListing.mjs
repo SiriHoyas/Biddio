@@ -8,12 +8,13 @@ const listingID = params.get("id");
 const { accessToken } = getLocalStorage();
 
 const editForm = document.querySelector(".edit-listing-form");
-const editBtn = document.querySelector(".confirm-btn");
+const editBtn = document.querySelector(".edit-btn");
 const delBtn = document.querySelector(".delete-btn");
 const editModal = document.querySelector(".edit-listing-modal");
 
-document.querySelector(".edit-btn-container").addEventListener("click", () => {
+editBtn.addEventListener("click", () => {
   editModal.classList.remove("hidden");
+  document.querySelector("body").classList.add("overflow-hidden");
 });
 
 async function editListing(e) {
@@ -76,5 +77,12 @@ editForm.addEventListener("click", (e) => {
     editListing(e);
   } else if (e.target === delBtn) {
     deleteListing(e);
+  }
+});
+
+editModal.addEventListener("click", (e) => {
+  if (e.target === editModal) {
+    editModal.classList.add("hidden");
+    document.querySelector("body").classList.remove("overflow-hidden");
   }
 });
