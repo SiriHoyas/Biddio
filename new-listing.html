@@ -10,30 +10,15 @@
     <script src="/src/js/UI/themeColors.mjs" type="module"></script>
     <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
     <script src="./src/js/api/listings/addListing.mjs" type="module"></script>
-    <script
-      src="./src/js/api/listings/addListingImg.mjs"
-      type="module"
-    ></script>
+    <script src="./src/js/api/listings/addListingImg.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
   <body class="index-body bg-bgLight dark:bg-bgDark">
-    <nav
-      class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark"
-    >
-      <section
-        class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3"
-      >
+    <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
+      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
         <a href="./index.html" class="logo-container flex items-center">
-          <img
-            src="/src/img/biddioLogo.svg"
-            alt="biddio logo"
-            class="w-5 h-5 mr-2"
-          />
-          <h1
-            class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl"
-          >
-            biddio
-          </h1>
+          <img src="/src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
+          <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
         </a>
         <div class="menu-button-container lg:hidden">
           <svg
@@ -60,90 +45,65 @@
       <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
         <ul class="menu-items lg:flex lg:justify-center">
           <li
-            class="menu-item-home text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
+            class="menu-item-home text-2xl font-mainFont text-secondaryPurple border-secondaryPurple dark:border-offWhite dark:text-offWhite hover:border-b"
           >
-            <a
-              href="./index.html"
-              class="border-secondaryPurple dark:border-offWhite"
-              >Home</a
-            >
+            <a href="./index.html" class="border-secondaryPurple dark:border-offWhite">Home</a>
           </li>
           <li
-            class="menu-item-auction text-2xl font-mainFont text-secondaryPurple dark:text-offWhite lg:ml-10 lg:mr-10"
+            class="menu-item-auction text-2xl font-mainFont border-secondaryPurple text-secondaryPurple dark:border-offWhite dark:text-offWhite lg:ml-10 lg:mr-10 hover:border-b"
           >
             <a href="./listings.html">Auctions</a>
           </li>
           <li
-            class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
+            class="menu-item-profile hidden text-2xl font-mainFont border-secondaryPurple text-secondaryPurple dark:border-offWhite dark:text-offWhite hover:border-b"
           >
             <a href="./profile.html">Profile</a>
           </li>
         </ul>
       </section>
-      <section
-        class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center"
-      >
+      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
         <div class="user flex items-center lg:justify-end">
-          <a
-            href="./profile.html"
-            class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"
-          ></a>
+          <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
           <div class="user-info ml-2">
-            <p
-              class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"
-            ></p>
-            <p
-              class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"
-            ></p>
+            <p class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+            <p class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"></p>
           </div>
         </div>
         <div class="login-register hidden justify-start lg:justify-end">
           <a
             href="./login.html"
-            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
             >Log in</a
           >
           <a
             href="./register.html"
-            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
             >Register</a
           >
         </div>
       </section>
     </nav>
     <main class="flex flex-col items-center w-screen">
-      <div
-        class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"
-      ></div>
+      <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
       <section
         class="not-logged-in hidden mt-32 w-11/12 bg-cardsBgLight rounded-sm p-2 font-mainFont flex-col items-center m-auto dark:bg-cardsBgDark dark:text-offWhite"
       >
         <p class="text-center">You must be logged in to view this page!</p>
         <div class="mt-6 mb-2">
-          <a
-            href="./login.html"
-            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+          <a href="./login.html" class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
             >Log in</a
           >
-          <a
-            href="./register.html"
-            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+          <a href="./register.html" class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
             >Register</a
           >
         </div>
       </section>
-      <section
-        class="add-img-modal w-screen h-screen absolute top-0 z-50 bg-modalBg hidden"
-      >
+      <section class="add-img-modal w-screen h-screen absolute top-0 z-50 bg-modalBg hidden">
         <div
           class="add-img-container w-11/12 flex flex-col justify-center m-auto bg-bgLight p-4 rounded-sm mt-32 md:w-1/2 lg:w-1/2 dark:bg-cardsBgDark"
         >
           <p class="font-mainFont mb-4 dark:text-offWhite">Add photos</p>
-          <label
-            for="url-input"
-            class="font-mainFont mb-2 text-sm dark:text-offWhite"
-            >Image link:</label
-          >
+          <label for="url-input" class="font-mainFont mb-2 text-sm dark:text-offWhite">Image link:</label>
           <input
             type="text"
             name="url-input"
@@ -163,22 +123,14 @@
               Done
             </button>
           </div>
-          <p class="font-mainFont my-3 text-xs dark:text-offWhite">
-            Click on image to remove
-          </p>
-          <div
-            class="image-preview-container grid grid-cols-4 mt-5 gap-4"
-          ></div>
+          <p class="font-mainFont my-3 text-xs dark:text-offWhite">Click on image to remove</p>
+          <div class="image-preview-container grid grid-cols-4 mt-5 gap-4"></div>
         </div>
       </section>
       <section class="error-message hidden mt-32 w-11/12 p-2 md:w-1/2 lg:w-1/3">
-        <div
-          class="bg-cardsBgLight p-2 rounded-sm flex flex-col items-center dark:bg-cardsBgDark"
-        >
+        <div class="bg-cardsBgLight p-2 rounded-sm flex flex-col items-center dark:bg-cardsBgDark">
           <p class="font-mainFont text-xl dark:text-offWhite">It's not you..</p>
-          <p class="font-mainFont text-md mt-3 dark:text-offWhite">
-            We're having some trouble. Please try again
-          </p>
+          <p class="font-mainFont text-md mt-3 dark:text-offWhite">We're having some trouble. Please try again</p>
           <button
             class="refresh-btn bg-primaryPurple text-offWhite text-sm font-mainFont px-2 py-1 mt-3 rounded-sm self-center"
           >
@@ -186,36 +138,18 @@
           </button>
         </div>
       </section>
-      <section
-        class="new-listing-container mt-20 flex flex-col items-center w-screen"
-      >
-        <h2
-          class="new-listing-heading text-black text-lg font-mainFont mt-20 dark:text-offWhite"
-        >
-          New Listing
-        </h2>
-        <form
-          class="new-listing-form flex flex-col w-11/12 p-2 md:w-1/2 lg:w-1/3"
-        >
-          <label
-            for="listing-title"
-            class="font-mainFont text-sm dark:text-offWhite"
-            >Title*</label
-          >
+      <section class="new-listing-container mt-20 flex flex-col items-center w-screen">
+        <h2 class="new-listing-heading text-black text-lg font-mainFont mt-20 dark:text-offWhite">New Listing</h2>
+        <form class="new-listing-form flex flex-col w-11/12 p-2 md:w-1/2 lg:w-1/3">
+          <label for="listing-title" class="font-mainFont text-sm dark:text-offWhite">Title*</label>
           <input
             type="text"
             name="listing-title"
             id="listing-title"
             class="border bg-cardsBgLight rounded-sm p-1 font-mainFont dark:bg-cardsBgDark dark:border-borderDark dark:text-offWhite"
           />
-          <p class="title-error hidden text-red-600 italic text-xs mt-1">
-            This field is required
-          </p>
-          <label
-            for="listing-description"
-            class="font-mainFont text-sm mt-6 dark:text-offWhite"
-            >Description</label
-          >
+          <p class="title-error hidden text-red-600 italic text-xs mt-1">This field is required</p>
+          <label for="listing-description" class="font-mainFont text-sm mt-6 dark:text-offWhite">Description</label>
           <textarea
             name="listing-description"
             id="listing-description"
@@ -230,16 +164,10 @@
             >
               Add photos
             </button>
-            <p
-              class="num-photos-added text-xs font-mainFont text-inactiveTextLight mt-1"
-            ></p>
+            <p class="num-photos-added text-xs font-mainFont text-inactiveTextLight mt-1"></p>
           </div>
-          <p class="font-mainFont text-sm mt-10 dark:text-offWhite">
-            Auction duration
-          </p>
-          <div
-            class="auction-duration-container w-full flex justify-between mt-1"
-          >
+          <p class="font-mainFont text-sm mt-10 dark:text-offWhite">Auction duration</p>
+          <div class="auction-duration-container w-full flex justify-between mt-1">
             <button
               type="button"
               data-duration="10"
@@ -276,14 +204,8 @@
               50 days
             </button>
           </div>
-          <p
-            class="text-xs font-mainFont text-inactiveTextLight mt-6 dark:text-borderLight"
-          >
-            This auction will end:
-          </p>
-          <p
-            class="view-endtime font-mainFont text-inactiveTextLight mt-1 mb-10 dark:text-borderLight"
-          ></p>
+          <p class="text-xs font-mainFont text-inactiveTextLight mt-6 dark:text-borderLight">This auction will end:</p>
+          <p class="view-endtime font-mainFont text-inactiveTextLight mt-1 mb-10 dark:text-borderLight"></p>
           <input
             type="submit"
             name="new-listing-submit"
@@ -295,9 +217,7 @@
         <section
           class="post-success hidden flex w-11/12 flex-col items-center mt-32 p-4 rounded-sm bg-cardsBgLight md:w-1/2 lg:w-1/3 dark:bg-cardsBgDark"
         >
-          <h2 class="font-mainFont text-xl dark:text-offWhite">
-            Your listing was posted!
-          </h2>
+          <h2 class="font-mainFont text-xl dark:text-offWhite">Your listing was posted!</h2>
           <div class="button-container flex flex-col m-auto w-1/2">
             <a
               href="./new-listing.html"
