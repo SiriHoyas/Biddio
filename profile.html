@@ -62,7 +62,7 @@
           >
             <a
               href="./index.html"
-              class="border-b border-secondaryPurple dark:border-offWhite"
+              class="border-secondaryPurple dark:border-offWhite"
               >Home</a
             >
           </li>
@@ -72,7 +72,7 @@
             <a href="./listings.html">Auctions</a>
           </li>
           <li
-            class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
+            class="menu-item-profile hidden border-b text-2xl font-mainFont text-secondaryPurple dark:text-offWhite"
           >
             <a href="./profile.html">Profile</a>
           </li>
@@ -113,17 +113,29 @@
       <div
         class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"
       ></div>
-      <div class="profile-info-main w-11/12 m-auto md:w-2/5">
+      <div class="profile-info-main w-11/12 m-auto lg:w-2/3 xl:w-1/2">
         <section
           class="profile-info-container flex items-center justify-between mt-32 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
         >
           <div class="profile-info"></div>
           <div class="mode-toggle flex items-center">
-            <p
-              class="edit-avatar-btn mr-4 underline dark:text-inactiveTextDark"
+            <svg
+              enable-background="new 0 0 32 32"
+              viewBox="0 0 32 32"
+              class="edit-avatar-btn fill-inactiveTextDark h-6 w-6 mr-4"
             >
-              edit
-            </p>
+              <g>
+                <path
+                  d="m28.9 13.1c-1.5-1.5-3.9-1.5-5.4 0l-10.2 10.2c-.1.1-.2.3-.3.5l-1 5c-.1.3 0 .7.3.9.2.2.6.3.9.3l5-1c.2 0 .4-.1.5-.3l10.2-10.2c1.5-1.5 1.5-3.9 0-5.4zm-11.4 14-3.2.6.6-3.2 8.1-8.1 2.6 2.6zm10-10-.5.5-2.6-2.6.5-.5c.7-.7 1.9-.7 2.6 0s.7 1.9 0 2.6z"
+                />
+                <path
+                  d="m18.3 14.7c.4.4 1 .4 1.4 0s.4-1 0-1.4l-2-2c-.4-.4-1-.4-1.4 0l-5.3 5.3-2.3-2.3c-.4-.4-1-.4-1.4 0l-3.3 3.3v-12.6c0-.6.4-1 1-1h18c.6 0 1 .4 1 1v4c0 .6.4 1 1 1s1-.4 1-1v-4c0-1.7-1.3-3-3-3h-18c-1.7 0-3 1.3-3 3v18c0 1.7 1.3 3 3 3h5c.6 0 1-.4 1-1s-.4-1-1-1h-5c-.6 0-1-.4-1-1v-2.6l4-4 2.3 2.3c.4.4 1 .4 1.4 0l5.3-5.3z"
+                />
+                <path
+                  d="m8 9c0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3-3 1.3-3 3zm4 0c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1z"
+                />
+              </g>
+            </svg>
             <svg
               class="light-mode w-6 h-6 fill-inactiveTextDark"
               viewBox="0 0 302.4 302.4"
@@ -181,19 +193,20 @@
         <section
           class="edit-avatar hidden mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex-col justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
-          <p>Edit profile avatar</p>
+          <p class="text-lg text-black mb-2">Edit profile avatar</p>
           <form class="edit-avatar-form flex flex-col">
-            <label for="avatar-url">Avatar URL</label>
+            <label for="avatar-url" class="mb-1 text-black">Avatar URL</label>
             <input
               type="text"
               name="avatar-url"
               id="avatar-url"
               autocomplete="off"
+              placeholder="https://myimage.png"
               class="p-1 text-black"
             />
             <button
               type="submit"
-              class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
+              class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 mt-6 mb-2 w-full hover:bg-primaryPurple"
             >
               Save
             </button>
@@ -205,17 +218,21 @@
         >
           <a
             href="./new-listing.html"
-            class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 w-full"
+            class="add-listing-btn text-center text-lg bg-secondaryPurple rounded-sm px-2 py-1 w-full hover:bg-primaryPurple"
             >New Listing</a
           >
         </section>
         <section
           class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
         >
-          <button class="my-listings-btn text-xs font-mainFont underline">
+          <button
+            class="my-listings-btn text-sm font-mainFont underline dark:text-offWhite hover:underline"
+          >
             My Listings
           </button>
-          <button class="my-bids-btn text-xs font-mainFont ml-4 mb-6">
+          <button
+            class="my-bids-btn text-sm font-mainFont ml-4 mb-6 dark:text-offWhite hover:underline"
+          >
             My bids
           </button>
 
@@ -224,28 +241,28 @@
           ></div>
         </section>
         <section
-          class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
+          class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center mb-6 text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
           <button
-            class="log-out-btn bg-primaryPurple rounded-sm px-2 py-1 w-full"
+            class="log-out-btn bg-primaryPurple text-lg rounded-sm px-2 py-1 w-full hover:bg-secondaryPurple"
           >
             Log out
           </button>
         </section>
       </div>
       <div
-        class="no-user-container hidden mt-32 font-mainFont bg-cardsBgLight p-2 rounded-sm flex-col items-center dark:bg-cardsBgDark dark:text-offWhite"
+        class="no-user-container hidden w-11/12 m-auto mt-32 font-mainFont bg-cardsBgLight p-2 rounded-sm flex-col items-center md:w-1/2 lg:w-1/3 dark:bg-cardsBgDark dark:text-offWhite"
       >
         <p class="mb-6">You are not logged in!</p>
         <div class="mb-4">
           <a
             href="./login.html"
-            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
             >Log in</a
           >
           <a
             href="./register.html"
-            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
             >Register</a
           >
         </div>

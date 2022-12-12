@@ -9,6 +9,13 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     borderRadius: {
       none: "0",
       sm: ".17rem",
@@ -44,6 +51,10 @@ module.exports = {
         transparentLight: "rgba(255, 255, 255, 0.30)",
         transparentDark: "rgba(255, 255, 255, 0.20)",
         modalBg: "rgba(0, 0, 0, 0.70)",
+        tableOddDark: "#414153",
+        tableEvenDark: "#464659",
+        tableOddLight: "#E0E0E0",
+        tableEvenLight: "#D8D8D8",
       },
       fontFamily: {
         mainFont: ["K2D", "sans-serif"],

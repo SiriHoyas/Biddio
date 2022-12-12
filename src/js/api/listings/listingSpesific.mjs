@@ -53,7 +53,7 @@ async function populateListing() {
   `;
   sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
-    <p class="text-lg font-mainFont dark:text-offWhite">${name}</p>
+    <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
   `;
   setupBids();
 }
@@ -62,10 +62,10 @@ populateListing();
 
 async function populateBiddingHistory(bid) {
   document.querySelector(".bidding-history").innerHTML += `
-  <div class="bid flex justify-between p-1 rounded-sm odd:bg-inactiveTextDark even:bg-inactiveTextLight ">
-  <p>${bid.bidderName}<p>
-  <p class="text-xs">${bid.created}</p>
-  <p>${bid.amount}<p>`;
+  <div class="bid flex justify-between items-center px-3 py-1 border-b border-cardsBgLight rounded-sm font-mainFont text-lg even:bg-tableEvenLight odd:bg-tableOddLight  dark:text-offWhite dark:border-cardsBgDark odd:dark:bg-tableOdd even:dark:bg-tableEven ">
+  <p class="w-1/3 ">${bid.bidderName}<p>
+  <p class="text-xs w-1/3 ">${bid.created}</p>
+  <p class="w-1/3 flex justify-end">${bid.amount}<p>`;
 }
 
 /**
@@ -131,7 +131,7 @@ async function placeImage(media, title) {
     if (i === counter) {
       console.log(i);
       imageCarousel.innerHTML += `
-      <img src="${media[i]}" alt="listing image for ${title[i]}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full listing-img"/>`;
+      <img src="${media[i]}" alt="listing image for ${title[i]}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>`;
     }
   }
 }

@@ -5,11 +5,11 @@ export async function displayCountdown(endsAt) {
 
   const countdown = document.querySelector(".countdown");
   countdown.innerHTML = `
-    <div class="flex justify-between">
-      <p>${daysLeft}</p>
-      <p>${hoursLeft}</p>
-      <p>${minutesLeft}</p>
-      <p>${secondsLeft}</p>
+    <div class="flex  font-mainFont text-xl dark:text-offWhite">
+      <p class="mr-2">${daysLeft}d</p>
+      <p class="mr-2">${hoursLeft}h</p>
+      <p class="mr-2">${minutesLeft}m</p>
+      <p class="mr-2">${secondsLeft}s</p>
     </div>
     `;
 }
