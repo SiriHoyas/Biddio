@@ -7,6 +7,7 @@ const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
   const listings = await getListings(`&offset=0&limit=27_active=true`);
+  listingsContainer.innerHTML = "";
 
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");

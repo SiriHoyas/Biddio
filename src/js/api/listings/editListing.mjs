@@ -10,6 +10,7 @@ const { accessToken } = getLocalStorage();
 const editForm = document.querySelector(".edit-listing-form");
 const editBtn = document.querySelector(".edit-btn");
 const delBtn = document.querySelector(".delete-btn");
+const saveBtn = document.querySelector(".save-btn");
 const editModal = document.querySelector(".edit-listing-modal");
 
 editBtn.addEventListener("click", () => {
@@ -73,7 +74,7 @@ async function deleteListing(e) {
 
 editForm.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target === editBtn) {
+  if (e.target === saveBtn) {
     editListing(e);
   } else if (e.target === delBtn) {
     deleteListing(e);
