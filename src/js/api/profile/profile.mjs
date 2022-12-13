@@ -1,4 +1,5 @@
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { fetchCredits } from "./fetchCredits.mjs";
 import { getUserBids } from "./getUserBids.mjs";
 import { getUserListings } from "./getUserListings.mjs";
 
@@ -8,6 +9,7 @@ const myListingsBtn = document.querySelector(".my-listings-btn");
 const myBidsBtn = document.querySelector(".my-bids-btn");
 
 const { accessToken, userName, userAvatar } = getLocalStorage();
+fetchCredits(accessToken, userName);
 
 profileInfoContainer.innerHTML = `
     <div class="profile-info flex items-center">

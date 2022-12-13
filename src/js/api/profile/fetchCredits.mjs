@@ -1,9 +1,6 @@
-import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { fetchContent } from "../fetch/fetchContent.mjs";
 
-async function fetchCredits() {
-  const { userName, accessToken } = getLocalStorage();
-
+export async function fetchCredits(accessToken, userName) {
   const options = {
     method: "GET",
     headers: {
@@ -17,5 +14,3 @@ async function fetchCredits() {
 
   localStorage.setItem("userCredits", json.credits);
 }
-
-setInterval(fetchCredits, 3600000);

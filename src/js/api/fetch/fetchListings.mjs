@@ -1,5 +1,6 @@
 import { fetchContent } from "./fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { fetchCredits } from "../profile/fetchCredits.mjs";
 
 /**
  * This function fetches listings from the API with GET HTTP Method.
@@ -15,7 +16,8 @@ import { getLocalStorage } from "../../components/getLocalstorage.mjs";
  * ```
  */
 export async function getListings(flags = "", order = "desc") {
-  const { accessToken } = getLocalStorage();
+  const { accessToken, userName } = getLocalStorage();
+  fetchCredits(accessToken, userName);
 
   const options = {
     method: "GET",

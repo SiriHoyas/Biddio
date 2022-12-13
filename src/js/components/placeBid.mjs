@@ -1,11 +1,14 @@
 import { fetchContent } from "../api/fetch/fetchContent.mjs";
+import { fetchCredits } from "../api/profile/fetchCredits.mjs";
 import { getLocalStorage } from "./getLocalstorage.mjs";
 
-const { accessToken, userCredits } = getLocalStorage();
+const { accessToken, userCredits, userName } = getLocalStorage();
+
 const bidInput = document.querySelector("#bid-input");
 
 export async function placeBid(e, listingID) {
   e.preventDefault();
+  fetchCredits(accessToken, userName);
   const bid = parseInt(bidInput.value);
 
   const options = {
@@ -39,8 +42,7 @@ export function watchBidInput(currentHighestBid) {
   bidInput.addEventListener("input", (e) => {
     const value = e.target.value;
     const newBid = parseInt(value);
-    const isHigherThanCurrentBid =
-      !currentHighestBid || newBid > currentHighestBid;
+    const isHigherThanCurrentBid = !currentHighestBid || newBid > currentHighestBid;
     const isValidBid = newBid > 0 && isHigherThanCurrentBid;
     disableButton(placeBidBtn, !newBid || !isValidBid || newBid > userCredits);
   });
