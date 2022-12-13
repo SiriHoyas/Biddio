@@ -4,10 +4,164 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Biddio</title>
+    <script src="./src/js/UI/menuToggle.js" defer></script>
+    <script src="./src/js/UI/themeColors.mjs" type="module"></script>
+    <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/api/listings/searchListings.mjs" type="module"></script>
+    <script src="./src/js/api/listings/displayLatestListings.mjs" type="module"></script>
+    <script src="./src/js/api/profile/fetchCredits.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
-  <body class="bg-black">
-    <h1 class="text-blue-800">Hello!</h1>
+  <body class="index-body dark:bg-bgDark">
+    <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
+      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
+        <a href="./index.html" class="logo-container flex items-center">
+          <img src="/src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
+          <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
+        </a>
+        <div class="menu-button-container lg:hidden">
+          <svg
+            class="menu-btn fill-secondaryPurple h-6 w-6 dark:fill-offWhite"
+            enable-background="new 0 0 464.205 464.205"
+            viewBox="0 0 464.205 464.205"
+          >
+            <g>
+              <g id="grip-solid-horizontal_1_">
+                <path
+                  d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"
+                />
+                <path
+                  d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"
+                />
+                <path
+                  d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+      <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
+        <ul class="menu-items lg:flex lg:justify-center">
+          <li class="">
+            <a
+              href="./index.html"
+              class="menu-item-home border-b text-2xl font-mainFont text-secondaryPurple dark:text-offWhite border-secondaryPurple dark:border-offWhite"
+              >Home</a
+            >
+          </li>
+          <li class="">
+            <a
+              href="./listings.html"
+              class="menu-item-auction text-2xl font-mainFont border-secondaryPurple text-secondaryPurple dark:text-offWhite w-auto dark:border-offWhite hover:border-b lg:ml-10 lg:mr-10"
+              >Auctions</a
+            >
+          </li>
+          <li class="">
+            <a
+              href="./profile.html"
+              class="menu-item-profile hidden text-2xl font-mainFont text-secondaryPurple border-secondaryPurple dark:text-offWhite dark:border-offWhite hover:border-b"
+              >Profile</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
+        <div class="user flex items-center lg:justify-end">
+          <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
+          <div class="user-info ml-2">
+            <p class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+            <p class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+          </div>
+        </div>
+        <div class="login-register hidden justify-start lg:justify-end">
+          <a
+            href="./login.html"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
+            >Log in</a
+          >
+          <a
+            href="./register.html"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
+            >Register</a
+          >
+        </div>
+      </section>
+    </nav>
+    <main>
+      <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
+      <section class="heading mt-32 w-4/5 flex flex-col items-center m-auto lg:w-2/3 2xl:w-2/5">
+        <img
+          src="./src/img/indexGraphicDarkMobile.svg"
+          aria-hidden="true"
+          alt="gradient graphic"
+          class="-z-10 absolute md:hidden"
+        />
+        <img
+          src="./src/img/indexGraphicWeb.png"
+          aria-hidden="true"
+          class="hidden -z-10 object-cover absolute -mt-24 lg:w-4/5 2xl:w-1/2 md:block"
+          alt="gradient graphic"
+        />
+        <div
+          class="flex flex-col justify-center m-auto text-center lg:flex-row lg:justify-between lg:text-left lg:w-full"
+        >
+          <div class="heading-text">
+            <h2 class="font-mainFont text-black dark:text-offWhite text-2xl mt-12 lg:text-3xl">Welcome to biddio!</h2>
+            <p class="font-mainFont text-inactiveTextLight dark:text-inactiveText lg:w-4/5">
+              Bid on auctions, sell your items. Always get the best price!
+            </p>
+          </div>
+          <div class="heading-img">
+            <img
+              src="/src/img/boxOfStuff.svg"
+              alt="box where things are popping out"
+              class="hidden h-32 w-32 lg:block"
+            />
+          </div>
+        </div>
+        <form class="search-bar w-full">
+          <input
+            type="text"
+            name="search-bar"
+            id="search-bar"
+            placeholder="Search for auctions"
+            autocomplete="off"
+            class="search-input w-full bg-bgLight border border-borderDark shadow-md rounded-sm text-black font-mainFont px-2 py-1 mt-8 dark:bg-cardsBgDark dark:text-offWhite"
+          />
+        </form>
+        <div
+          class="search-results hidden w-full bg-bgLight flex flex-col h-20 shadow-lg border-l border-r border-b border-inactiveTextLight overflow-scroll overflow-x-auto p-1 dark:bg-cardsBgDark dark:text-offWhite"
+        ></div>
+      </section>
+      <section class="latest-listings w-4/5 m-auto mt-32 mb-3 lg:w-2/3 2xl:w-2/5">
+        <p class="w-full text-center font-mainFont text-xl mb-10 lg:text-2xl dark:text-offWhite">Latest Listings</p>
+        <div class="latest-listings-container w-full md:grid md:grid-cols-3 gap-4">
+          <p class="catch-error hidden col-start-2 text-red-600 italic mb-1 text-center text-xs">
+            Something went wrong, please refresh or try again later
+          </p>
+          <div class="loader w-full h-full col-start-2">
+            <div class="flex justify-center items-center space-x-1 text-sm text-black dark:text-offWhite">
+              <svg class="w-10 h-10 animate-spin" viewBox="0 0 32 32">
+                <path
+                  clip-rule="evenodd"
+                  d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-end w-full mt-6 mb-12">
+          <a
+            href="./listings.html"
+            class="bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
+            >View all listings</a
+          >
+        </div>
+      </section>
+    </main>
   </body>
 </html>

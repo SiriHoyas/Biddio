@@ -1,12 +1,13 @@
 {
   "name": "biddio",
-  "version": "0.0.2",
+  "version": "1.0.5",
   "description": "Semester project 2 - Auction house",
   "main": "index.js",
   "scripts": {
     "test": "test",
     "prepare": "husky install",
-    "watch": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch"
+    "watch": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch",
+    "docs": "jsdoc -c ./conf.json -r"
   },
   "author": "Siri Høyås",
   "license": "ISC",
@@ -14,15 +15,13 @@
     "eslint": "^8.27.0",
     "eslint-plugin-jest": "^27.1.5",
     "husky": "^8.0.2",
+    "jsdoc": "^4.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.2.4"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ],
+    "*.js": "eslint --cache --fix",
     "*.mjs": [
       "eslint --cache --fix",
       "prettier --write"
@@ -32,6 +31,7 @@
     ],
     "*.scss": [
       "prettier --write"
-    ]
+    ],
+    "*.{js,css,md}": "prettier --write"
   }
 }

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biddio</title>
+    <script src="./src/js/UI/menuToggle.js" defer></script>
+    <script src="./src/js/UI/themeColors.mjs" type="module"></script>
+    <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/UI/scrollToTop.js" defer></script>
+    <script src="./src/js/api/listings/displayListings.mjs" type="module"></script>
+    <link rel="stylesheet" href="/dist/output.css" />
+  </head>
+  <body class="index-body dark:bg-bgDark">
+    <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
+      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
+        <a href="./index.html" class="logo-container flex items-center">
+          <img src="/src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
+          <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
+        </a>
+        <div class="menu-button-container lg:hidden">
+          <svg
+            class="menu-btn fill-secondaryPurple h-6 w-6 dark:fill-offWhite"
+            enable-background="new 0 0 464.205 464.205"
+            viewBox="0 0 464.205 464.205"
+          >
+            <g>
+              <g id="grip-solid-horizontal_1_">
+                <path
+                  d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"
+                />
+                <path
+                  d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"
+                />
+                <path
+                  d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+      <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
+        <ul class="menu-items lg:flex lg:justify-center">
+          <li>
+            <a
+              href="./index.html"
+              class="menu-item-home text-2xl font-mainFont text-secondaryPurple dark:text-offWhite border-secondaryPurple dark:border-offWhite hover:border-b"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./listings.html"
+              class="menu-item-auction text-2xl border-b border-secondaryPurple font-mainFont text-secondaryPurple dark:border-offWhite dark:text-offWhite lg:ml-10 lg:mr-10"
+              >Auctions</a
+            >
+          </li>
+          <li>
+            <a
+              href="./profile.html"
+              class="menu-item-profile hidden text-2xl font-mainFont border-secondaryPurple text-secondaryPurple dark:text-offWhite dark:border-offWhite hover:border-b"
+              >Profile</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
+        <div class="user flex items-center lg:justify-end">
+          <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
+          <div class="user-info ml-2">
+            <p class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+            <p class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+          </div>
+        </div>
+        <div class="login-register hidden justify-start lg:justify-end">
+          <a
+            href="./login.html"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
+            >Log in</a
+          >
+          <a
+            href="./register.html"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
+            >Register</a
+          >
+        </div>
+      </section>
+    </nav>
+    <main>
+      <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
+      <section class="heading mt-32 flex justify-center text-xl font-mainFont dark:text-offWhite lg:text-2xl">
+        Auctions
+      </section>
+      <section class="sort mt-6 mb-4 w-11/12 m-auto lg:w-3/4 xl:w-1/2">
+        <div class="new-listing-btn mb-6 md:w-1/3 flex">
+          <a
+            href="./new-listing.html"
+            class="bg-secondaryPurple font-mainFont text-offWhite text-sm w-full px-3 py-1 rounded-sm md:w-auto hover:bg-primaryPurple"
+            >+ New listing</a
+          >
+        </div>
+        <p class="font-mainFont text-xs dark:text-offWhite">Sort by:</p>
+        <div class="sort-btn-container md:w-1/3">
+          <button
+            class="bg-primaryPurple font-mainFont text-offWhite text-xs px-3 py-1 rounded-sm hover:bg-secondaryPurple"
+          >
+            Newest
+          </button>
+          <button
+            class="bg-primaryPurple font-mainFont text-offWhite text-xs px-3 py-1 rounded-sm hover:bg-secondaryPurple"
+          >
+            Oldest
+          </button>
+        </div>
+      </section>
+      <div
+        class="scroll-top z-40 hidden items-center p-2 rounded-sm text-offWhite shadow-md text-xs font-mainFont fixed right-4 bottom-4 bg-primaryPurple md:right-8"
+      >
+        <p class="mr-2 cursor-pointer lg:text-xl">Scroll to top</p>
+        <svg class="h-5 w-5 fill-offWhite" viewBox="0 0 32 32">
+          <path
+            d="m16.71 8.29a1 1 0 0 0 -.33-.21 1 1 0 0 0 -.76 0 1 1 0 0 0 -.33.21l-4 4a1 1 0 0 0 1.42 1.42l2.29-2.3v11.59a1 1 0 0 0 2 0v-11.59l2.29 2.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"
+          />
+          <path d="m16 1a15 15 0 1 0 15 15 15 15 0 0 0 -15-15zm0 28a13 13 0 1 1 13-13 13 13 0 0 1 -13 13z" />
+        </svg>
+      </div>
+
+      <section
+        class="listings-container bg-cardsBgLight p-3 rounded-sm w-11/12 m-auto md:grid md:grid-cols-3 md:gap-8 lg:w-3/4 xl:w-1/2 dark:bg-cardsBgDark"
+      >
+        <div class="loader w-full h-full col-start-2">
+          <div class="flex justify-center items-center space-x-1 text-sm text-black dark:text-offWhite">
+            <svg class="w-10 h-10 animate-spin" viewBox="0 0 32 32">
+              <path
+                clip-rule="evenodd"
+                d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

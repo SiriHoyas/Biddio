@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biddio</title>
+    <script src="./src/js/UI/menuToggle.js" defer></script>
+    <script src="./src/js/UI/navSetUserInfo.mjs" type="module"></script>
+    <script src="./src/js/UI/themeColors.mjs" type="module"></script>
+    <script src="./src/js/api/listings/editListing.mjs" type="module"></script>
+    <script src="./src/js/api/listings/listingSpesific.mjs" type="module"></script>
+    <link rel="stylesheet" href="/dist/output.css" />
+  </head>
+  <body class="single-listing-body bg-bgLight dark:bg-bgDark">
+    <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
+      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
+        <a href="./index.html" class="logo-container flex items-center">
+          <img src="/src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
+          <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
+        </a>
+        <div class="menu-button-container lg:hidden">
+          <svg
+            class="menu-btn fill-secondaryPurple h-6 w-6 dark:fill-offWhite"
+            enable-background="new 0 0 464.205 464.205"
+            viewBox="0 0 464.205 464.205"
+          >
+            <g>
+              <g id="grip-solid-horizontal_1_">
+                <path
+                  d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"
+                />
+                <path
+                  d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"
+                />
+                <path
+                  d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+      <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
+        <ul class="menu-items lg:flex lg:justify-center">
+          <li>
+            <a
+              href="./index.html"
+              class="menu-item-home text-2xl font-mainFont text-secondaryPurple border-secondaryPurple dark:border-offWhite hover:border-b dark:text-offWhite"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./listings.html"
+              class="menu-item-auction text-2xl font-mainFont text-secondaryPurple border-secondaryPurple dark:border-offWhite hover:border-b dark:text-offWhite lg:ml-10 lg:mr-10"
+              >Auctions</a
+            >
+          </li>
+          <li>
+            <a
+              href="./profile.html"
+              class="menu-item-profile hidden text-2xl font-mainFont border-secondaryPurple dark:border-offWhite hover:border-b text-secondaryPurple dark:text-offWhite"
+              >Profile</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
+        <div class="user flex items-center lg:justify-end">
+          <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
+          <div class="user-info ml-2">
+            <p class="user-name font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+            <p class="user-credits font-mainFont text-secondaryPurple dark:text-offWhite"></p>
+          </div>
+        </div>
+        <div class="login-register hidden justify-start lg:justify-end">
+          <a
+            href="./login.html"
+            class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
+            >Log in</a
+          >
+          <a
+            href="./register.html"
+            class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm hover:bg-primaryPurple"
+            >Register</a
+          >
+        </div>
+      </section>
+    </nav>
+    <main class="single-listing-main w-full m-auto">
+      <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
+      <div class="edit-listing-modal hidden w-screen h-screen absolute z-50 top-0 bg-modalBg">
+        <div
+          class="w-11/12 flex flex-col justify-center m-auto bg-bgLight p-4 rounded-sm mt-32 md:w-1/2 lg:w-1/2 dark:bg-cardsBgDark"
+        >
+          <p class="font-mainFont dark:text-offWhite hidden">Edit listing</p>
+          <form class="edit-listing-form w-full mt-6">
+            <label for="edit-title" class="text-xs font-mainFont dark:text-offWhite">Edit title</label>
+            <input
+              type="text"
+              name="edit-title"
+              id="edit-title"
+              class="w-full p-1 mb-3 font-mainFont border border-borderLight rounded-sm dark:border-borderDark"
+            />
+            <label for="edit-description" class="text-xs font-mainFont dark:text-offWhite">Edit description</label>
+            <textarea
+              name="edit-description"
+              id="edit-description"
+              rows="5"
+              class="w-full p-1 mb-4 font-mainFont border border-borderLight rounded-sm dark:border-borderDark"
+            ></textarea>
+            <button
+              type="submit"
+              class="save-btn bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            >
+              Save
+            </button>
+            <button type="submit" class="delete-btn bg-red-800 font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4">
+              Delete post
+            </button>
+          </form>
+        </div>
+      </div>
+      <p class="back hidden underline mt-32 mb-2 font-mainFont w-11/12 m-auto">Go back</p>
+      <section
+        class="not-logged-in hidden w-11/12 bg-cardsBgLight rounded-sm p-2 font-mainFont flex-col items-center m-auto dark:bg-cardsBgDark dark:text-offWhite"
+      >
+        <p class="text-center">You must be logged in to view this page!</p>
+        <div class="mt-6 mb-2">
+          <a href="./login.html" class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4"
+            >Log in</a
+          >
+          <a href="./register.html" class="register bg-secondaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm"
+            >Register</a
+          >
+        </div>
+      </section>
+      <section class="single-listing-container mt-32 w-11/12 m-auto lg:w-3/5 xl:w-1/2">
+        <section
+          class="listing-img-carousel w-full bg-cardsBgLight rounded-sm py-6 mb-10 h-80 flex justify-center dark:bg-cardsBgDark"
+        >
+          <button class="prev-img w-1/6">
+            <svg
+              class="w-6 h-6 ml-1 dark:fill-offWhite"
+              viewBox="0 0 492 492"
+              style="enable-background: new 0 0 492 492"
+            >
+              <path
+                d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12
+             C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084
+             c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864
+             l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z"
+              />
+            </svg>
+          </button>
+          <div class="image-container w-full p-4 flex flex-col items-center justify-center"></div>
+          <button class="next-img mr-1 w-1/6 flex items-center justify-end">
+            <svg
+              class="w-6 h-6 dark:fill-offWhite"
+              viewBox="0 0 492.004 492.004"
+              style="enable-background: new 0 0 492.004 492.004"
+              xml:space="preserve"
+            >
+              <path
+                d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12
+             c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028
+             c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265
+             c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"
+              />
+            </svg>
+          </button>
+        </section>
+        <button
+          class="edit-btn bg-borderDark hidden font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4 hover:bg-secondaryPurple"
+        >
+          Edit listing
+        </button>
+        <section class="listing grid gap-4 mb-6 md:grid-cols-2 md:grid-rows-5">
+          <div
+            class="listing-info bg-cardsBgLight p-2 rounded-sm md:row-start-1 md:row-span-5 md:col-start-1 md:col-end-1 md:h-full dark:bg-cardsBgDark"
+          ></div>
+          <div
+            class="seller-info bg-cardsBgLight p-2 rounded-sm flex items-center md:col-start-2 md:col-span-2 dark:bg-cardsBgDark"
+          >
+            <div class="profile-image-container rounded-full w-8 h-8"></div>
+          </div>
+          <div class="bg-cardsBgLight p-2 rounded-sm md:col-start-2 md:col-span-2 dark:bg-cardsBgDark">
+            <p class="ends-in-title font-mainFont dark:text-offWhite mb-1">Ends in</p>
+            <div class="countdown"></div>
+          </div>
+          <div
+            class="post-bid bg-cardsBgLight p-4 rounded-sm md:col-start-2 md:col-span-2 md:row-start-3 md:row-span-3 dark:bg-cardsBgDark"
+          >
+            <div class="bid">
+              <div class="flex justify-between mb-4">
+                <p class="text-xl font-mainFont dark:text-offWhite">Current bid</p>
+                <p class="current-bid-container font-mainFont dark:text-offWhite">No bids</p>
+              </div>
+              <div class="bid-form-container">
+                <form id="place-bid-form">
+                  <div class="flex justify-between">
+                    <label for="bid-input" class="font-mainFont text-xl dark:text-offWhite">Bid on item</label>
+                    <input type="number" id="bid-input" class="w-14 text-center rounded-sm p-2" />
+                  </div>
+                  <button
+                    id="place-bid"
+                    type="submit"
+                    class="bg-primaryPurple w-full mt-16 font-mainFont text-offWhite px-3 py-1 rounded-sm disabled:bg-slate-50"
+                  >
+                    Place Bid
+                  </button>
+                </form>
+              </div>
+              <p class="bid-error text-red-600 italic mb-1 text-center text-xs"></p>
+            </div>
+          </div>
+        </section>
+        <section class="bidding-history-container mb-10 bg-cardsBgLight p-2 dark:bg-cardsBgDark">
+          <p class="font-mainFont text-lg mb-4 dark:text-offWhite">Bidding history</p>
+          <div class="bidding-history"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
