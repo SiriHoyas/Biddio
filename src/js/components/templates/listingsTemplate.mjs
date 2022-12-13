@@ -1,12 +1,4 @@
-export function listingsHTML(
-  listingImg,
-  listingTitle,
-  listingSeller,
-  date,
-  time,
-  currentBid,
-  listingID
-) {
+export function listingsHTML(listingImg, listingTitle, listingSeller, date, time, currentBid, listingID) {
   const html = `
   <div class="listing-card mb-5 w-full  border p-2 rounded-sm dark:border-borderDark">
           <div class="image-container w-full h-72">
@@ -32,7 +24,7 @@ export function listingsHTML(
             <p class="font-mainFont dark:text-offWhite">Current bid</p>
             <p class="current-bid bg-secondaryPurple rounded-sm px-2 py-1 text-offWhite font-mainFont">${currentBid}</p>
           </div>
-          <a href="./../single-listing.html?id=${listingID}" class="flex justify-center bg-secondaryPurple w-full rounded-sm p-1 mt-5 text-offWhite font-mainFont hover:bg-primaryPurple">View Listing</a>
+          <a href="./single-listing.html?id=${listingID}" class="flex justify-center bg-secondaryPurple w-full rounded-sm p-1 mt-5 text-offWhite font-mainFont hover:bg-primaryPurple">View Listing</a>
         </div>
         `;
   return html;

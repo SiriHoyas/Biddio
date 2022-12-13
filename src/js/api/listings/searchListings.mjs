@@ -21,7 +21,7 @@ async function searchListings(e) {
 
   if (filteredListings.length > 0) {
     filteredListings.forEach((listing) => {
-      searchResults.innerHTML += `<a href="./../single-listing.html?id=${listing.id}"">${listing.title}</a>`;
+      searchResults.innerHTML += `<a href="./single-listing.html?id=${listing.id}"">${listing.title}</a>`;
     });
   } else {
     searchResults.innerHTML = `<p>No results</p>`;

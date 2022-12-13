@@ -11,7 +11,7 @@ export async function getUserBids(userName, profileOptions, container) {
     json.forEach((listing) => {
       const { date, time } = convertEndtime(listing.listing.endsAt);
       container.innerHTML += `
-        <a href="./../single-listing.html?id=${listing.listing.id}" class="my-bids border border-black rounded-sm p-2 w-full mb-4 hover:bg-white dark:bg-cardsBgDark dark:border-borderDark dark:text-offWhite dark:hover:bg-borderDark">
+        <a href="./single-listing.html?id=${listing.listing.id}" class="my-bids border border-black rounded-sm p-2 w-full mb-4 hover:bg-white dark:bg-cardsBgDark dark:border-borderDark dark:text-offWhite dark:hover:bg-borderDark">
           <p class="font-mainFont truncate">${listing.listing.title}</p>
           <p class="font-mainFont text-xs">My bid: ${listing.amount}</p>
           <div class>
