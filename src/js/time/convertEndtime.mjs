@@ -20,7 +20,6 @@ export function convertEndtime(endsAt) {
 
   const date = endTime.toLocaleDateString();
   const time = endTime.toLocaleTimeString();
-  console.log(endTime);
 
   return { date, time };
 }

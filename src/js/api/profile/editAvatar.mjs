@@ -33,7 +33,6 @@ async function editProfileAvatar(e) {
 
   const response = await fetchContent(`/profiles/${userName}/media`, options);
   const json = await response.json();
-  console.log(json.avatar);
 
   if (response.ok) {
     localStorage.setItem("userAvatar", json.avatar);

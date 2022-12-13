@@ -35,11 +35,10 @@ async function registerUser(e) {
       const response = await fetchContent("/auth/register", options);
       const json = await response.json();
 
-      const errorMessage = json.errors[0].message;
-
       if (response.ok) {
-        console.log("YAY");
+        window.location.href = "./login.html";
       } else {
+        const errorMessage = json.errors[0].message;
         const errorMsgContainer = document.querySelector(".error-message");
         errorMsgContainer.classList.remove("hidden");
         errorMsgContainer.innerHTML = errorMessage;

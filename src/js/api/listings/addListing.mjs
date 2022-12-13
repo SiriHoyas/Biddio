@@ -73,7 +73,6 @@ function endsAt(e) {
     endDate = setEndTime(durationNum);
     sessionStorage.setItem("endTime", endDate);
     const { date, time } = convertEndtime(endDate);
-    console.log(date, time);
 
     document.querySelector(".view-endtime").innerHTML = `${date}, ${time}`;
   }

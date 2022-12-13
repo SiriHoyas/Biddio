@@ -19,16 +19,12 @@ async function fetchListingInfo() {
     },
   };
 
-  const response = await fetchContent(
-    `/listings/${listingID}?_seller=true&_bids=true`,
-    options
-  );
+  const response = await fetchContent(`/listings/${listingID}?_seller=true&_bids=true`, options);
 
   return await response.json();
 }
 
-const { media, title, description, seller, endsAt, bids } =
-  await fetchListingInfo();
+const { media, title, description, seller, endsAt, bids } = await fetchListingInfo();
 
 async function populateListing() {
   const { avatar, name } = seller;
@@ -41,7 +37,6 @@ async function populateListing() {
 
   getLastItem(bids, 0);
   bids.map((bid) => {
-    console.log(bid);
     return populateBiddingHistory(bid);
   });
 
@@ -90,14 +85,10 @@ function setupBids() {
   let lastBidAmount;
 
   if (bids.length === 0) {
-    document
-      .querySelector(".bidding-history-container")
-      .classList.add("hidden");
+    document.querySelector(".bidding-history-container").classList.add("hidden");
     bidInput.setAttribute("value", 1);
   } else {
-    const currentBidContainer = document.querySelector(
-      ".current-bid-container"
-    );
+    const currentBidContainer = document.querySelector(".current-bid-container");
     const lastBid = bids.slice(-1);
     lastBidAmount = lastBid[0].amount;
     if (lastBidAmount === 1) {

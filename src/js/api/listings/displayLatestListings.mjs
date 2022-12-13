@@ -12,7 +12,7 @@ async function getLastestListings() {
 
     for (let i = 0; i < 3; i++) {
       const bid = await getLastItem(listings[i].bids, "No Bids");
-      console.log(listings[i].id);
+
       const { date, time } = convertEndtime(listings[i].endsAt);
       container.innerHTML += listingsHTML(
         listings[i].media[0],

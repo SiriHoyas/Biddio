@@ -12,7 +12,7 @@ async function displayListings() {
   listings.forEach((listing) => {
     const bid = getLastItem(listing.bids, "No Bids");
     const { date, time } = convertEndtime(listing.endsAt);
-    console.log(listing.endsAt);
+
     listingsContainer.innerHTML += listingsHTML(
       listing.media[0],
       listing.title,
@@ -53,7 +53,6 @@ async function showMore(sort) {
 
 window.addEventListener("scroll", () => {
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
-    console.log("BUNN");
     showMore("desc");
   }
 });

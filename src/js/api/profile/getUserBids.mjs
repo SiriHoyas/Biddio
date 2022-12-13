@@ -4,16 +4,12 @@ import { convertEndtime } from "../../time/convertEndtime.mjs";
 export async function getUserBids(userName, profileOptions, container) {
   container.innerHTML = "";
 
-  const response = await fetchContent(
-    `/profiles/${userName}/bids?_listings=true`,
-    profileOptions
-  );
+  const response = await fetchContent(`/profiles/${userName}/bids?_listings=true`, profileOptions);
   const json = await response.json();
 
   if (json.length >= 1) {
     json.forEach((listing) => {
       const { date, time } = convertEndtime(listing.listing.endsAt);
-      console.log(listing);
       container.innerHTML += `
         <a href="./../single-listing.html?id=${listing.listing.id}" class="my-bids border border-black rounded-sm p-2 w-full mb-4 hover:bg-white dark:bg-cardsBgDark dark:border-borderDark dark:text-offWhite dark:hover:bg-borderDark">
           <p class="font-mainFont truncate">${listing.listing.title}</p>
