@@ -34,6 +34,7 @@ export async function placeBid(e, listingID) {
     }
   } catch (error) {
     console.log(error);
+    // TODO: Show "Unexpected error"
   }
 }
 
@@ -48,7 +49,7 @@ export function watchBidInput(currentHighestBid) {
   });
 }
 
-function disableButton(btn, disable) {
+export function disableButton(btn, disable) {
   if (disable) {
     btn.setAttribute("disabled", "disabled");
   } else {

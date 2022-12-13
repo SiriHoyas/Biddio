@@ -8,8 +8,8 @@ const systemPrefrence = window.matchMedia("(prefers-color-scheme: dark)").matche
 export function checkTheme() {
   if (userTheme === "dark" || (!userTheme && systemPrefrence)) {
     document.documentElement.classList.add("dark");
-    return;
+  } else {
+    document.documentElement.classList.remove("dark");
   }
-  document.documentElement.classList.remove("dark");
 }
 checkTheme();

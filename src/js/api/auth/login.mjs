@@ -9,6 +9,10 @@ if (accessToken) {
 
 async function login(e) {
   e.preventDefault();
+  const errorMessage = document.querySelector(".login-error");
+  const emailValidationMessage = document.querySelector(".valid-email-error");
+  errorMessage.classList.add("hidden");
+  emailValidationMessage.classList.add("hidden");
 
   const emailInput = document.querySelector("#login-email").value;
 
@@ -25,29 +29,35 @@ async function login(e) {
     },
   };
 
-  const validatedEmail = emailValidation(emailInput);
-  const errorMessage = document.querySelector(".login-error");
+  const emailIsValid = emailValidation(emailInput);
+  const defaultErrorMessage = "Something went wrong. Please try again later.";
 
-  if (validatedEmail) {
+  if (emailIsValid) {
     try {
-      const result = await fetchContent("/auth/login", options);
+      const response = await fetchContent("/auth/login", options);
 
-      const { accessToken, name, credits, avatar } = await result.json();
-
-      if (result.ok) {
+      if (response.ok) {
+        const { accessToken, name, credits, avatar } = await response.json();
         window.location.href = "../../index.html";
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("userName", name);
         localStorage.setItem("userCredits", credits);
         localStorage.setItem("userAvatar", avatar);
       } else {
+        const status = response.status;
+        if (status === 401 || status === 400) {
+          errorMessage.innerHTML = "Your email and/or password is wrong";
+        } else {
+          errorMessage.innerHTML = defaultErrorMessage;
+        }
         errorMessage.classList.remove("hidden");
       }
     } catch (error) {
-      document.querySelector(".catch-error").classList.remove("hidden");
+      errorMessage.innerHTML = defaultErrorMessage;
+      errorMessage.classList.remove("hidden");
     }
   } else if (emailInput.length > 0) {
-    document.querySelector(".valid-email-error").classList.remove("hidden");
+    emailValidationMessage.classList.remove("hidden");
   } else {
     errorMessage.classList.remove("hidden");
   }

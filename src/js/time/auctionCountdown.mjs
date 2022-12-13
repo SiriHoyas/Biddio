@@ -16,3 +16,4 @@ export function countDown(auctionEnds) {
 
   return { daysLeft, hoursLeft, minutesLeft, secondsLeft };
 }
+// TODO Test this

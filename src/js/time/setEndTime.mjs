@@ -8,3 +8,4 @@ export function setEndTime(days) {
 
   return endTime.toISOString();
 }
+// TODO: Test this

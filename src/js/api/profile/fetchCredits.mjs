@@ -8,9 +8,11 @@ export async function fetchCredits(accessToken, userName) {
       "Content-type": "application/json; charset=UTF-8",
     },
   };
+
   const response = await fetchContent(`/profiles/${userName}/credits`, options);
 
-  const json = await response.json();
-
-  localStorage.setItem("userCredits", json.credits);
+  if (response.ok) {
+    const json = await response.json();
+    localStorage.setItem("userCredits", json.credits);
+  }
 }
