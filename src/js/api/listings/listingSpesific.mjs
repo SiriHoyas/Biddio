@@ -59,10 +59,11 @@ async function populateListing() {
 populateListing();
 
 async function populateBiddingHistory(bid) {
+  const bidTimeFormatted = new Date(bid.created).toLocaleString();
   document.querySelector(".bidding-history").innerHTML += `
-  <div class="bid flex justify-between items-center px-3 py-1 border-b border-cardsBgLight rounded-sm font-mainFont text-lg  dark:text-offWhite dark:border-cardsBgDark odd:bg-tableOdd even:bg-tableEven ">
+  <div class="bid flex justify-between items-center px-3 py-1 border-b border-borderLight rounded-sm font-mainFont text-lg  dark:text-offWhite dark:border-borderDark odd:bg-tableOdd even:bg-tableEven ">
   <p class="w-1/3 ">${bid.bidderName}<p>
-  <p class="text-xs w-1/3 ">${bid.created}</p>
+  <p class="text-xs w-1/3 ">${bidTimeFormatted}</p>
   <p class="w-1/3 flex justify-end">${bid.amount}<p>`;
 }
 
@@ -117,7 +118,7 @@ async function placeImage(media, title) {
   const image = media[displayedPhotoIndex];
   imageCarousel.innerHTML += `
       <img src="${image}" alt="listing image for ${title}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>
-      <p>${displayedPhotoIndex + 1}/ ${media.length}</p>`;
+      <p class="mt-4 font-mainFont dark:text-offWhite">${displayedPhotoIndex + 1} / ${media.length}</p>`;
 }
 
 nextBtn.addEventListener("click", () => {
