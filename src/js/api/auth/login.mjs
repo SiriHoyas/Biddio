@@ -38,7 +38,7 @@ async function login(e) {
 
       if (response.ok) {
         const { accessToken, name, credits, avatar } = await response.json();
-        window.location.href = "../../index.html";
+        window.location.href = "./index.html";
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("userName", name);
         localStorage.setItem("userCredits", credits);
