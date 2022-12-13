@@ -7,10 +7,14 @@ const { accessToken, userName, userCredits, userAvatar } = getLocalStorage();
 
 function displayUserInfo() {
   document.querySelector(".user-name").innerHTML = userName;
-  if (userAvatar !== "null") {
+  if (userAvatar) {
     document.querySelector(
       ".user-avatar"
     ).innerHTML = `<img src="${userAvatar}" alt="${userName} user avatar image" onerror="this.src = './src/img/profile-placeholder.png';" class="w-8 h-8 rounded-full" />`;
+  } else {
+    document.querySelector(
+      ".user-avatar"
+    ).innerHTML = `<img src="./src/img/profile-placeholder.png" alt="${userName} user avatar image"  class="w-8 h-8 rounded-full" />`;
   }
 }
 

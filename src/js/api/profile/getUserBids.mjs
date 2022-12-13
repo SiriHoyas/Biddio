@@ -24,8 +24,9 @@ export async function getUserBids(userName, profileOptions, container) {
     });
   } else {
     container.innerHTML = `
-      <p class="font-mainFont mb-4">You have no active bids!</p>
-  
-      <a href="./listings.html" class="register bg-secondaryPurple font-mainFont text-offWhite text-xs px-2 py-1 mb-4 rounded-sm">Browse listings</a>`;
+    <div class="flex flex-col ">
+      <p class="font-mainFont mb-4 dark:text-offWhite">You have no active bids!</p>
+      <a href="./listings.html" class="register bg-secondaryPurple font-mainFont text-offWhite px-2 py-1 mb-4 rounded-sm">Browse listings</a>
+      </div>`;
   }
 }
