@@ -13,8 +13,8 @@ fetchCredits(accessToken, userName);
 
 profileInfoContainer.innerHTML = `
     <div class="profile-info flex items-center">
-        <img src="${userAvatar}" alt="profile image of ${userName}" onerror="this.src = './src/img/placeholder.png';" class="w-8 h-8 rounded-full"/>
-        <p class="ml-4 font-mainFont dark:text-offWhite">Hello, ${userName}!</p>
+        <img src="${userAvatar}" alt="profile image of ${userName}" onerror="this.src = './src/img/placeholder.png';" class="w-10 h-10 rounded-full"/>
+        <p class="ml-4 font-mainFont text-lg dark:text-offWhite">Hello, ${userName}!</p>
     </div>`;
 
 const profileOptions = {

@@ -85,6 +85,17 @@
         class="absolute -z-10 w-full hidden md:block xl:mt-24 xl:w-1/2 22xl:w-11/12"
       />
       <div
+        class="register-success hidden flex-col items-center -mt-32 self-center w-11/12 bg-transparentLight rounded-sm px-8 py-4 shadow-md md:w-2/5 lg:mt-0 xl:w-1/5 dark:bg-transparentDark"
+      >
+        <h2 class="text-2xl font-mainFont text-secondaryPurple mb-4 dark:text-offWhite">Success!</h2>
+        <p class="font-mainFont text-secondaryPurple text-sm dark:text-offWhite">Your new account is ready to use</p>
+        <a
+          href="./login.html"
+          class="login bg-primaryPurple font-mainFont text-offWhite px-3 py-1 rounded-sm mt-4 hover:bg-secondaryPurple"
+          >Log in</a
+        >
+      </div>
+      <div
         class="form-container flex flex-col items-center -mt-32 self-center w-11/12 bg-transparentLight rounded-sm px-8 py-4 shadow-md md:w-2/5 lg:mt-0 xl:w-1/5 dark:bg-transparentDark"
       >
         <h2 class="text-2xl font-mainFont text-secondaryPurple mb-4 dark:text-offWhite">Register account</h2>
@@ -93,6 +104,7 @@
         <p class="catch-error hidden text-red-600 italic mb-1 text-center text-xs">
           Something went wrong, please refresh or try again later
         </p>
+
         <form class="registerForm mt-8 flex flex-col w-full">
           <label for="register-username" class="font-bodyFont text-secondaryPurple text-xs mb-1 dark:text-offWhite"
             >Username</label

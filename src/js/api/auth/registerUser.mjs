@@ -36,7 +36,11 @@ async function registerUser(e) {
       const json = await response.json();
 
       if (response.ok) {
-        window.location.href = "./login.html";
+        const registerSuccessMessage = document.querySelector(".register-success");
+        registerSuccessMessage.classList.remove("hidden");
+        registerSuccessMessage.classList.add("flex");
+
+        document.querySelector(".form-container").classList.add("hidden");
       } else {
         const errorMessage = json.errors[0].message;
         const errorMsgContainer = document.querySelector(".error-message");
