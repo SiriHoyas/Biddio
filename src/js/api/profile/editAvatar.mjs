@@ -31,11 +31,27 @@ async function editProfileAvatar(e) {
     },
   };
 
-  const response = await fetchContent(`/profiles/${userName}/media`, options);
-  const json = await response.json();
+  const errorMessageContainer = document.querySelector(".edit-avatar-error");
 
-  if (response.ok) {
-    localStorage.setItem("userAvatar", json.avatar);
-    window.location.reload();
+  if (urlInput.length > 0) {
+    try {
+      const response = await fetchContent(`/profiles/${userName}/media`, options);
+      const json = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("userAvatar", json.avatar);
+        window.location.reload();
+      } else {
+        const errorMessage = json.errors[0].message;
+        errorMessageContainer.innerHTML = errorMessage;
+        errorMessageContainer.classList.remove("hidden");
+      }
+    } catch (error) {
+      errorMessageContainer.innerHTML = "Something went wrong. Please try again later";
+      errorMessageContainer.classList.remove("hidden");
+    }
+  } else {
+    errorMessageContainer.innerHTML = "Avatar must be valid URL";
+    errorMessageContainer.classList.remove("hidden");
   }
 }

@@ -165,9 +165,9 @@
         <section
           class="edit-avatar hidden mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex-col justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
-          <p class="text-lg text-black mb-2">Edit profile avatar</p>
+          <p class="text-lg text-black mb-2 dark:text-offWhite">Edit profile avatar</p>
           <form class="edit-avatar-form flex flex-col">
-            <label for="avatar-url" class="mb-1 text-black">Avatar URL</label>
+            <label for="avatar-url" class="mb-1 text-black dark:text-offWhite">Avatar URL</label>
             <input
               type="text"
               name="avatar-url"
@@ -176,6 +176,7 @@
               placeholder="https://myimage.png"
               class="p-1 text-black"
             />
+            <p class="edit-avatar-error hidden mt-1 text-red-600 italic text-xs"></p>
             <button
               type="submit"
               class="add-listing-btn text-center bg-secondaryPurple rounded-sm px-2 py-1 mt-6 mb-2 w-full hover:bg-primaryPurple"
