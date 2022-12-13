@@ -10,7 +10,7 @@ function displayUserInfo() {
   if (userAvatar !== "null") {
     document.querySelector(
       ".user-avatar"
-    ).innerHTML = `<img src="${userAvatar}" alt="${userName} user avatar image" class="w-8 h-8 rounded-full" />`;
+    ).innerHTML = `<img src="${userAvatar}" alt="${userName} user avatar image" onerror="this.src = './src/img/profile-placeholder.png';" class="w-8 h-8 rounded-full" />`;
   }
 }
 

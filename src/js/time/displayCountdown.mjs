@@ -13,6 +13,7 @@ export async function displayCountdown(endsAt) {
     <p class="font-mainFont text-xl dark:text-offWhite">Auction Expired</p>
     `;
     document.querySelector(".ends-in-title").classList.add("hidden");
+    document.querySelector(".bid-form-container").classList.add("hidden");
   } else {
     const { daysLeft, hoursLeft, minutesLeft, secondsLeft } = countDown(endsAt);
 

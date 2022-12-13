@@ -47,7 +47,7 @@ async function populateListing() {
       return populateBiddingHistory(bid);
     });
     sellerInfo.innerHTML = `
-    <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
+    <img src="${avatar}" alt="${name} user avatar image" onerror="this.src = './src/img/profile-placeholder.png';" class="w-8 h-8 rounded-full mr-4" />
     <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
   `;
     setupBids();
@@ -125,9 +125,13 @@ async function placeImage(media, title) {
 
   imageCarousel.innerHTML = "";
   const image = media[displayedPhotoIndex];
-  imageCarousel.innerHTML += `
-      <img src="${image}" alt="listing image for ${title}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>
-      <p class="mt-4 font-mainFont dark:text-offWhite">${displayedPhotoIndex + 1} / ${media.length}</p>`;
+  if (media.length > 0) {
+    imageCarousel.innerHTML += `
+    <img src="${image}" alt="listing image for ${title}" onerror="this.src = './src/img/listings-placeholder.png';" class="h-full object-contain listing-img"/>
+    <p class="mt-4 font-mainFont dark:text-offWhite">${displayedPhotoIndex + 1} / ${media.length}</p>`;
+  } else {
+    imageCarousel.innerHTML = ` <p class="mt-4 font-mainFont text-inactiveTextLight dark:text-inactiveTextDark">No listing image</p>`;
+  }
 }
 
 nextBtn.addEventListener("click", () => {
