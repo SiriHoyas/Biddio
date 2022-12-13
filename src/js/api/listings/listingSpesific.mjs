@@ -25,42 +25,51 @@ async function fetchListingInfo() {
 }
 
 const { media, title, description, seller, endsAt, bids } = await fetchListingInfo();
+const biddingHistoryContainer = document.querySelector(".bidding-history-container");
 
 async function populateListing() {
   const { avatar, name } = seller;
+  const bidForm = document.querySelector(".bid-form-container");
 
   if (name === userName) {
     const editBtnContainer = document.querySelector(".edit-btn");
     editBtnContainer.classList.remove("hidden");
     editBtnContainer.classList.add("flex");
+    bidForm.classList.add("hidden");
   }
-
-  getLastItem(bids, 0);
-  bids.map((bid) => {
-    return populateBiddingHistory(bid);
-  });
 
   const listingInfo = document.querySelector(".listing-info");
   const sellerInfo = document.querySelector(".seller-info");
+
+  if (accessToken) {
+    getLastItem(bids, 0);
+    bids.map((bid) => {
+      return populateBiddingHistory(bid);
+    });
+    sellerInfo.innerHTML = `
+    <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
+    <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
+  `;
+    setupBids();
+  } else {
+    sellerInfo.innerHTML = `  <p class="italic font-mainFont dark:text-inactiveTextDark">You have to be logged in to view seller info</p>`;
+    bidForm.innerHTML = `<p class="italic font-mainFont dark:text-inactiveTextDark">You have to be logged in to bid on this item</p>`;
+    biddingHistoryContainer.classList.add("hidden");
+  }
 
   listingInfo.innerHTML = `
     <h1 class="text-2xl font-mainFont dark:text-offWhite">${title}</h1>
     <p class="text-sm font-bodyFont dark:text-offWhite">${description}</p>
   `;
-  sellerInfo.innerHTML = `
-    <img src="${avatar}" alt="${name} user avatar image" class="w-8 h-8 rounded-full mr-4" />
-    <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
-  `;
 
   placeImage(media, title);
-  setupBids();
 }
 
 populateListing();
 
 async function populateBiddingHistory(bid) {
   const bidTimeFormatted = new Date(bid.created).toLocaleString();
-  document.querySelector(".bidding-history").innerHTML += `
+  biddingHistoryContainer.innerHTML += `
   <div class="bid flex justify-between items-center px-3 py-1 border-b border-borderLight rounded-sm font-mainFont text-lg  dark:text-offWhite dark:border-borderDark odd:bg-tableOdd even:bg-tableEven ">
   <p class="w-1/3 ">${bid.bidderName}<p>
   <p class="text-xs w-1/3 ">${bidTimeFormatted}</p>
