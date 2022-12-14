@@ -1,7 +1,7 @@
 import { getListings } from "../fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 
 async function getLastestListings() {
   const container = document.querySelector(".latest-listings-container");

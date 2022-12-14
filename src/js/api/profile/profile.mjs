@@ -47,3 +47,6 @@ if (!accessToken) {
   userFeedback.classList.add("flex");
   userFeedback.classList.remove("hidden");
 }
+
+const currentTime = new Date();
+console.log(currentTime);

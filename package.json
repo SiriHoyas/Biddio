@@ -3,11 +3,12 @@
   "version": "1.1.0",
   "description": "Semester project 2 - Auction house",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
     "watch": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch",
     "docs": "jsdoc -c ./conf.json -r",
-    "test": "npm run test-unit && npm run test-e2e-cli",
+    "test": "npm run test-unit",
     "test-unit": "jest",
     "test-e2e": "cypress open",
     "test-e2e-cli": "cypress run"
@@ -45,6 +46,10 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
     ]
   }
 }

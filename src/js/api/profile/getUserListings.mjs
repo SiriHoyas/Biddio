@@ -1,7 +1,7 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 
 export async function getUserListings(userName, profileOptions, container) {
   const response = await fetchContent(`/profiles/${userName}/listings?_seller=true&_bids=true`, profileOptions);
