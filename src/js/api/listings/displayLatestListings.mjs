@@ -10,9 +10,12 @@ async function getLastestListings() {
 
     container.innerHTML = "";
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < listings.length; i++) {
       const bid = await getLastItem(listings[i].bids, "No Bids");
 
+      if (i === 3) {
+        break;
+      }
       const { date, time } = convertEndtime(listings[i].endsAt);
       container.innerHTML += listingsHTML(
         listings[i].media[0],
