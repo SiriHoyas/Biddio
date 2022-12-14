@@ -41,5 +41,10 @@
       "prettier --write"
     ],
     "*.{js,css,md}": "prettier --write"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
