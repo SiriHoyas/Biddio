@@ -16,7 +16,7 @@
   </head>
   <body class="index-body dark:bg-bgDark">
     <nav class="bg-bgLight absolute z-30 top-0 w-full lg:px-6 lg:flex lg:items-center dark:bg-bgDark">
-      <section class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
+      <div class="navbar-left w-full flex justify-between items-center lg:w-1/3 p-3">
         <a href="./index.html" class="logo-container flex items-center">
           <img src="./src/img/biddioLogo.svg" alt="biddio logo" class="w-5 h-5 mr-2" />
           <h1 class="font-mainFont text-secondaryPurple dark:text-offWhite text-2xl">biddio</h1>
@@ -42,8 +42,8 @@
             </g>
           </svg>
         </div>
-      </section>
-      <section class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
+      </div>
+      <div class="navbar-middle hidden p-3 lg:w-1/3 lg:block">
         <ul class="menu-items lg:flex lg:justify-center">
           <li>
             <a
@@ -65,8 +65,8 @@
             <a href="./profile.html">Profile</a>
           </li>
         </ul>
-      </section>
-      <section class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
+      </div>
+      <div class="navbar-right hidden p-3 lg:w-1/3 lg:flex lg:justify-end items-center">
         <div class="user flex items-center lg:justify-end">
           <a href="./profile.html" class="user-avatar w-8 h-8 bg-secondaryPurple rounded-full"></a>
           <div class="user-info ml-2">
@@ -86,12 +86,12 @@
             >Register</a
           >
         </div>
-      </section>
+      </div>
     </nav>
     <main>
       <div class="menu-open-modal hidden w-screen h-screen absolute z-10 bg-modalBg"></div>
       <div class="profile-info-main w-11/12 m-auto lg:w-2/3 xl:w-1/2">
-        <section
+        <div
           class="profile-info-container flex items-center justify-between mt-32 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark"
         >
           <div class="profile-info"></div>
@@ -164,9 +164,9 @@
               />
             </svg>
           </div>
-        </section>
+        </div>
 
-        <section
+        <div
           class="edit-avatar hidden mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex-col justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
           <p class="text-lg text-black mb-2 dark:text-offWhite">Edit profile avatar</p>
@@ -188,9 +188,9 @@
               Save
             </button>
           </form>
-        </section>
+        </div>
 
-        <section
+        <div
           class="add-listing mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
           <a
@@ -198,8 +198,8 @@
             class="add-listing-btn text-center text-lg bg-secondaryPurple rounded-sm px-2 py-1 w-full hover:bg-primaryPurple"
             >New Listing</a
           >
-        </section>
-        <section class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark">
+        </div>
+        <div class="my-listings-container mt-6 bg-cardsBgLight rounded-sm py-2 px-4 dark:bg-cardsBgDark">
           <button class="my-listings-btn text-sm font-mainFont underline dark:text-offWhite hover:underline">
             My Listings
           </button>
@@ -221,14 +221,14 @@
               </div>
             </div>
           </div>
-        </section>
-        <section
+        </div>
+        <div
           class="logout mt-6 bg-cardsBgLight rounded-sm py-2 px-4 flex justify-center mb-6 text-offWhite font-mainFont text-xs dark:bg-cardsBgDark"
         >
           <button class="log-out-btn bg-primaryPurple text-lg rounded-sm px-2 py-1 w-full hover:bg-secondaryPurple">
             Log out
           </button>
-        </section>
+        </div>
       </div>
       <div
         class="no-user-container hidden w-11/12 m-auto mt-32 font-mainFont bg-cardsBgLight p-2 rounded-sm flex-col items-center md:w-1/2 lg:w-1/3 dark:bg-cardsBgDark dark:text-offWhite"
