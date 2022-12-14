@@ -43,9 +43,13 @@ async function populateListing() {
 
   if (accessToken) {
     getLastItem(bids, 0);
-    bids.map((bid) => {
-      return populateBiddingHistory(bid);
-    });
+    bids
+      .sort((bid1, bid2) => {
+        return bid2.amount - bid1.amount;
+      })
+      .forEach((bid) => {
+        populateBiddingHistory(bid);
+      });
     sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" onerror="this.src = './src/img/profile-placeholder.png';" class="w-8 h-8 rounded-full mr-4 object-cover" />
     <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>

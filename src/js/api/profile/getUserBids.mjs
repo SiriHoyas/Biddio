@@ -1,5 +1,5 @@
 import { fetchContent } from "../../api/fetch/fetchContent.mjs";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 
 export async function getUserBids(userName, profileOptions, container) {
   container.innerHTML = "";

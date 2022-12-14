@@ -1,7 +1,7 @@
 import { getListings } from "../fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 
 async function getLastestListings() {
   const container = document.querySelector(".latest-listings-container");
@@ -10,9 +10,12 @@ async function getLastestListings() {
 
     container.innerHTML = "";
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < listings.length; i++) {
       const bid = await getLastItem(listings[i].bids, "No Bids");
 
+      if (i === 3) {
+        break;
+      }
       const { date, time } = convertEndtime(listings[i].endsAt);
       container.innerHTML += listingsHTML(
         listings[i].media[0],
