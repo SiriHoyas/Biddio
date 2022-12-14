@@ -23,4 +23,3 @@ export function convertEndtime(endsAt) {
 
   return { date, time };
 }
-// TODO: Test this
