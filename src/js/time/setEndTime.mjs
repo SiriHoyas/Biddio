@@ -1,4 +1,6 @@
-export function setEndTime(days, currentTime) {
+export function setEndTime(days) {
+  const currentTime = new Date();
+
   currentTime.setDate(currentTime.getDate() + days);
 
   const daysInput = days;
