@@ -1,4 +1,4 @@
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getListings } from "../../api/fetch/fetchListings.mjs";
 import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
