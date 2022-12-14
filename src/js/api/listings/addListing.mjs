@@ -2,7 +2,7 @@ import { urlArray } from "./addListingImg.mjs";
 import { fetchContent } from "../fetch/fetchContent.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { setEndTime } from "../../time/setEndTime.mjs";
-import { convertEndtime } from "../../time/convertEndtime.mjs";
+import { convertEndtime } from "../../time/convertEndtime.js";
 
 const { accessToken } = getLocalStorage();
 
