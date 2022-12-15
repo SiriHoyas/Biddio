@@ -36,7 +36,13 @@ npm install
 npm run build
 ```
 
-4. This project is documented with JSDoc. To generate the documentation:
+4. Run the site
+
+```bash
+npm run start
+```
+
+5. This project is documented with JSDoc. To generate the documentation:
 
 ```bash
 npm run docs
