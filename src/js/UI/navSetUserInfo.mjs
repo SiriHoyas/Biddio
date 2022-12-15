@@ -31,7 +31,7 @@ export function displayUserCredits(userCredits) {
 }
 
 displayUserInfo(userCredits);
-displayUserCredits();
+displayUserCredits(userCredits);
 
 const profileBtn = document.querySelector(".menu-item-profile");
 
