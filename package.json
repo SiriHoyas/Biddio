@@ -10,7 +10,8 @@
     "test-e2e-cli": "cypress run",
     "prepare": "husky install",
     "watch": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch",
-    "docs": "jsdoc -c ./conf.json -r"
+    "docs": "jsdoc -c ./conf.json -r",
+    "build": "tailwindcss -i ./src/css/input.css -o ./dist/output.css"
   },
   "author": "Siri Høyås",
   "license": "ISC",
