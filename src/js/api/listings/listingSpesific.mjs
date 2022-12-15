@@ -2,6 +2,7 @@ import { fetchContent } from "../../api/fetch/fetchContent.mjs";
 import { getLastItem } from "../../components/getLatestBid.mjs";
 import { getLocalStorage } from "../../components/getLocalstorage.mjs";
 import { placeBid, watchBidInput } from "../../components/placeBid.mjs";
+import { sortBiddingHistory } from "../../components/sortBiddingHistroy.mjs";
 import { displayCountdown } from "../../time/displayCountdown.mjs";
 
 const { accessToken, userName } = getLocalStorage();
@@ -44,13 +45,6 @@ async function populateListing() {
 
   if (accessToken) {
     getLastItem(bids, 0);
-    bids
-      .sort((bid1, bid2) => {
-        return bid2.amount - bid1.amount;
-      })
-      .forEach((bid) => {
-        populateBiddingHistory(bid);
-      });
     sellerInfo.innerHTML = `
     <img src="${avatar}" alt="${name} user avatar image" onerror="this.src = './src/img/profile-placeholder.png';" class="w-8 h-8 rounded-full mr-4 object-cover" />
     <p class="text-xl font-mainFont dark:text-offWhite">${name}</p>
@@ -71,6 +65,12 @@ async function populateListing() {
 }
 
 populateListing();
+
+const sortedBids = sortBiddingHistory(bids);
+
+sortedBids.forEach((bid) => {
+  populateBiddingHistory(bid);
+});
 
 async function populateBiddingHistory(bid) {
   const bidTimeFormatted = new Date(bid.created).toLocaleString();
