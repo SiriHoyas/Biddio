@@ -18,7 +18,7 @@ function displayUserInfo() {
   }
 }
 
-function displayUserCredits() {
+export function displayUserCredits(userCredits) {
   const userAvatarContainer = document.querySelector(".user-credits");
 
   if (userCredits === "1") {
@@ -30,7 +30,7 @@ function displayUserCredits() {
   }
 }
 
-displayUserInfo();
+displayUserInfo(userCredits);
 displayUserCredits();
 
 const profileBtn = document.querySelector(".menu-item-profile");

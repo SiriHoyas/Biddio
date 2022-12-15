@@ -1,3 +1,5 @@
+import { getLocalStorage } from "../../components/getLocalstorage.mjs";
+import { displayUserCredits } from "../../UI/navSetUserInfo.mjs";
 import { fetchContent } from "../fetch/fetchContent.mjs";
 
 export async function fetchCredits(accessToken, userName) {
@@ -14,5 +16,7 @@ export async function fetchCredits(accessToken, userName) {
   if (response.ok) {
     const json = await response.json();
     localStorage.setItem("userCredits", json.credits);
+    const { userCredits } = getLocalStorage();
+    displayUserCredits(userCredits);
   }
 }
