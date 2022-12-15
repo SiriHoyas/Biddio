@@ -12,10 +12,6 @@ async function addListing(e) {
   const titleInput = document.querySelector("#listing-title").value;
   const descriptionInput = document.querySelector("#listing-description").value;
 
-  if (!titleInput.length) {
-    document.querySelector(".title-error").classList.remove("hidden");
-  }
-
   const endsAt = sessionStorage.getItem("endTime");
 
   const newPostBody = {
@@ -34,13 +30,17 @@ async function addListing(e) {
     },
   };
   try {
-    const response = await fetchContent("/listings", options);
+    if (!titleInput.length) {
+      document.querySelector(".title-error").classList.remove("hidden");
+    } else {
+      const response = await fetchContent("/listings", options);
 
-    if (response.ok) {
-      document.querySelector(".new-listing-form").classList.add("hidden");
-      document.querySelector(".new-listing-heading").classList.add("hidden");
-      document.querySelector(".post-success").classList.remove("hidden");
-      document.querySelector(".post-success").classList.add("flex");
+      if (response.ok) {
+        document.querySelector(".new-listing-form").classList.add("hidden");
+        document.querySelector(".new-listing-heading").classList.add("hidden");
+        document.querySelector(".post-success").classList.remove("hidden");
+        document.querySelector(".post-success").classList.add("flex");
+      }
     }
   } catch (error) {
     document.querySelector(".new-listing-container").classList.add("hidden");
