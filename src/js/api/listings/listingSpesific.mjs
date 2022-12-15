@@ -30,6 +30,7 @@ const biddingHistoryContainer = document.querySelector(".bidding-history-contain
 async function populateListing() {
   const { avatar, name } = seller;
   const bidForm = document.querySelector(".bid-form-container");
+  document.querySelector("title").innerHTML = title;
 
   if (name === userName) {
     const editBtnContainer = document.querySelector(".edit-btn");
