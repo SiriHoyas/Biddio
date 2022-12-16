@@ -694,6 +694,10 @@ video {
   margin-left: 1rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -704,10 +708,6 @@ video {
 
 .mt-16 {
   margin-top: 4rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
 }
 
 .mb-5 {
@@ -1258,10 +1258,6 @@ video {
     grid-column: span 2 / span 2;
   }
 
-  .md\:col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-
   .md\:col-start-1 {
     grid-column-start: 1;
   }
@@ -1464,6 +1460,14 @@ video {
 
   .xl\:w-1\/5 {
     width: 20%;
+  }
+
+  .xl\:w-2\/5 {
+    width: 40%;
+  }
+
+  .xl\:w-2\/6 {
+    width: 33.333333%;
   }
 }
 

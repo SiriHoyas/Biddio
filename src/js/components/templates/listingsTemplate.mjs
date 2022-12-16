@@ -1,9 +1,9 @@
 export function listingsHTML(listingImg, listingTitle, listingSeller, date, time, currentBid, listingID) {
   const html = `
   <div class="listing-card mb-5 w-full  border p-2 rounded-sm dark:border-borderDark">
-          <div class="image-container w-full h-72">
+          <a href="./single-listing.html?id=${listingID}" class="image-container w-full h-72">
             <img src="${listingImg}" alt="Image of ${listingTitle}" onerror="this.src = './src/img/listings-placeholder.png';" class="listing-img rounded-sm w-full h-72 object-cover" />
-          </div>
+          </a>
           <div class="listing-info">
             <p class="font-mainFont text-xl truncate h-10 dark:text-offWhite">${listingTitle}</p>
             <p class="font-mainfont text-inactiveTextLight text-xs -mt-3 dark:text-inactiveTextDark">Sold by ${listingSeller}</p>
