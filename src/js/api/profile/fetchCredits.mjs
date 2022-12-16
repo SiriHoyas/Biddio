@@ -3,6 +3,8 @@ import { displayUserCredits } from "../../UI/navSetUserInfo.mjs";
 import { fetchContent } from "../fetch/fetchContent.mjs";
 
 export async function fetchCredits(accessToken, userName) {
+  const { userCredits } = getLocalStorage();
+  displayUserCredits(userCredits);
   const options = {
     method: "GET",
     headers: {
@@ -16,7 +18,7 @@ export async function fetchCredits(accessToken, userName) {
   if (response.ok) {
     const json = await response.json();
     localStorage.setItem("userCredits", json.credits);
-    const { userCredits } = getLocalStorage();
+
     displayUserCredits(userCredits);
   }
 }

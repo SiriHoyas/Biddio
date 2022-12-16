@@ -8,7 +8,7 @@ const bidInput = document.querySelector("#bid-input");
 
 export async function placeBid(e, listingID) {
   e.preventDefault();
-  fetchCredits(accessToken, userName);
+
   const bid = parseInt(bidInput.value);
 
   const options = {
@@ -25,6 +25,7 @@ export async function placeBid(e, listingID) {
 
     if (response.ok) {
       window.location.reload();
+      fetchCredits(accessToken, userName);
     } else {
       const errorMessage = json.errors[0].message;
       const bidErrorContainer = document.querySelector(".bid-error");
