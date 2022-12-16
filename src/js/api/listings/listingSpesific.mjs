@@ -76,7 +76,7 @@ async function populateBiddingHistory(bid) {
   const bidTimeFormatted = new Date(bid.created).toLocaleString();
   biddingHistoryContainer.innerHTML += `
   <div class="bid flex justify-between items-center px-3 py-1 border-b border-borderLight rounded-sm font-mainFont text-lg  dark:text-offWhite dark:border-borderDark odd:bg-tableOdd even:bg-tableEven ">
-  <p class="w-1/3 ">${bid.bidderName}<p>
+  <p data-cy="bidder-name" class="w-1/3 ">${bid.bidderName}<p>
   <p class="text-xs w-1/3 ">${bidTimeFormatted}</p>
   <p class="w-1/3 flex justify-end">${bid.amount}<p>`;
 }

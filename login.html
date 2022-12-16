@@ -110,17 +110,21 @@
             >Email</label
           >
           <input
+            data-cy="login-email-input"
             type="text"
             name="login-email"
             id="login-email"
             placeholder="example@stud.noroff.no"
             class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont"
           />
-          <p class="valid-email-error hidden text-red-600 italic text-xs mt-1">Please use @stud.noroff.no</p>
+          <p data-cy="login-error" class="valid-email-error hidden text-red-600 italic text-xs mt-1">
+            Please use @stud.noroff.no
+          </p>
           <label for="login-password" class="font-bodyFont text-secondaryPurple text-xs mb-1 mt-4 dark:text-offWhite"
             >Password</label
           >
           <input
+            data-cy="login-password-input"
             type="password"
             name="login-password"
             id="login-password"
@@ -128,6 +132,7 @@
             class="w-full p-1 rounded-sm border border-borderLight text-sm font-mainFont mb-4"
           />
           <input
+            data-cy="login-submit"
             type="submit"
             name="log-in-btn"
             id="log-in-btn"
