@@ -5,6 +5,9 @@ import { placeBid, watchBidInput } from "../../components/placeBid.mjs";
 import { sortBiddingHistory } from "../../components/sortBiddingHistroy.mjs";
 import { displayCountdown } from "../../time/displayCountdown.mjs";
 
+const nextBtn = document.querySelector(".next-img");
+const prevBtn = document.querySelector(".prev-img");
+
 const { accessToken, userName } = getLocalStorage();
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -134,10 +137,11 @@ function setupBids() {
 
 // IMG CAROUSEL
 
-const nextBtn = document.querySelector(".next-img");
-const prevBtn = document.querySelector(".prev-img");
-
 async function placeImage(media, title) {
+  if (media.length <= 1) {
+    nextBtn.classList.add("hidden");
+    prevBtn.classList.add("hidden");
+  }
   const imageCarousel = document.querySelector(".image-container");
 
   imageCarousel.innerHTML = "";
