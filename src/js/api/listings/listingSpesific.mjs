@@ -11,6 +11,11 @@ const params = new URLSearchParams(queryString);
 const listingID = params.get("id");
 let displayedPhotoIndex = 0;
 
+function errorMessage() {
+  document.querySelector(".single-listing-error ").classList.remove("hidden");
+  document.querySelector(".single-listing-container").classList.add("hidden");
+}
+
 async function fetchListingInfo() {
   const options = {
     method: "GET",
@@ -20,9 +25,16 @@ async function fetchListingInfo() {
     },
   };
 
-  const response = await fetchContent(`/listings/${listingID}?_seller=true&_bids=true`, options);
-
-  return await response.json();
+  try {
+    const response = await fetchContent(`/listings/${listingID}?_seller=true&_bids=true`, options);
+    if (response.ok) {
+      return await response.json();
+    } else {
+      errorMessage();
+    }
+  } catch (error) {
+    errorMessage();
+  }
 }
 
 const { media, title, description, seller, endsAt, bids } = await fetchListingInfo();

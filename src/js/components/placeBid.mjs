@@ -33,8 +33,7 @@ export async function placeBid(e, listingID) {
       bidErrorContainer.innerHTML = errorMessage;
     }
   } catch (error) {
-    console.log(error);
-    // TODO: Show "Unexpected error"
+    document.querySelector(".bid-error").classList.remove("hidden");
   }
 }
 

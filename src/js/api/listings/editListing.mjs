@@ -47,11 +47,15 @@ async function editListing(e) {
     body: JSON.stringify(body),
   };
 
-  const response = await fetchContent(`/listings/${listingID}`, options);
+  try {
+    const response = await fetchContent(`/listings/${listingID}`, options);
 
-  if (response.ok) {
-    editModal.classList.add("hidden");
-    window.location.reload();
+    if (response.ok) {
+      editModal.classList.add("hidden");
+      window.location.reload();
+    }
+  } catch (error) {
+    document.querySelector(".edit-avatar-error").classList.remove("hidden");
   }
 }
 

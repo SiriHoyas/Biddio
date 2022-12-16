@@ -124,6 +124,9 @@
             <button type="submit" class="delete-btn bg-red-800 font-mainFont text-offWhite px-3 py-1 rounded-sm mr-4">
               Delete post
             </button>
+            <p class="edit-avatar-error text-red-800 font-mainFont mt-2 hidden">
+              Something went wrong. Please try again later
+            </p>
           </form>
         </div>
       </div>
@@ -141,6 +144,12 @@
           >
         </div>
       </section>
+      <div
+        class="single-listing-error hidden mt-32 bg-cardsBgLight font-mainFont flex flex-col items-center p-3 rounded-sm w-11/12 m-auto lg:w-3/5 xl:w-1/2"
+      >
+        <p class="font-mainFont dark:text-offWhite">Something went wrong</p>
+        <p class="font-mainFont dark:text-offWhite">Please try again later</p>
+      </div>
       <div class="single-listing-container mt-32 w-11/12 m-auto lg:w-3/5 xl:w-1/2">
         <div
           class="listing-img-carousel w-full bg-cardsBgLight rounded-sm py-6 mb-10 h-80 flex justify-center dark:bg-cardsBgDark"
@@ -218,7 +227,9 @@
                   </button>
                 </form>
               </div>
-              <p class="bid-error text-red-600 italic mb-1 text-center text-xs"></p>
+              <p class="bid-error hidden font-mainFont text-red-600 italic mb-1 text-center text-xs">
+                Unexpected Error
+              </p>
             </div>
           </div>
         </div>

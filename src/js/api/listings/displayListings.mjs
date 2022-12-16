@@ -6,23 +6,27 @@ import { listingsHTML } from "../../components/templates/listingsTemplate.mjs";
 const listingsContainer = document.querySelector(".listings-container");
 
 async function displayListings() {
-  const listings = await getListings(`&offset=0&limit=27&_active=true`);
-  listingsContainer.innerHTML = "";
+  try {
+    const listings = await getListings(`&offset=0&limit=27&_active=true`);
+    listingsContainer.innerHTML = "";
+    listings.forEach((listing) => {
+      const bid = getLastItem(listing.bids, "No Bids");
+      const { date, time } = convertEndtime(listing.endsAt);
 
-  listings.forEach((listing) => {
-    const bid = getLastItem(listing.bids, "No Bids");
-    const { date, time } = convertEndtime(listing.endsAt);
-
-    listingsContainer.innerHTML += listingsHTML(
-      listing.media[0],
-      listing.title,
-      listing.seller.name,
-      date,
-      time,
-      bid.amount ? bid.amount : bid,
-      listing.id
-    );
-  });
+      listingsContainer.innerHTML += listingsHTML(
+        listing.media[0],
+        listing.title,
+        listing.seller.name,
+        date,
+        time,
+        bid.amount ? bid.amount : bid,
+        listing.id
+      );
+    });
+  } catch (error) {
+    document.querySelector(".loader").classList.add("hidden");
+    document.querySelector(".error-message").classList.remove("hidden");
+  }
 }
 
 displayListings();
