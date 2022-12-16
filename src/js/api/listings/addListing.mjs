@@ -40,6 +40,9 @@ async function addListing(e) {
         document.querySelector(".new-listing-heading").classList.add("hidden");
         document.querySelector(".post-success").classList.remove("hidden");
         document.querySelector(".post-success").classList.add("flex");
+      } else {
+        const json = await response.json();
+        document.querySelector(".place-bid-error").innerHTML = json.errors[0].message;
       }
     }
   } catch (error) {
