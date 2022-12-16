@@ -21,7 +21,7 @@ When registering you will be given 1000 credits. This project is built using the
 1. Clone the repo:
 
 ```bash
-git clone git@github.com:SiriHoyas/semester-project-2
+git clone https://github.com/SiriHoyas/biddio.git
 ```
 
 2. Run NPM install to install dev dependencies:
